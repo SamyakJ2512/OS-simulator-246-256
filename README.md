@@ -6,5 +6,6 @@
 *Contributors:*
 
 Rithesh K - Implementing IPCs.
+Soham Patil- Syncronisation Problems,And Front end Wherever neeeded :p
 
 {Edit this file to add your name}
