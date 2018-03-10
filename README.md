@@ -8,5 +8,6 @@
 * Rithesh K - Implementing IPCs.
 * Soham Patil- Syncronisation Problems ,And Front end Wherever neeeded :p
 * Tejas K - Simulaing paging concept with help of page table.
-* Tushar DM-Disk Scheduling.
+* Tushar DM-Disk Scheduling.  
+* S Chethana Vaisali - All the scheduling problems and mutilevel feedback scheduling.  
 {Edit this file to add your name}
