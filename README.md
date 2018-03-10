@@ -6,6 +6,6 @@
 *Contributors:*
 
 * Rithesh K - Implementing IPCs.
-* Soham Patil- Syncronisation Problems,And Front end Wherever neeeded :p
-
+* Soham Patil- Syncronisation Problems ,And Front end Wherever neeeded :p
+* Tejas K - Simulaing paging concept with help of page table.
 {Edit this file to add your name}
