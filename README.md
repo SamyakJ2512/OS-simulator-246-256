@@ -11,4 +11,5 @@
 * Tushar DM-Disk Scheduling.  
 * S Chethana Vaisali - All the scheduling problems and mutilevel feedback scheduling. 
 * Samyak Jain- Page replacement algorithms and memory management extra
+* Shiva -System Calls and anything left and front end part.
 {Edit this file to add your name}
