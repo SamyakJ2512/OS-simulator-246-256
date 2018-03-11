@@ -13,3 +13,4 @@
 * Samyak Jain- Page replacement algorithms and memory management extra
 * Shiva -System Calls and anything left and front end part.
 {Edit this file to add your name}
+* Shashank kumar - Banker's Algorithm and Deadlock detection in single instance resource type 
