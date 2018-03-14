@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+
+<style>
+
+  .button
+  {
+      background-color: #4CAF50;
+      border: none;
+      color: white;
+      padding: 15px 30px;
+      text-decoration: none;
+      font-size: 12px;
+      cursor: pointer;
+  }
+
+  .col_split
+  {
+  -webkit-column-count: 2;
+  -moz-column-count: 2;
+  column-count: 2;
+  }
+
+  .box
+  {
+    width : 1000px;
+    border: 5px solid red;
+    padding: 20px;
+    margin: 20px;
+  }
+
+  .anime
+  {
+    width: 5px;
+    height: 5px;
+    background-color: blue;
+    position: relative;
+    animation-name: move;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+    animation-delay: 0s;
+    animation-play-state: paused;
+  }
+
+  @keyframes move
+  {
+    0% {top: 217px; left: 1023px;}
+    100% {top: 137px; left: 262px;}
+  }
+
+  @keyframes messg
+  {
+    0% {top: 225px; left: 185px;}
+    100% {top: 225px; left: 1015px;}
+  }
+</style>
+
+<body>
+    <h1>TCP connection</h1>
+    <p><i>Some text goes here... </i></p>
+    <div class="col_split">
+    <h2> Server: </h2>
+    <button id = "serv_socket" class ="button", onclick ="serv_socket()", style ="height:40px;width:75px;line-height:1" >socket()</button> ->
+    <button id = "bind" class="button", onclick ="bind()", style ="height:40px;width:75px;background-color:#A6D8A8;line-height:1" disabled>bind()</button> ->
+    <button id = "listen" class="button", onclick ="listen()", style ="height:40px;width:75px;background-color:#A6D8A8;line-height:1" disabled>listen()</button> ->
+    <button id = "accept" class="button", onclick ="accept()", style ="height:40px;width:75px;background-color:#A6D8A8;line-height:1" disabled>accept()</button> ->
+    <button id = "move" class="button", onclick ="send()", style ="height:40px;width:75px;background-color:#A6D8A8;line-height:1" disabled>send()</button>
+    <br/><br/>
+
+    <h2> Client: </h2>
+    <button id = "cli_socket" class ="button", onclick ="cli_socket()", style ="height:40px;width:75px;line-height:1">socket()</button> ->
+    <button id ="connect" class="button", onclick ="connect()", style ="height:40px;width:75px;background-color:#A6D8A8;line-height:1" disabled>connect()</button>
+    <br/><br/>
+  </div>
+
+    <button id ="close" class="button", onclick ="closee()", style ="height:40px;width:75px;line-height:1">close</button>
+
+    <button type = "button", id ="server", name = "server", style="height:125px;width:125px;position:absolute;top:70%;left:5%;border-radius:125px;border:1px solid #000;backgroundColor:#DCDCDC">Server
+    <br> <br> IP:- ABC:XYZ <br> Port: 80</button>
+    <button type = "button", id ="client", name = "client", style="height:125px;width:125px;position:absolute;top:70%;left:80%;border-radius:125px;border:1px solid #000;backgroundColor:#DCDCDC">Client
+    <br> <br> IP:- PQR:LMN <br> Port: IJK</button>
+
+    <button class = "button", id ="one", name = "one", style="height:10px;width:10px;position:absolute;top:78%;left:15%;border:1px solid:#FFFFFF;background-color:#FFFFFF" disabled></button>
+    <button class = "button", id ="two", name = "two", style="height:10px;width:10px;position:absolute;top:90%;left:80%;border:1px solid:#FFFFFF;background-color:#FFFFFF" disabled></button>
+    <button class = "button", id ="three", name = "three", style="height:10px;width:10px;position:absolute;top:90%;left:10%;border:1px solid:#FFFFFF;background-color:#FFFFFF" disabled></button>
+
+    <div class="box" id="p_serv_socket" style="display:none">
+      <i>Some text to be added </i>
+    </div>
+
+    <div class="box" id="p_bind" style="display:none">
+      <i>Some text to be added </i>
+    </div>
+
+    <div class="box" id="p_listen" style="display:none">
+      <i>Some text to be added </i>
+    </div>
+
+    <div class="box" id="p_accept" style="display:none">
+      <i>Some text to be added </i>
+    </div>
+
+    <div class="box" id="p_send" style="display:none">
+      <i>Some text to be added </i>
+    </div>
+
+    <div class="box" id="p_cli_socket" style="display:none">
+      <i>Some text to be added </i>
+    </div>
+
+    <div class="box" id="p_connect" style="display:none">
+      <i>Some text to be added </i>
+    </div>
+
+   <div class="anime" id="conn" style="display:none;"></div>
+   <div class="anime" id="conn1" style="animation-delay:0.25s;display:none;"></div>
+   <div class="anime" id="conn2" style="animation-delay:0.5s;display:none;"></div>
+   <div class="anime" id="conn3" style="animation-delay:0.75s;display:none;"></div>
+
+   <div class="anime" id="mesg" style="top:225px;left:1015px;width:15px;
+   animation-name:messg;animation-iteration-count:1;
+   animation-timing-function:linear;animation-duration=8s;display:none;"></div>
+
+    <script>
+    function serv_socket()
+    {
+      document.getElementById("one").style.backgroundColor = '#668CFF';
+      document.getElementById("bind").style.backgroundColor = "#4CAF50";
+      document.getElementById("p_serv_socket").style.display = 'block';
+      document.getElementById("bind").disabled = false;
+    }
+
+    function cli_socket()
+    {
+          document.getElementById("two").style.backgroundColor = '#668CFF';
+          document.getElementById("connect").style.backgroundColor = "#4CAF50";
+          document.getElementById("p_listen").style.display = 'none';
+          document.getElementById("p_cli_socket").style.display = 'block';
+          document.getElementById("connect").disabled = false;
+    }
+
+    function bind()
+    {
+      document.getElementById("one").style.backgroundColor = '#990099';
+      document.getElementById("listen").style.backgroundColor = "#4CAF50";
+      document.getElementById("p_serv_socket").style.display = 'none';
+      document.getElementById("p_bind").style.display = 'block';
+      document.getElementById("listen").disabled = false;
+    }
+
+    function listen()
+    {
+      document.getElementById("p_bind").style.display = 'none';
+      document.getElementById("p_listen").style.display = 'block';
+    }
+
+    function connect()
+    {
+      document.getElementById("two").style.backgroundColor = '#FF80FF';
+      document.getElementById("accept").style.backgroundColor = "#4CAF50";
+      document.getElementById("p_cli_socket").style.display = 'none';
+      document.getElementById("p_connect").style.display = 'block';
+      document.getElementById("conn").style.display = 'block';
+      document.getElementById("conn1").style.display = 'block';
+      document.getElementById("conn2").style.display = 'block';
+      document.getElementById("conn3").style.display = 'block';
+      document.getElementById("conn").style.animationPlayState= "running";
+      document.getElementById("conn1").style.animationPlayState= "running";
+      document.getElementById("conn2").style.animationPlayState= "running";
+      document.getElementById("conn3").style.animationPlayState= "running";
+      document.getElementById("accept").disabled = false;
+      document.getElementById("close").disabled = false;
+    }
+
+    function accept()
+    {
+      document.getElementById("conn").style.display = 'none';
+      document.getElementById("conn1").style.display = 'none';
+      document.getElementById("conn2").style.display = 'none';
+      document.getElementById("conn3").style.display = 'none';
+      document.getElementById("three").style.backgroundColor = '#FF80FF';
+      document.getElementById("p_connect").style.display = 'none';
+      document.getElementById("p_accept").style.display = 'block';
+      document.getElementById("move").style.backgroundColor = "#4CAF50";
+      document.getElementById("move").disabled = false;
+    }
+
+    function send()
+    {
+      document.getElementById("p_accept").style.display = 'none';
+      document.getElementById("p_send").style.display = 'block';
+      document.getElementById("mesg").style.display = 'block';
+      document.getElementById("mesg").style.animationPlayState= "running";
+    }
+
+    function closee()
+    {
+      document.getElementById("p_send").style.display = 'none';
+      document.getElementById("one").style.backgroundColor = '#FFFFFF';
+      document.getElementById("mesg").style.backgroundColor = '#FFFFFF';
+      document.getElementById("two").style.backgroundColor = '#FFFFFF';
+      document.getElementById("three").style.backgroundColor = '#FFFFFF';
+      document.getElementById("bind").style.backgroundColor = '#A6D8A8';
+      document.getElementById("listen").style.backgroundColor = '#A6D8A8';
+      document.getElementById("connect").style.backgroundColor = '#A6D8A8';
+      document.getElementById("accept").style.backgroundColor = '#A6D8A8';
+      document.getElementById("move").style.backgroundColor = '#A6D8A8';
+      document.getElementById("close").style.backgroundColor = '#A6D8A8';
+      document.getElementById("bind").disabled = true;
+      document.getElementById("listen").disabled = true;
+      document.getElementById("connect").disabled = true;
+      document.getElementById("accept").disabled = true;
+      document.getElementById("move").disabled = true;
+      document.getElementById("close").disabled = true;
+    }
+
+    </script>
+  </div>
+</body>
