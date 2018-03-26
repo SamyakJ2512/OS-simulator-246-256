@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Barrier</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+
+<body style="height:1500px">
+
+<nav class="navbar navbar-inverse navbar-fixed-top">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">OS simulator</a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li class="active"><a href="#">Home</a></li>
+      <li class="active"><a href="#">Wiki</a></li>
+    </ul>
+  </div>
+</nav>
+ <br><br><br>
+  <div class="page-header" >
+    <h1 style="float:center">Barrier Semaphore</h1>      
+  </div>
+ 
+<!--  <div >
+     <form>
+      <div class="btn btn-primary" onclick="add()" style ="height:3%;width:5%;position:absolute;">Enter:</div>
+      <input type="number" id="Count"  style="background:white;height:3%;width:5%;position:absolute;left:5%">
+      <p id="tushar"></p>
+     </form>
+ </div>
+ -->
+
+
+     <div>
+      <form>
+        <textarea id="doc" style="height:28%;width:15%;position:absolute;left:3%;font-size:17px; color : white; background-color:black;border:solid 2px orange; " disabled="">
+localsense = !localsense;
+if (__sync_fetch_and_sub (&count, 1) == 1) {
+    count = THREADS_COUNT;
+    globalsense = localsense;
+} else {
+    while (globalsense != localsense);
+}
+        </textarea>
+      </form>
+    </div>
+
+
+ <button class="btn btn-primary" id ="prod", type ="button", onclick ="barrieradd()", style ="height:10%;width:15%;position:absolute;top:25%;left:45%;font-size:25px">Produce</button>
+      
+
+
+<div type = "button", id ="one1", name = "one1", style="height:10%;width:9%;position:absolute;top:50%;left:20%;background-color:#ff0101;" > </div>
+
+    <div type = "button", id ="two1", name = "two1", style="height:10%;width:9%;position:absolute;top:62%;left:30%;background-color:#ff0101;"> 
+  </div>
+    
+    <div type = "button", id ="three1", name = "three1", style="height:10%;width:9%;position:absolute;top:74%;left:15%;background-color:#ff0101;">  </div>
+
+  
+    <div type = "button", id ="four1", name = "four1", style="height:10%;width:9%;position:absolute;top:86%;left:39%;background-color:#ff0101;"> </div>
+  
+    <div type = "button", id ="five1", name = "five1", style="height:10%;width:9%;position:absolute;top:98%;left:25%;background-color:#ff0101;"></div>
+
+    <div type = "button", id ="one", name = "one", style="height:10%;width:9%;position:absolute;top:50%;left:45%;background-color:white;visibility:hidden" > </div>
+
+    <div type = "button", id ="two", name = "two", style="height:10%;width:9%;position:absolute;top:62%;left:45%;background-color:white;visibility:hidden"> </div>
+  
+    <div type = "button", id ="three", name = "three", style="height:10%;width:9%;position:absolute;top:74%;left:45%;background-color:white;visibility:hidden"></div>
+  
+    <div type = "button", id ="four", name = "four", style="height:10%;width:9%;position:absolute;top:86%;left:45%;background-color:white;visibility:hidden"> </div>
+  
+    <div type = "button", id ="five", name = "five", style="height:10%;width:9%;position:absolute;top:98%;left:45%;background-color:white;visibility:hidden"></div>
+
+
+       <div type = "button", id ="one2", name = "one2", style="height:10%;width:9%;position:absolute;top:50%;left:75%;background-color:#02f401;visibility:hidden" > </div>
+
+    <div type = "button", id ="two2", name = "two2", style="height:10%;width:9%;position:absolute;top:62%;left:75%;background-color:#02f401;visibility:hidden;"> </div>
+  
+    <div type = "button", id ="three2", name = "three2", style="height:10%;width:9%;position:absolute;top:74%;left:75%;background-color:#02f401;visibility:hidden"></div>
+  
+    <div type = "button", id ="four2", name = "four2", style="height:10%;width:9%;position:absolute;top:86%;left:75%;background-color:#02f401;visibility:hidden"> </div>
+  
+    <div type = "button", id ="five2", name = "five2", style="height:10%;width:9%;position:absolute;top:98%;left:75%;background-color:#02f401;visibility:hidden"></div>
+<p id="vl" ></p>
+<h1 style="top:40%;left:75%;position: absolute;">After Barrier</h1>
+
+<h1 style="top:40%;left:50%;position: absolute;">Barrier</h1>
+<style>
+#vl {
+    border-left: 6px solid green;
+    height: 70%;
+    position: absolute;
+    left: 54%;
+    margin-left: -3px;
+    top: 47%;
+}
+</style>  
+
+</body>
+
+ <script type="text/javascript">
+//var Barrier;
+        // body...        x=document.getElementById("i0").value; document.getElementById("s").innerHTML = "Paragraph changed!";
+//var num=0;
+      var num=0;
+      //var rear =-1; var front =-1;
+
+
+      function color()
+      {
+        if(num==1)
+        {
+                                          document.getElementById("vl").style.visibility = 'visible';
+
+                    document.getElementById("one").style.visibility = 'visible';
+                    document.getElementById("one1").style.visibility = 'hidden';
+
+          document.getElementById("one").style.backgroundColor = '#00BFFF';
+        }
+        if(num==2)
+        {
+            document.getElementById("two").style.visibility = 'visible';
+                    document.getElementById("two1").style.visibility = 'hidden';
+
+          document.getElementById("two").style.backgroundColor = '#00BFFF';
+        }
+        if(num==3)
+        {
+            document.getElementById("three").style.visibility = 'visible';
+                    document.getElementById("three1").style.visibility = 'hidden';
+
+          document.getElementById("three").style.backgroundColor = '#00BFFF';
+        }
+        if(num==4)
+        {
+            document.getElementById("four").style.visibility = 'visible';
+                    document.getElementById("four1").style.visibility = 'hidden';
+
+          document.getElementById("four").style.backgroundColor = '#00BFFF';
+        }
+        if(num==5)
+        {
+            document.getElementById("five").style.visibility = 'visible';
+                    document.getElementById("five1").style.visibility = 'hidden';
+
+          document.getElementById("five").style.backgroundColor = '#00BFFF';
+          document.getElementById("prod").style.text="hi";
+        }
+
+          if(num==6)
+          {
+
+
+
+            document.getElementById("one2").style.visibility = 'visible';
+            document.getElementById("two2").style.visibility = 'visible';
+            document.getElementById("three2").style.visibility = 'visible';
+            document.getElementById("four2").style.visibility = 'visible';
+            document.getElementById("five2").style.visibility = 'visible';
+
+            document.getElementById("one").style.visibility = 'hidden';
+            document.getElementById("two").style.visibility = 'hidden';
+            document.getElementById("three").style.visibility = 'hidden';
+            document.getElementById("four").style.visibility = 'hidden';
+            document.getElementById("five").style.visibility = 'hidden';
+            document.getElementById("vl").style.visibility = 'hidden';
+
+          }
+          if(num==7)
+          {
+                          num=0;
+
+              document.getElementById("one1").style.visibility = 'visible';
+             document.getElementById("two1").style.visibility = 'visible';
+            document.getElementById("three1").style.visibility = 'visible';
+            document.getElementById("four1").style.visibility = 'visible';
+            document.getElementById("five1").style.visibility = 'visible';
+            document.getElementById("vl").style.visibility = 'visible';
+
+            document.getElementById("one2").style.visibility = 'hidden';
+            document.getElementById("two2").style.visibility = 'hidden';
+            document.getElementById("three2").style.visibility = 'hidden';
+            document.getElementById("four2").style.visibility = 'hidden';
+            document.getElementById("five2").style.visibility = 'hidden';
+
+
+          }
+      }
+
+      function barrieradd()
+      {
+          num++;
+
+          
+         
+        color();
+       // counter();
+      }  
+
+
+  </script>
+</html>
