@@ -1,0 +1,257 @@
+<html>
+<head>
+	<style>
+	.s_hide{
+		display: none;
+	}
+	.s_show{
+		display: block;
+	}
+
+	input{
+		border:solid 2px black;
+		border-radius: 4px;
+	}
+	</style>
+</head>
+
+<body>
+	<p> Choose the type of Allocation you want to use</p>
+	
+	<div class="s_choices">
+		<label class="container">SEQUENTIAL
+			<input type="checkbox" id="s_seq">
+			<span class="checkmark"></span>
+		</label><br>
+
+		<label class="container">INDEXED
+			<input type="checkbox" id="s_ind">
+			<span class="checkmark"></span>
+		</label><br>
+
+		<label class="container">LINKED
+			<input type="checkbox" id="s_lin">
+			<span class="checkmark"></span>
+		</label><br>
+	</div>
+
+<button onclick="show_options()">Options</button>
+
+
+<div class="s_hide" id="sequ">
+	<p> Enter the number of files</p>
+	<div>
+		<input id="nof" type="number">
+	</div>
+
+	<button class="s_done" onclick="show_fields()">Done</button>
+	<br><br><br>
+
+	<div class="s_form">
+		<form class="s_hide">
+			<p> Your First File </p>
+		File no:	<input  id="file_no" type="number">
+		File size:	<input  id="file_size" type="number">
+		Starting block:	<input  id="starting_block" type="number">
+		Block size:	<input  id="block_size" type="number">
+		</form>
+
+		<form class="s_hide">
+			<p> Your Second File </p>
+			File no:   <input  id="file_no" type="number">
+			File size:	<input  id="file_size" type="number">
+			Starting block:	<input  id="starting_block" type="number">
+		    Block size:		<input  id="block_size" type="number">
+		</form>
+		
+		<form class="s_hide">
+
+			<p> Your Third File </p>
+			File no:		<input  id="file_no" type="number">
+			File size:		<input  id="file_size" type="number">
+			Starting block:	<input  id="starting_block" type="number">
+			Block size:		<input  id="block_size" type="number">
+		</form>
+
+		<form class="s_hide">
+			<p> Your Four File </p>
+			File no:     <input  id="file_no" type="number">
+			File size:	<input  id="file_size" type="number">
+			Starting block:	<input  id="starting_block" type="number">
+			Block size:	<input  id="block_size" type="number">
+		</form>
+
+		<form class="s_hide">
+			<p> Your Fifth File </p>
+				File no:   <input  id="file_no" type="number">
+				File size: <input  id="file_size" type="number">
+				Starting block:<input  id="starting_block" type="number">
+				Block size:<input  id="block_size" type="number">
+		</form>
+
+		<form class="s_hide">
+			<p> Your Six File </p>
+			File no:    <input  id="file_no" type="number">
+			File size:	<input  id="file_size" type="number">
+			Starting block:	<input  id="starting_block" type="number">
+			Block size:	<input  id="block_size" type="number">
+		</form>
+
+		<form class="s_hide">
+			<p> Your Seventh File </p>
+			File no:    <input  id="file_no" type="number">
+			File size:	<input  id="file_size" type="number">
+			Starting block:	<input  id="starting_block" type="number">
+			Block size:	<input  id="block_size" type="number">
+		</form>
+</div>
+
+<p> Enter the number of the file you want to view </p>
+	<input type="number">
+
+	<button type="button" class="s_cal" onclick="s_calculate()"> OUTPUT</button>
+
+		<p id="s_out_sect"></p>
+</div>
+
+</body>
+
+<script>
+	var form_no=-1;
+
+	function inside_form()
+	{
+
+	}
+
+	function show_options()
+	{
+		var seq,ind,lin;
+		var seqv,indv,linv;
+
+		seq = document.getElementsByTagName("input")[0];
+		ind = document.getElementsByTagName("input")[1];
+		lin = document.getElementsByTagName("input")[2];
+
+		if(seq.checked)
+		{
+			var f = document.getElementById("sequ");
+			var att = document.createAttribute("class");
+			att.value ="s_show";
+
+			f.setAttributeNode(att);
+		}
+
+		if(ind.checked)
+		{
+			var f = document.getElementById("index");
+			var att = document.createAttribute("class");
+			att.value ="s_show";
+
+			f.setAttributeNode(att);
+		}
+
+		if(lin.checked)
+		{
+			var f = document.getElementById("link");
+			var att = document.createAttribute("class");
+			att.value ="s_show";
+
+			f.setAttributeNode(att);
+		}
+	}
+
+	var form_no = -1;
+	function show_fields()
+	{
+		var no_of_files = document.getElementById("nof").value;
+		var i;
+		for(i=0;i<no_of_files;++i)	
+			s_add_in();
+	}
+
+	function s_add_in()
+	{
+		form_no = form_no +1;
+		var f = document.getElementsByTagName("form")[form_no];
+
+		var att = document.createAttribute("class");
+		att.value ="s_show";
+
+		f.setAttributeNode(att);
+	}
+
+	function s_calculate()
+	{
+		var seq,ind,lin;
+		var seqv,indv,linv;
+
+		seq = document.getElementsByTagName("input")[0];
+		ind = document.getElementsByTagName("input")[1];
+		lin = document.getElementsByTagName("input")[2];
+
+		if(seq.checked)
+		{
+			document.getElementById("s_out_sect").innerHTML = "sequential checked";
+			cal_seq();
+		}
+
+		if(ind.checked)
+		{
+			document.getElementById("s_out_sect").innerHTML = "indexed checked";
+			cal_ind();
+		}
+
+		if(lin.checked)
+		{
+			document.getElementsById("s_out_sect").innerHTML = "linked checked";
+			cal_lin();
+		}
+	}
+
+	function cal_seq()
+	{
+				document.getElementById("s_out_sect").innerHTML = "entered the cal_seq";
+		var out_file = document.getElementsByTagName("input")[32].value;
+
+		var i,j,k;
+		for(i=4; i<31; i=i+4)
+		{
+			var x= document.getElementsByTagName("input")[i].value;
+			if(out_file == x)
+				break;
+		}
+
+		//now i gives the place of the file in the input fields
+		document.getElementById("s_out_sect").innerHTML = "found the form";
+		var si,ei;
+		si = i;
+		ei = i+3;
+
+		var tot_size,block_size,block_start;
+
+		tot_size = document.getElementsByTagName("input")[si+1].value;
+		block_start = document.getElementsByTagName("input")[si+2].value;
+		block_size = document.getElementsByTagName("input")[si+3].value;
+		 		document.getElementById("s_out_sect").innerHTML = "inputs taken";
+
+		var no_of_blocks = (tot_size * 1024) / block_size;
+		//document.getElementById("s_out_sect").innerHTML = no_of_blocks;
+
+		var output=[];
+		var pos = block_start - 1;
+		for(j=0;j<no_of_blocks;++j)
+		{
+			pos++;			
+			output.push(pos);
+		}
+
+		document.getElementById("s_out_sect").innerHTML=output.join();
+
+	}
+	
+
+
+</script>
+
+</html>

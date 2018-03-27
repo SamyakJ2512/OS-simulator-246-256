@@ -1,0 +1,340 @@
+<html>
+<head>
+	<style>
+	.s_hide{
+		display: none;
+	}
+	.s_show{
+		display: block;
+	}
+
+	input{
+		border:solid 2px black;
+		border-radius: 4px;
+	}
+
+	.anchor{
+		width:200px;
+		border:solid 2px black;
+		margin-left:45px;
+	}
+	</style>
+</head>
+
+<body onload="initialise()">
+
+	
+<p> Enter the number of files </p>
+	<input id="nof" type="number">
+
+	<button onclick="show_fields()">OK</button>
+	
+	<!-- =======================input fields =================================-->
+	<form class="s_hide">
+			<p> Your First File </p>
+		File index:	<input  id="file_no" type="number"><br>
+		Enter the number of files:	<input type="number">
+		<div class="anchor">
+			<a onclick="inside_form(0)">DONE</a> 
+		</div>
+			<ul>
+			<li class="s_hide">	Block_1: <input  type="number"></li>
+			<li class="s_hide">	Block_2: <input  type="number"></li>
+			<li class="s_hide">	Block_3: <input  type="number"></li>
+			<li class="s_hide">	Block_4: <input  type="number"></li>
+			<li class="s_hide">	Block_5: <input  type="number"></li>
+			<li class="s_hide">	Block_6: <input  type="number"></li>
+			<li class="s_hide">	Block_7: <input  type="number"></li>
+			<li class="s_hide">	Block_8: <input  type="number"></li>
+			<li class="s_hide">	Block_9: <input  type="number"></li>
+			<li class="s_hide">	Block_10:<input type="number"></li>		
+			</ul>
+			<div class="anchor">
+			<a onclick="allocate(0)">ALLOCATE</a> 
+			
+		</div>
+		</form>
+
+	<form class="s_hide">
+			<p> Your Second File </p>
+		File index:	<input  id="file_no" type="number"><br>
+		Enter the number of files:	<input type="number">
+		<div class="anchor">
+			<a onclick="inside_form(1)">DONE</a> 
+		</div>
+			<ul>
+			<li class="s_hide">	Block_1: <input  type="number"></li>
+			<li class="s_hide">	Block_2: <input  type="number"></li>
+			<li class="s_hide">	Block_3: <input  type="number"></li>
+			<li class="s_hide">	Block_4: <input  type="number"></li>
+			<li class="s_hide">	Block_5: <input  type="number"></li>
+			<li class="s_hide">	Block_6: <input  type="number"></li>
+			<li class="s_hide">	Block_7: <input  type="number"></li>
+			<li class="s_hide">	Block_8: <input  type="number"></li>
+			<li class="s_hide">	Block_9: <input  type="number"></li>
+			<li class="s_hide">	Block_10:<input type="number"></li>		
+			</ul>
+			<div class="anchor">
+			<a onclick="allocate(1)">ALLOCATE</a> 
+		</div>
+	</form>
+
+	<form class="s_hide">
+			<p> Your Third File </p>
+		File index:	<input  id="file_no" type="number"><br>
+		Enter the number of files:	<input type="number">
+		<div class="anchor">
+			<a onclick="inside_form(2)">DONE</a> 
+		</div>
+			<ul>
+			<li class="s_hide">	Block_1: <input  type="number"></li>
+			<li class="s_hide">	Block_2: <input  type="number"></li>
+			<li class="s_hide">	Block_3: <input  type="number"></li>
+			<li class="s_hide">	Block_4: <input  type="number"></li>
+			<li class="s_hide">	Block_5: <input  type="number"></li>
+			<li class="s_hide">	Block_6: <input  type="number"></li>
+			<li class="s_hide">	Block_7: <input  type="number"></li>
+			<li class="s_hide">	Block_8: <input  type="number"></li>
+			<li class="s_hide">	Block_9: <input  type="number"></li>
+			<li class="s_hide">	Block_10:<input type="number"></li>		
+			</ul>
+			<div class="anchor">
+			<a onclick="allocate(2)">ALLOCATE</a> 
+		</div>
+	</form>
+
+	<form class="s_hide">
+			<p> Your Fourth File </p>
+		File index:	<input  id="file_no" type="number"><br>
+		Enter the number of files:	<input type="number">
+		<div class="anchor">
+			<a onclick="inside_form(3)">DONE</a> 
+		</div>
+			<ul>
+			<li class="s_hide">	Block_1: <input  type="number"></li>
+			<li class="s_hide">	Block_2: <input  type="number"></li>
+			<li class="s_hide">	Block_3: <input  type="number"></li>
+			<li class="s_hide">	Block_4: <input  type="number"></li>
+			<li class="s_hide">	Block_5: <input  type="number"></li>
+			<li class="s_hide">	Block_6: <input  type="number"></li>
+			<li class="s_hide">	Block_7: <input  type="number"></li>
+			<li class="s_hide">	Block_8: <input  type="number"></li>
+			<li class="s_hide">	Block_9: <input  type="number"></li>
+			<li class="s_hide">	Block_10:<input type="number"></li>		
+			</ul>
+			<div class="anchor">
+			<a onclick="allocate(3)">ALLOCATE</a> 
+		</div>
+	</form>
+
+		<form class="s_hide">
+			<p> Your Fifth File </p>
+		File index:	<input  id="file_no" type="number"><br>
+		Enter the number of files:	<input type="number">
+		<div class="anchor">
+			<a onclick="inside_form(4)">DONE</a> 
+		</div>
+			<ul>
+			<li class="s_hide">	Block_1: <input  type="number"></li>
+			<li class="s_hide">	Block_2: <input  type="number"></li>
+			<li class="s_hide">	Block_3: <input  type="number"></li>
+			<li class="s_hide">	Block_4: <input  type="number"></li>
+			<li class="s_hide">	Block_5: <input  type="number"></li>
+			<li class="s_hide">	Block_6: <input  type="number"></li>
+			<li class="s_hide">	Block_7: <input  type="number"></li>
+			<li class="s_hide">	Block_8: <input  type="number"></li>
+			<li class="s_hide">	Block_9: <input  type="number"></li>
+			<li class="s_hide">	Block_10:<input type="number"></li>		
+			</ul>
+			<div class="anchor">
+			<a onclick="allocate(4)">ALLOCATE</a> 
+		</div>
+		</form>
+
+		<form class="s_hide">
+			<p> Your Sixth File </p>
+		File no:	<input  id="file_no" type="number">
+		Starting block:	<input  id="starting_block" type="number">
+		Number_Blocks:	<input  id="block_size" type="number">
+		<div class="anchor">
+			<a onclick="inside_form(5)">ok</a> 
+		</div>
+				<ul>
+			<li class="s_hide">	Block_1:<input  type="number"></li>
+			<li class="s_hide">	Block_2:<input  type="number"></li>
+			<li class="s_hide">	Block_3:<input  type="number"></li>
+			<li class="s_hide">	Block_4:<input  type="number"></li>
+			<li class="s_hide">	Block_5:<input  type="number"></li>
+			<li class="s_hide">	Block_6:<input  type="number"></li>
+			<li class="s_hide">	Block_7:<input  type="number"></li>
+			<li class="s_hide">	Block_8:<input  type="number"></li>
+			<li class="s_hide">	Block_9:<input  type="number"></li>
+			<li class="s_hide">	Block_10:<input type="number"></li>		
+			</ul>
+			<div class="anchor">
+			<a onclick="allocate(5)">ALLOCATE</a> 
+		</div>
+		</button>
+		</form>
+
+		<form class="s_hide">
+			<p> Your Seventh File </p>
+		File index:	<input  id="file_no" type="number"><br>
+		Enter the number of files:	<input type="number">
+		<div class="anchor">
+			<a onclick="inside_form(6)">DONE</a> 
+		</div>
+			<ul>
+			<li class="s_hide">	Block_1: <input  type="number"></li>
+			<li class="s_hide">	Block_2: <input  type="number"></li>
+			<li class="s_hide">	Block_3: <input  type="number"></li>
+			<li class="s_hide">	Block_4: <input  type="number"></li>
+			<li class="s_hide">	Block_5: <input  type="number"></li>
+			<li class="s_hide">	Block_6: <input  type="number"></li>
+			<li class="s_hide">	Block_7: <input  type="number"></li>
+			<li class="s_hide">	Block_8: <input  type="number"></li>
+			<li class="s_hide">	Block_9: <input  type="number"></li>
+			<li class="s_hide">	Block_10:<input type="number"></li>		
+			</ul>
+			<div class="anchor">
+			<a onclick="allocate(6)">ALLOCATE</a> 
+		</div>
+		</form>
+
+		<form class="s_hide">
+			<p> Your Eight File </p>
+		File index:	<input  id="file_no" type="number"><br>
+		Enter the number of files:	<input type="number">
+		<div class="anchor">
+			<a onclick="inside_form(7)">DONE</a> 
+		</div>
+			<ul>
+			<li class="s_hide">	Block_1: <input  type="number"></li>
+			<li class="s_hide">	Block_2: <input  type="number"></li>
+			<li class="s_hide">	Block_3: <input  type="number"></li>
+			<li class="s_hide">	Block_4: <input  type="number"></li>
+			<li class="s_hide">	Block_5: <input  type="number"></li>
+			<li class="s_hide">	Block_6: <input  type="number"></li>
+			<li class="s_hide">	Block_7: <input  type="number"></li>
+			<li class="s_hide">	Block_8: <input  type="number"></li>
+			<li class="s_hide">	Block_9: <input  type="number"></li>
+			<li class="s_hide">	Block_10:<input type="number"></li>		
+			</ul>
+			<div class="anchor">
+			<a onclick="allocate(7)">ALLOCATE</a> 
+		</div>
+		</form>
+
+<p id="error_check"></p>
+
+</body>
+
+<script>
+/*to display the input fields*/
+	var form_no = -1;
+	var file_ind=[];
+
+	function show_fields()
+	{
+			var no_of_files = document.getElementById("nof").value;
+			for(var i=0;i<no_of_files;++i)	
+				s_add_in();
+		
+	}
+
+	function s_add_in()
+	{
+		form_no = form_no +1;
+		var f = document.getElementsByTagName("form")[form_no];
+
+		var att = document.createAttribute("class");
+		att.value ="s_show";
+
+		f.setAttributeNode(att);
+	}
+
+/*to display the block numbers*/
+var block_number=[];
+
+windows.onload = function()
+{
+	initialise();
+};
+
+	function initialise()
+	{
+		for(var i=0;i<8;++i)
+		{
+			block_number.push(-1);
+		}
+		for(var i=0;i<1000;++i)
+			file_ind.push(-1);
+	}
+
+	function inside_form(form_numb)
+	{
+		var pos = 12*form_numb;		//this is the base value
+/*		document.getElementById("sample").innerHTML = block_number[form_numb];*/
+		var ch = check(form_numb);
+		if(ch == 0)
+			return;
+
+		var no_of_blocks = document.getElementsByTagName("input")[pos+2].value;
+		var pos_li = form_numb *10;
+		for(var i=0;i<no_of_blocks;++i)
+		{
+			var f = document.getElementsByTagName("li")[pos_li+i];
+
+			var att = document.createAttribute("class");
+			att.value ="s_show";
+			f.setAttributeNode(att);
+		}
+	}
+
+	function check(in_num)
+	{
+		var len = file_ind.length;
+		var z = in_num *12 +1;
+		var index = document.getElementsByTagName("input")[z].value;
+
+		if(file_ind[index] == 1)
+		{
+			alert("The file index "+ index +"is already allocated");
+			return 0;
+		}
+		else
+		{
+			file_ind[index]  =1;
+			return 1;
+		}
+	}
+	
+	function allocate(in_form)
+	{
+		var pos = 12* in_form;
+		var values = in_form * 10;
+		var no_of_blocks = document.getElementsByTagName("input")[pos+2].value;
+
+		//for each and every entry check whether it is allocated or not
+		for(var i=0;i<no_of_blocks;++i)
+		{
+			var x1 = document.getElementsByTagName("li")[values+i];	//this will give us the values+i th li element
+			var x = x1.getElementsByTagName("input")[0].value;		// this will give us the 0th input element in the x1 li , we put 0 coz each li has 																only 1 input
+			if(file_ind[x] == 1)
+			{
+				alert("The file index "+ x +" is already allocated");
+				return;
+			}
+			
+			else{
+				file_ind[x]=1;
+			}
+			if(i == no_of_blocks-1)
+			alert("All the files have been allocated");
+		}
+	}
+
+</script>
+
+</html>
+
