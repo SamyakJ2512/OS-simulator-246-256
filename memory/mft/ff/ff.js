@@ -10,6 +10,9 @@ var part_myCanvas_end = [];
 var part_pro_id = [];
 cur_pro_id = 0;
 var part_occupied = [];
+var input_q_pro_id = [];
+var input_q_pro_size = [];
+var input_q_size = 0;
 
 $(document).ready(function() {
     $("#num-parts-btn").click(function(){
@@ -80,46 +83,71 @@ function addProcessSize() {
     $("#add-rem-pro").html(htmlText);
     $(document).ready(function() {
         $("#add-btn").click(function(){
-            var size_pro = Number($("#add-pro-size").val());
+            var pro_size = Number($("#add-pro-size").val());
             cur_pro_id += 1;
-            addProcess(size_pro, cur_pro_id);
+            addProcess(pro_size, cur_pro_id, 0);
         }); 
     }); 
 }
 
-function addProcess(size_pro, pro_id) {
+function addProcess(pro_size, pro_id, fromQ) {
     var i;
     var found = 0;
     for(i = 0; i < num_parts; i++) {
         if(part_occupied[i] == 0 && found == 0) {
-            if(size_pro <= part_size[i]) {
-
+            if(pro_size <= part_size[i]) {
                 part_occupied[i] = 1;
                 part_pro_id[i] = pro_id;
                 found = 1;
 
-                var ctx=document.getElementById("myCanvas").getContext("2d");
-                
-                ctx.beginPath();
-                ctx.rect(myCanvas_x_start, part_myCanvas_start[i], myCanvas_width, part_size[i]*(500/total_mem_size));
-                ctx.fillStyle = "red";
-                ctx.fill();
-             
-                ctx.beginPath();
-                ctx.rect(myCanvas_x_start, part_myCanvas_start[i], myCanvas_width, size_pro*(500/total_mem_size));
-                ctx.fillStyle = "green";
-                ctx.fill();
+                drawPart(pro_size, pro_id, i);
 
-                ctx.font = "14px Arial bold";
-                ctx.fillStyle = "black";
-                ctx.fillText("P-"+ String(pro_id), myCanvas_width/2, part_myCanvas_start[i] + size_pro*(500/total_mem_size)/2);
+                // var ctx=document.getElementById("myCanvas").getContext("2d");
+                
+                // ctx.beginPath();
+                // ctx.rect(myCanvas_x_start, part_myCanvas_start[i], myCanvas_width, part_size[i]*(500/total_mem_size));
+                // ctx.fillStyle = "red";
+                // ctx.fill();
+             
+                // ctx.beginPath();
+                // ctx.rect(myCanvas_x_start, part_myCanvas_start[i], myCanvas_width, pro_size*(500/total_mem_size));
+                // ctx.fillStyle = "green";
+                // ctx.fill();
+
+                // ctx.font = "14px Arial bold";
+                // ctx.fillStyle = "black";
+                // ctx.fillText("P-"+ String(pro_id), myCanvas_width/2, part_myCanvas_start[i] + pro_size*(500/total_mem_size)/2);
             }
         }
     }
-    if(found == 0) {
-        alert('New process could not be added.');
+    if(found == 0 && fromQ == 0) {
+        alert('New process could not be added. Process added to Input Queue');
+        addToQ(pro_size, pro_id);
     }
+    if(found == 1 && fromQ == 1) {
+        removeFromQ(pro_id);
+        alert('Process ' + pro_id + ' of size ' + pro_size + ' added to memory.');
+    }
+    drawInputQTable();
 }    
+
+function drawPart(pro_size, pro_id, index) {
+    var ctx=document.getElementById("myCanvas").getContext("2d");
+                
+    ctx.beginPath();
+    ctx.rect(myCanvas_x_start, part_myCanvas_start[index], myCanvas_width, part_size[index]*(500/total_mem_size));
+    ctx.fillStyle = "red";
+    ctx.fill();
+    
+    ctx.beginPath();
+    ctx.rect(myCanvas_x_start, part_myCanvas_start[index], myCanvas_width, pro_size*(500/total_mem_size));
+    ctx.fillStyle = "green";
+    ctx.fill();
+
+    ctx.font = "14px Arial bold";
+    ctx.fillStyle = "black";
+    ctx.fillText("P-"+ String(pro_id), myCanvas_width/2, part_myCanvas_start[index] + pro_size*(500/total_mem_size)/2);   
+}
 
 function remProcessId() {
     var htmlText =
@@ -159,6 +187,13 @@ function remProcess(id_pro) {
             break;
         }
     }
+    if(found == 1) {
+        var i;
+        for(i = 0; i < input_q_size; i++) {
+            addProcess(input_q_pro_size[i], input_q_pro_id[i], 1);
+        }
+    }
+    drawInputQTable();
 }
 
 function drawPartMemory() {
@@ -191,4 +226,62 @@ function drawPartMemory() {
     }
     
     ctx.stroke();  
+}
+
+function addToQ(pro_size, pro_id) {
+    input_q_size += 1;
+    input_q_pro_id[input_q_size - 1] = pro_id;
+    input_q_pro_size[input_q_size - 1] = pro_size;
+}
+
+function removeFromQ(pro_id) {
+    var i;
+    for(i = 0; i < input_q_size; i++) {
+        if(input_q_pro_id[i] == pro_id) {
+            for(j = i+1; j < input_q_size; j++) {
+                input_q_pro_id[j-1] = input_q_pro_id[j];
+                input_q_pro_size[j-1] = input_q_pro_size[j];
+            }
+        }
+    }
+    input_q_size -= 1;
+}
+
+function drawInputQTable() {
+    var htmlText = 
+    `
+    <table>
+    <tr>
+        <th colspan="0">Input Queue</th>
+    </tr>
+    <tr>
+        <th>Process Id</th>
+    `;
+    for(var i = 0; i < input_q_size; i++)
+    {
+        htmlText += 
+        `
+        <td>` + input_q_pro_id[i] + `</td>
+        `;
+    }
+
+    htmlText += 
+    `
+    <tr>
+        <th>Process Size</th>
+    `;
+    for(var i = 0; i < input_q_size; i++)
+    {
+        htmlText += 
+        `
+        <td>` + input_q_pro_size[i] + `</td>
+        `;
+    }
+
+    htmlText += 
+    `
+    </tr>
+    </table>
+    `;
+    $("#input-q-table").html(htmlText);
 }
