@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Multi-level Paging</title>
+	<!--<link rel="stylesheet" type="text/css" href="index.css"> -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+  <style type="text/css">
+    .vertical-center {
+        min-height: 100%;  /* Fallback for browsers do NOT support vh unit */
+        min-height: 100vh; /* These two lines are counted as one :-)       */
+        display: flex;
+        align-items: center;
+    }
+  </style>
+</head>
+
+<body class="container" style="min-height:100vh">
+    <h1 align="center" style="color: blue; margin-bottom:10vh"> Logical Address Split </h1>
+    <form>
+        <div class="form-group row" style="width:25vw;display:block">
+            <input type = "number" id="virtualaddress" class="form-control" placeholder="Enter the virtual address (bits):"/ required>
+        </div>
+        <div class="form-group row" style="width:25vw;display:block">
+            <input type = "number" id="page" class="form-control" placeholder="Enter the Page size (Numeric):" required>
+        </div>
+        <div class="form-group row" style="width:25vw;display:block">
+            <input type = "text" id="ps" class="form-control" placeholder="Enter the unit of Page size:" required>  
+        </div>
+        <div class="form-group row" style="width:25vw;display:block">
+            <input type = "number" id="pte" class="form-control" placeholder="Enter page table entry size:" required>
+           
+        <div class="form-group row">
+            <input type = "button" id ="btn" class="btn btn-primary btn-lg" style="margin:10px" onclick = "mlp()" value = "Compute">  
+        </div>
+        <div>
+        <p id="demo"></p>
+        </div>
+        <div id="mydiv" class="table-responsive" style="width:80vw;margin:auto;text-align:center"></div>
+    </form>
+    
+</body>
+ <!-- <script type="text/javascript" src="index.js"></script> -->
+</html>
+
+<script>
+		$(document).ready(function(){
+			$('input').focusin(function(){
+				$(this).css('background-color','LightSteelBlue');
+			});
+			$('input').focusout(function(){
+				$(this).css('background-color','white');
+			});
+		});
+function mlp(){
+    var va= document.getElementById("virtualaddress").value;
+    $("#demo").append("<b>Virtual Adress is:</b>"+"  "+"<b>"+va+"</b>");
+    //Virtual Address is:
+    console.log(va);
+	var vas = Math.pow (2,va);
+    //Virtual Address space is:
+    $("#demo").append("<b><br>Virtual Adress is space:</b>"+"  "+"<b>"+vas+"</b>");
+    console.log(vas);
+    var ps = document.getElementById("page").value;
+    $("#demo").append("<b><br>Page size is:</b>"+"  "+"<b>"+ps+"</b>");
+    //Page size is:
+    console.log(ps);
+	var i=0;
+	while(ps!=1){
+		ps=ps/2;
+		i++;		
+	}
+	
+    console.log(i);
+	var txt = [];
+	txt= document.getElementById("ps").value;
+    var j=0;
+	if(txt[0]=='K')
+       j=10;
+    else if(txt[0]=='M')
+    	j=20;
+         else if(txt[0]=='G')
+         	j=30;
+   console.log(j);
+   var page_size=Math.pow (2,i+j);
+   console.log(page_size);
+   var pte = document.getElementById("pte").value;
+   $("#demo").append("<b><br>Page Table Entry size:</b>"+"  "+"<b>"+pte+"</b>");
+   console.log(pte);
+   var no_pages = vas / page_size;
+   //No of pages in process is (vas/page_size):
+   $("#demo").append("<b><br>No of pages in process is:</b>"+"  "+"<b>"+no_pages+"</b>");
+   console.log(no_pages);
+   var size = no_pages * pte;
+   //Size of inner most page table is (no_pages * pte):
+   $("#demo").append("<b><br>Size of inner most page table is (no_pages * pte):</b>"+"  "+"<b>"+size+"</b>");
+   console.log(size);
+   var level=1;
+   while ( size > page_size){
+   	size = (size / page_size) * pte ;
+   	level++;
+    //Size of PT[level] is:
+    $("#demo").append("<b><br>Size of PT[level] is:</b>"+"  "+"<b>"+size+"</b>");
+    console.log(size);
+   }
+  var k = size / pte;
+  var count=0;
+  while (k!=1){
+  	k=k/2;
+  	count++;
+  } 
+var l = page_size / pte;
+//Entries present in middle page tables:
+$("#demo").append("<b><br>Entries present in middle page tables:</b>"+"  "+"<b>"+l+"</b>");
+console.log(l);
+var count1 = 0;
+while (l!=1){
+	l=l/2;
+	count1++;
+}
+var result = [];
+result = new Array(level+1);
+var g;
+for (g=1;g<level;g++)
+	result[g]=count1;
+result[0] = count;
+result[level] = i+j;
+var j=0;
+console.log(result);                            // for drawing table
+var $table=$("<table border='1|1'></table>");
+$table.addClass('table table-striped');
+$tbody = $("<tbody></tbody>");
+var $line =$("<tr></tr>");
+for (var i=0;i<result.length;i++){
+  var r = result[i];
+  var td = $('<td>'+r+'</td>');
+  td.css({'background-color': getRandomColor()});
+  $line.append(td)
+  $tbody.append($line);
+}
+$table.append($tbody);
+$table.appendTo($("#mydiv"));
+//for changing colour
+function getRandomColor() { 
+  j=j+1;
+  var color ='';
+    if(j==1){
+        color='aqua';
+    }
+    if(j==2){
+        color='yellow';
+    }
+    if(j==3){
+        color='peach';
+    }
+    if(j==4){
+        color='pink';
+    }
+  
+  return color;
+}
+console.log(j);
+}
+</script>
