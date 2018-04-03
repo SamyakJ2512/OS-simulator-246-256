@@ -3,7 +3,6 @@
 <head>
 	<title>Multi-level Paging</title>
 	<!--<link rel="stylesheet" type="text/css" href="index.css"> -->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
@@ -15,8 +14,8 @@
         align-items: center;
     }
   </style>
-</head>
 
+</head>
 <body class="container" style="min-height:100vh">
     <h1 align="center" style="color: blue; margin-bottom:10vh"> Logical Address Split </h1>
     <form>
@@ -35,10 +34,11 @@
         <div class="form-group row">
             <input type = "button" id ="btn" class="btn btn-primary btn-lg" style="margin:10px" onclick = "mlp()" value = "Compute">  
         </div>
-        <div>
-        <p id="demo"></p>
-        </div>
+        
+        
+        <p id="demo" align="center"></p>
         <div id="mydiv" class="table-responsive" style="width:80vw;margin:auto;text-align:center"></div>
+        <p id="demo" align="center"></p>
     </form>
     
 </body>
@@ -46,14 +46,6 @@
 </html>
 
 <script>
-		$(document).ready(function(){
-			$('input').focusin(function(){
-				$(this).css('background-color','LightSteelBlue');
-			});
-			$('input').focusout(function(){
-				$(this).css('background-color','white');
-			});
-		});
 function mlp(){
     var va= document.getElementById("virtualaddress").value;
     $("#demo").append("<b>Virtual Adress is:</b>"+"  "+"<b>"+va+"</b>");
@@ -61,10 +53,10 @@ function mlp(){
     console.log(va);
 	var vas = Math.pow (2,va);
     //Virtual Address space is:
-    $("#demo").append("<b><br>Virtual Adress is space:</b>"+"  "+"<b>"+vas+"</b>");
+    $("#demo").append("<b><br><br>Virtual Adress space is:</b>"+"  "+"<b>"+vas+"</b>");
     console.log(vas);
     var ps = document.getElementById("page").value;
-    $("#demo").append("<b><br>Page size is:</b>"+"  "+"<b>"+ps+"</b>");
+    $("#demo").append("<b><br><br>Page size is:</b>"+"  "+"<b>"+ps+"</b>");
     //Page size is:
     console.log(ps);
 	var i=0;
@@ -87,22 +79,33 @@ function mlp(){
    var page_size=Math.pow (2,i+j);
    console.log(page_size);
    var pte = document.getElementById("pte").value;
-   $("#demo").append("<b><br>Page Table Entry size:</b>"+"  "+"<b>"+pte+"</b>");
+   $("#demo").append("<b><br><br>Page Table Entry size:</b>"+"  "+"<b>"+pte+"</b>");
    console.log(pte);
    var no_pages = vas / page_size;
    //No of pages in process is (vas/page_size):
-   $("#demo").append("<b><br>No of pages in process is:</b>"+"  "+"<b>"+no_pages+"</b>");
+   $("#demo").append("<b><br><br>No of pages in process is:</b>"+"  "+"<b>"+no_pages+"</b>");
    console.log(no_pages);
    var size = no_pages * pte;
    //Size of inner most page table is (no_pages * pte):
-   $("#demo").append("<b><br>Size of inner most page table is (no_pages * pte):</b>"+"  "+"<b>"+size+"</b>");
+   $("#demo").append("<b><br><br>Size of inner most page table is (no_pages * pte):</b>"+"  "+"<b>"+size+"</b>");
    console.log(size);
    var level=1;
-   while ( size > page_size){
+    var size1 = (size/page_size) * pte;
+	if(size1>=size)
+	{
+        //Display invalid inputs exit
+        alert("Invalid inputs exit");
+        location.reload();
+    }    
+    while( size > page_size){
    	size = (size / page_size) * pte ;
    	level++;
     //Size of PT[level] is:
-    $("#demo").append("<b><br>Size of PT[level] is:</b>"+"  "+"<b>"+size+"</b>");
+    $("#demo").append("<br><br>"+"  "+"<b>"+size+"</b>");
+    $("#demo").css("width","50vw");
+    $("#demo").css("margin-left","21vw");
+    $("#demo").css("background-color","#FFFF99");
+    $("#demo").css("color","black");
     console.log(size);
    }
   var k = size / pte;
@@ -113,7 +116,7 @@ function mlp(){
   } 
 var l = page_size / pte;
 //Entries present in middle page tables:
-$("#demo").append("<b><br>Entries present in middle page tables:</b>"+"  "+"<b>"+l+"</b>");
+$("#demo").append("<b><br><br>Entries present in middle page tables:</b>"+"  "+"<b>"+l+"<br>"+"</b>"+"<br>");
 console.log(l);
 var count1 = 0;
 while (l!=1){
@@ -142,6 +145,7 @@ for (var i=0;i<result.length;i++){
 }
 $table.append($tbody);
 $table.appendTo($("#mydiv"));
+$("#mydiv").css("margin-left","20px");
 //for changing colour
 function getRandomColor() { 
   j=j+1;
@@ -162,5 +166,6 @@ function getRandomColor() {
   return color;
 }
 console.log(j);
+$('input[type="button"]').attr('disabled','disabled');
 }
 </script>
