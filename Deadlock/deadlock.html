@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title> deadlock detection </title>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.99.0/css/materialize.min.css">
+	<script type="text/javascript" src="deadlock.js"></script>
+	<style>
+        h1, h2, h5{
+            text-align: center;
+            }
+			   
+	</style>
+  </head>
+  <body>
+    <h1> Single-Instance Resource Deadlock Detection  </h1>
+    <div style = "width: 800px;;margin-left:10px;text-align:left;">
+      <div style="float:left; margin-right:20px;">Number of Resources:</div>
+      <input style = "width: 50px;float:left;margin-right:30px;" id = "totalres" type="text">
+	  </input>
+	  <div style="float:left; margin-right:20px;">Number of Processes:</div>
+      <input style = "width: 50px;float:left;margin-right:30px;" id = "totalpros" onkeyup="addInitials()" type="text"></input>
+    </div>
+	<br>
+	<br>
+	<br>
+	<div id = "allocated" style="margin-left:10px;"></div>
+	<br><br/>
+	<br><br/>
+	<div id = "need" style="margin-left:10px;"></div>
+	<br><br/>
+	<br><br/>
+	
+	<br><br/>
+	<br>
+	<br/>
+	<div  style="text-align:center;">
+	            <button class="btn btn-primary btn-success" onclick="detection()" >Run</button>
+	</div>
+	<div id = "output">
+
+	</div>
+	<br>
+	<br/>
+	<div id = "output1">
+
+	</div>
+	
+	
+  </body>
+</html>
