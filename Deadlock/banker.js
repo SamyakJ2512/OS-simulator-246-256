@@ -17,6 +17,12 @@ function addInitialRes(){
 	
 	var totalres = document.getElementById("totalres").value;
 	num = parseInt(totalres);
+	if(num<=0)
+	{
+		window.alert("Please enter valid input");
+		return;
+	}
+		
 	R=num;
 	var resources = document.getElementById("resources");
 	resources.textContent="";
@@ -36,6 +42,7 @@ function addInitialRes(){
 	
 	if(isNaN(num))
 	{
+		   
 			var input=document.getElementById("inputsection");
 			input.innerHTML="";
 	}
@@ -109,14 +116,11 @@ function addToList() {
 	for(var i=0;i<num;i++)
 	{
 		var inp1 = document.getElementById("APR"+(i+1)).value;
-		if (isNaN(parseInt(inp1))){
-			window.alert("Please enter valid inputs");
+		if (isNaN(parseInt(inp1))||(parseInt(inp1))>max[index][i]){
+			window.alert("Please enter valid inputs of resourse " +(i+1));
 			return;
 		}
-    if (isNaN(parseInt(inp1))) {
-        window.alert("Please enter numeric value of arrival time");
-        return;
-    }
+  
 	
 	
 	temp1.push(parseInt(inp1));
@@ -230,13 +234,18 @@ function add()
 	for(var i=0;i<num;i++)
 	{
 		var inp3 = document.getElementById("R"+(i+1)).value;
-		if (isNaN(parseInt(inp3))){
+		if (isNaN(parseInt(inp3))||parseInt(inp3)<0){
 			window.alert("Please enter valid inputs");
 			return;
 		}
 		req.push(parseInt(inp3));
 	}
 	var j =process-1;
+	if(process>index || process<=0)
+	{
+		window.alert("Please enter valid input: Entered process does not exitxt");
+		return;
+	}
 	console.log(j);
 	var x=1,f=1;
 	var output1 = document.getElementById("output1");
@@ -377,7 +386,7 @@ function banker(){
 	}
 	for(var i=0; i<num;i++){
 		var inp1 = document.getElementById("res-"+(i+1)).value;
-		if(isNaN(inp1)){
+		if(isNaN(inp1)||inp1<0){
 			window.alert("Please enter valid instances of resource ");
 			return;
 		}

@@ -213,9 +213,9 @@ function createGraph()
 			else if(q[i]>=20)
 			{
 				if(i!=n)
-					p7.textContent="R"+(q[i]+1-20)+"--(holds)-->";
+					p7.textContent="R"+(q[i]+1-20)+"--(allocated to)-->";
 				else if(i==n && q[n]!=q[0])
-					p7.textContent="R"+(q[i]+1-20)+"--(holds)-->";
+					p7.textContent="R"+(q[i]+1-20)+"--(allocated to)-->";
 				else 
 					p7.textContent="R"+(q[i]+1-20);
 				div1.appendChild(p7);
@@ -252,6 +252,7 @@ function createGraph()
 
 function cleardata()
 {
+	alloc= [];
 	max=[];
 	need=[];
 	p=[];
@@ -272,7 +273,7 @@ function detection()
 		for(var j=0;j<num;j++)
 		{
 			var inp1 = document.getElementById("AR"+i+","+j).value;
-			if (isNaN(parseInt(inp1))){
+			if (isNaN(parseInt(inp1))||inp1<0||inp1>1){
 				window.alert("Please enter valid inputs");
 				return;
 			}
@@ -287,7 +288,7 @@ function detection()
 		for(var j=0;j<num;j++)
 		{
 			var inp1 = document.getElementById("NR"+i+","+j).value;
-			if (isNaN(parseInt(inp1))){
+			if (isNaN(parseInt(inp1))||inp1<0||inp1>1){
 				window.alert("Please enter valid inputs");
 				return;
 			}
@@ -295,6 +296,22 @@ function detection()
 			
 		}
 	need.push(temp1);
+	}
+	
+	for(var i=0;i<num;i++)
+	{
+		var c=0;
+		for(var j=0;j<index;j++)
+		{
+			if(alloc[j][i]>0)
+				c++;
+			if(c>1)
+			{
+				window.alert("Resourse "+(j+1) +" can not be allocated to more than one process");
+				return;
+			}
+		}
+		
 	}
 	for(var i=0;i<index;i++)
 		p.push(i);
