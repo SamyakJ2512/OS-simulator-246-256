@@ -59,10 +59,25 @@ function mlp(){
     $("#demo").append("<b><br><br>Page size is:</b>"+"  "+"<b>"+ps+"</b>");
     //Page size is:
     console.log(ps);
-	if(ps%2!=0)
-	{
-		alert("Invalid inputs exit");
-	}
+	var psc = ps;
+console.log(psc);
+var flag=1;
+console.log(flag);
+ while (psc!=1)
+ {
+   if(psc%2!=0)
+     {
+     flag = 0;
+     break;
+     }
+   psc=psc/2;
+ }
+ console.log(flag);
+if(flag==0)
+{
+  alert("invalid inputs exit");
+}
+
 	var i=0;
 	while(ps!=1){
 		ps=ps/2;
