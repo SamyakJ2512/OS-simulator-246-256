@@ -8,8 +8,28 @@
     <link href="https://fonts.googleapis.com/css?family=Anton" rel="stylesheet">
 	</head>
 <body>
+<!--Header of soham--> 
+<nav class="navbar navbar-inverse navbar-fixed-top">
+		<div class="container-fluid">
+	   <div class="navbar-header">
+		<a class="navbar-brand" href="">OS simulator</a>
+		 </div>
+		<ul class="nav navbar-nav">
+			<li class="active"><a href="index.html">Home</a></li>
+		   <li class="active"><a href="#">Wiki</a></li>
+		 </ul>
+		</div>
+	  </nav>
+	  <br><br><br>
+	  <div class="page-header" >
+		 <h1 style="text-align:center;color:limegreen">PAGING CONCEPT USING PAGE-TABLE</h1> 
+		    
+	  </div>
+	  <body>
+	   
+	  <br>
 <div id="p">
-<h1 style="text-align:center;color:limegreen;font-family:'Times New Roman', Times, serif;font-weight:bold;font-size:55px"> Paging Concept </h1>
+
 </div>
 <br>
 <form>
@@ -77,12 +97,15 @@ console.log(flag);
    psc=psc/2;
  }
  console.log(flag);
-if(flag==0)
-{
-  alert("invalid inputs exit");
-  location.reload();
-	return;
-}
+    if(flag==0)
+    {
+      $('#answer').css('display', 'none');
+      $('#div1').css('display','none');
+      alert("invalid inputs exit");
+      location.reload();
+      return;
+    }
+  else{
     
         var i=0;
     
@@ -118,11 +141,14 @@ if(flag==0)
 	    
 	    if(page_size > vas)
        {
+        
         alert("Invalid inputs exit");
         location.reload();
+        $('#answer').css('display', 'none');
+        $('#div1').css('display','none');
         return;
        }
-    
+    else{
        var no_pages = vas / page_size;
        //No of pages is:
        $("#answer").append("<br><br>No of pages is:"+"  "+"<b>"+no_pages+"</b>");
@@ -148,11 +174,14 @@ if(flag==0)
       var la = document.getElementById("LA").value;
 	    if(la >= Math.power(2,va) || la<0)
       {
-        alert("Invalid inputs exit");
-        location.reload();
+         alert("illegal logical address exit");
+             location.reload();
+             $('#answer').css('display', 'none');
+             $('#div1').css('display','none');
+            location.reload();
         return;
       }
-    
+    else{
       var converted = [];
       for(i=0;i<va;i++)
         converted[i]=0;
@@ -233,9 +262,11 @@ if(flag==0)
 	    {
              //Display illegal logical address exit
              
+             
+             alert("illegal logical address exit");
+             location.reload();
              $('#answer').css('display', 'none');
              $('#div1').css('display','none');
-             alert("illegal logical address exit");
             location.reload();
       }
     else{
@@ -250,7 +281,6 @@ if(flag==0)
       alert("page fault has occured");
       $('#answer').css('display', 'none');
       $('#div1').css('display','none');
-
       location.reload();
     }
     else{
@@ -296,6 +326,9 @@ if(flag==0)
     console.log(p);
     $("#answer").append("<br><br>Physical address after address translation is (decimal):"+"  "+"<b>"+p+"</b>"); 
     
+          }
+        }
+      }
     }
   }
   $('input[type="button"]').attr('disabled','disabled');

@@ -7,10 +7,26 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
 	</head>
 <body>
-<div id="p">
-<h1 style="text-align:center;color:limegreen;font-family:'Times New Roman', Times, serif;font-weight:bold;font-size:55px"> Page Replacement Algorithm </h1>
-</div>
-<h2 align="center" style="color:limegreen;font-family:'Times New Roman', Times, serif;font-weight:bold;font-size:55px">LRU</h2>
+<!--Header of soham--> 
+<nav class="navbar navbar-inverse navbar-fixed-top">
+		<div class="container-fluid">
+	   <div class="navbar-header">
+		<a class="navbar-brand" href="#">OS simulator</a>
+		 </div>
+		<ul class="nav navbar-nav">
+			<li class="active"><a href="index.html">Home</a></li>
+		   <li class="active"><a href="#">Wiki</a></li>
+		 </ul>
+		</div>
+	  </nav>
+	  <br><br><br>
+	  <div class="page-header" >
+		 <h1 style="text-align:center;color:limegreen">PAGE REPLACEMENT ALGORITHM</h1> 
+		    
+	  </div>
+	  <body>
+			<h1 style="text-align:center;color:limegreen"> LRU</h1>    
+	  <br>
 <br>
 <form>
     <div class"container" >
@@ -32,17 +48,7 @@
 </html>
 
 <script>
-		$(document).ready(function(){
-			$("h1").click(function(){
-this.animate({left:'250px'});
-			});
-			$("input").focusin(function(){
-				$(this).css("background-color", "rgb(60,179,113,0.5)");
-			});
-			$("input").focusout(function(){
-				$(this).css("background-color", "rgb(255,255,255)");
-			});
-		});
+		
 	var count=0;
 var pages = [];
 var pf;
