@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Optimal Page Size</title>
+</head>
+<body>
+<h1 align="center"> OPTIMAL PAGE SIZE </h1>
+<br>
+<br>
+<form>
+
+Enter the Virtual address space (In Bytes):
+<input type = "number" id="vas">
+
+Enter the Page table entry size (In Bytes):
+
+<input type = "number" id="pte">
+
+<input type = "button" onclick = "pagesize" value = "Compute">
+<output type = "text" id = "answer">
+</form>
+ </body>
+ <!-- <script type="text/javascript" src="index.js"></script> -->
+</html>
+
+<script>
+
+function pagesize()
+{
+	var vas,pte,ops;
+	vas = document.GetElementById("vas").value;
+	if(vas<0)
+	{
+		Alert("Invalid inputs");
+	}
+
+	pte = document.GetElementById("pte").value;
+	if(pte<0)
+	{
+		Alert("Invalid inputs");
+	}
+
+	ops = Math.sqrt(2*vas*pte);
+
+	console.log(ops);
+
+
+}
+
+
+
+</script>
