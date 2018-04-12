@@ -3,6 +3,8 @@
 	<title>Indexed Allocation</title>
 	    <meta charset="UTF-8">
 
+
+
 	<style>
 	.s_hide{
 		display: none;
@@ -88,6 +90,7 @@
 <body onload="initialise()">
 
 	<marquee class="some" behavior="alternate" scrollamount=10 align="center"><h1>Indexed Scheduling</h1></marquee>
+	<a class="button1" style="align:center" href="Index page/index._page.html">Go Back</a>
 <p> Enter the number of files </p>
 	<input id="nof" type="number">
 
@@ -147,7 +150,7 @@
 			<div class="anchor" onclick="allocate(1)">
 			<a  class="s_hide">ALLOCATE</a> 
 		</div>
-			<div class="anchor1" onclick="del(0)">
+			<div class="anchor1" onclick="del(1)">
 				<a>DELETE</a> 
 			</div>
 			<p class="frag_place" style="background-color: black ;color:white"></p><br>
@@ -177,7 +180,7 @@
 			<div class="anchor">
 			<a onclick="allocate(2)" class="s_hide">ALLOCATE</a>  
 		</div>
-		<div class="anchor1" onclick="del(0)">
+		<div class="anchor1" onclick="del(2)">
 				<a>DELETE</a> 
 			</div>
 		  <p class="frag_place" style="background-color: black ;color:white"></p><br>
@@ -207,7 +210,7 @@
 			<div class="anchor">
 			<a onclick="allocate(3)" class="s_hide">ALLOCATE</a>  
 		</div>
-		<div class="anchor1" onclick="del(0)">
+		<div class="anchor1" onclick="del(3)">
 				<a>DELETE</a> 
 			</div>
 		    <p class="frag_place" style="background-color: black ;color:white"></p><br>
@@ -236,7 +239,7 @@
 		<div class="anchor">	
 			<a onclick="allocate(4)" class="s_hide">ALLOCATE</a> 
 		</div>
-		<div class="anchor1" onclick="del(0)">
+		<div class="anchor1" onclick="del(4)">
 				<a>DELETE</a> 
 			</div>
 		<p class="frag_place" style="background-color: black ;color:white"></p><br>
@@ -265,7 +268,7 @@
 			<div class="anchor">
 			<a onclick="allocate(5)" class="s_hide">ALLOCATE</a> 
 		</div>
-		<div class="anchor1" onclick="del(0)">
+		<div class="anchor1" onclick="del(5)">
 				<a>DELETE</a> 
 			</div>
 		 <p class="frag_place" style="background-color: black ;color:white"></p><br>
@@ -294,7 +297,7 @@
 			<div class="anchor">
 			<a onclick="allocate(6)" class="s_hide">ALLOCATE</a> 
 		</div>
-		<div class="anchor1" onclick="del(0)">
+		<div class="anchor1" onclick="del(6)">
 				<a>DELETE</a> 
 			</div>
 		    <p class="frag_place" style="background-color: black ;color:white"></p><br>
@@ -323,7 +326,7 @@
 			<div class="anchor">
 				<a onclick="allocate(7)" class="s_hide">ALLOCATE</a> 
 			</div>
-			<div class="anchor1" onclick="del(0)">
+			<div class="anchor1" onclick="del(7)">
 				<a>DELETE</a> 
 			</div>
                  <p class="frag_place" style="background-color: black ;color:white"></p><br>
@@ -331,108 +334,14 @@
 
 <p id="error_check"></p>
 <div class="s_hide" id="output_space">
-	
-	<span class="out a1"></span><span class="out"></span> <span class="out a1"></span><br>
-	<span class="out a1"></span> <span class="out"></span> <span class="out a1"></span><br>
-	<span class="out a1"></span> <span class="out"></span> <span class="out a1"></span><br>
-	<span class="out a1"></span> <span class="out"></span> <span class="out a1"></span><br>
-	<span class="out a1"></span> <span class="out"></span> <span class="out a1"></span><br>
-	<span class="out a1"></span> <span class="out"></span> <span class="out a1"></span><br>
-	<span class="out a1"></span> <span class="out"></span> <span class="out a1"></span><br>
-	<span class="out a1"></span> <span class="out"></span> <span class="out a1"></span><br>
-	<span class="out a1"></span> <span class="out"></span> <span class="out a1"></span><br>
-	<span class="out a1"></span> <span class="out"></span> <span class="out a1"></span><br>
-	<span class="out a1"></span> <span class="out"></span> <span class="out a1"></span><br>
-	<span class="out a1"></span> <span class="out"></span> <span class="out a1"></span><br>
-	<span class="out a1"></span> <span class="out"></span> <span class="out a1"></span><br>
-	<span class="out a1"></span> <span class="out"></span> <span class="out a1"></span><br>
-	<span class="out a1"></span> <span class="out"></span> <span class="out a1"></span><br>
-	<span class="out a1"></span> <span class="out"></span> <span class="out a1"></span><br>
-	<span class="out a1"></span> <span class="out"></span> <span class="out a1"></span><br>
-	<span class="out a1"></span> <span class="out"></span> <span class="out a1"></span><br>
-	<span class="out a1"></span> <span class="out"></span> <span class="out a1"></span><br>
-	<span class="out a1"></span> <span class="out"></span> <span class="out a1"></span><br>
-	<span class="out a1"></span> <span class="out"></span> <span class="out a1"></span><br>
-	<span class="out a1"></span> <span class="out"></span> <span class="out a1"></span><br>
-	<span class="out a1"></span> <span class="out"></span> <span class="out a1"></span><br>
-	<span class="out a1"></span> <span class="out"></span> <span class="out a1"></span><br>
-	<span class="out a1"></span> <span class="out"></span> <span class="out a1"></span><br>
-	<span class="out a1"></span> <span class="out"></span> <span class="out a1"></span><br>
-	<span class="out a1"></span> <span class="out"></span> <span class="out a1"></span><br>
-	<span class="out a1"></span> <span class="out"></span> <span class="out a1"></span><br>
-	<span class="out a1"></span> <span class="out"></span> <span class="out a1"></span><br>
-	<span class="out a1"></span> <span class="out"></span> <span class="out a1"></span><br>
-	<span class="out a1"></span> <span class="out"></span> <span class="out a1"></span><br>
-	<span class="out a1"></span> <span class="out"></span> <span class="out a1"></span><br>
-	<span class="out a1"></span> <span class="out"></span> <span class="out a1"></span><br>
-	<span class="out a1"></span> <span class="out"></span> <span class="out a1"></span><br>
-	<span class="out a1"></span> <span class="out"></span> <span class="out a1"></span><br>
-	<span class="out a1"></span> <span class="out"></span> <span class="out a1"></span><br>
-	<span class="out a1"></span> <span class="out"></span> <span class="out a1"></span><br>
-	<span class="out a1"></span> <span class="out"></span> <span class="out a1"></span><br>
-	<span class="out a1"></span> <span class="out"></span> <span class="out a1"></span><br>
-	<span class="out a1"></span> <span class="out"></span> <span class="out a1"></span><br>
-	<span class="out a1"></span> <span class="out"></span> <span class="out a1"></span><br>
-	<span class="out a1"></span> <span class="out"></span> <span class="out a1"></span><br>
-	<span class="out a1"></span> <span class="out"></span> <span class="out a1"></span><br>
-	<span class="out a1"></span> <span class="out"></span> <span class="out a1"></span><br>
-	<span class="out a1"></span> <span class="out"></span> <span class="out a1"></span><br>
-	<span class="out a1"></span> <span class="out"></span> <span class="out a1"></span><br>
-	<span class="out a1"></span> <span class="out"></span> <span class="out a1"></span><br>
-	<span class="out a1"></span> <span class="out"></span> <span class="out a1"></span><br>
-	<span class="out a1"></span> <span class="out"></span> <span class="out a1"></span><br>
-	<span class="out a1"></span> <span class="out"></span> <span class="out a1"></span><br>
-	<span class="out a1"></span> <span class="out"></span> <span class="out a1"></span><br>
-	<span class="out a1"></span> <span class="out"></span> <span class="out a1"></span><br>
-	<span class="out a1"></span> <span class="out"></span> <span class="out a1"></span><br>
-	<span class="out a1"></span> <span class="out"></span> <span class="out a1"></span><br>
-	<span class="out a1"></span> <span class="out"></span> <span class="out a1"></span><br>
-	<span class="out a1"></span> <span class="out"></span> <span class="out a1"></span><br>
-	<span class="out a1"></span> <span class="out"></span> <span class="out a1"></span><br>
-	<span class="out a1"></span> <span class="out"></span> <span class="out a1"></span><br>
-	<span class="out a1"></span> <span class="out"></span> <span class="out a1"></span><br>
-	<span class="out a1"></span> <span class="out"></span> <span class="out a1"></span><br>
-	<span class="out a1"></span> <span class="out"></span> <span class="out a1"></span><br>
-	<span class="out a1"></span> <span class="out"></span> <span class="out a1"></span><br>
-	<span class="out a1"></span> <span class="out"></span> <span class="out a1"></span><br>
-	<span class="out a1"></span> <span class="out"></span> <span class="out a1"></span><br>
-	<span class="out a1"></span> <span class="out"></span> <span class="out a1"></span><br>
-	<span class="out a1"></span> <span class="out"></span> <span class="out a1"></span><br>
-	<span class="out a1"></span> <span class="out"></span> <span class="out a1"></span><br>
-	<span class="out a1"></span> <span class="out"></span> <span class="out a1"></span><br>
-	<span class="out a1"></span> <span class="out"></span> <span class="out a1"></span><br>
-	<span class="out a1"></span> <span class="out"></span> <span class="out a1"></span><br>
-	<span class="out a1"></span> <span class="out"></span> <span class="out a1"></span><br>
-	<span class="out a1"></span> <span class="out"></span> <span class="out a1"></span><br>
-	<span class="out a1"></span> <span class="out"></span> <span class="out a1"></span><br>
-	<span class="out a1"></span> <span class="out"></span> <span class="out a1"></span><br>
-	<span class="out a1"></span> <span class="out"></span> <span class="out a1"></span><br>
-	<span class="out a1"></span> <span class="out"></span> <span class="out a1"></span><br>
-	<span class="out a1"></span> <span class="out"></span> <span class="out a1"></span><br>
-	<span class="out a1"></span> <span class="out"></span> <span class="out a1"></span><br>
-	<span class="out a1"></span> <span class="out"></span> <span class="out a1"></span><br>
-	<span class="out a1"></span> <span class="out"></span> <span class="out a1"></span><br>
-	<span class="out a1"></span> <span class="out"></span> <span class="out a1"></span><br>
-	<span class="out a1"></span> <span class="out"></span> <span class="out a1"></span><br>
-	<span class="out a1"></span> <span class="out"></span> <span class="out a1"></span><br>
-	<span class="out a1"></span> <span class="out"></span> <span class="out a1"></span><br>
-	<span class="out a1"></span> <span class="out"></span> <span class="out a1"></span><br>
-	<span class="out a1"></span> <span class="out"></span> <span class="out a1"></span><br>
-	<span class="out a1"></span> <span class="out"></span> <span class="out a1"></span><br>
-	<span class="out a1"></span> <span class="out"></span> <span class="out a1"></span><br>
-	<span class="out a1"></span> <span class="out"></span> <span class="out a1"></span><br>
-	<span class="out a1"></span> <span class="out"></span> <span class="out a1"></span><br>
-	<span class="out a1"></span> <span class="out"></span> <span class="out a1"></span><br>
-	<span class="out a1"></span> <span class="out"></span> <span class="out a1"></span><br>
-	<span class="out a1"></span> <span class="out"></span> <span class="out a1"></span><br>
-	<span class="out a1"></span> <span class="out"></span> <span class="out a1"></span><br>
-	<span class="out a1"></span> <span class="out"></span> <span class="out a1"></span><br>
-	<span class="out a1"></span> <span class="out"></span> <span class="out a1"></span><br>
-	<span class="out a1"></span> <span class="out"></span> <span class="out a1"></span><br>
-	<span class="out a1"></span> <span class="out"></span> <span class="out a1"></span><br>
-	<span class="out a1"></span> <span class="out"></span> <span class="out a1"></span><br>
-	<span class="out a1"></span> <span class="out"></span> <span class="out a1"></span><br>
-	
+	<p class="out"></p>
+	<p class="out"></p>
+	<p class="out"></p>
+	<p class="out"></p>
+	<p class="out"></p>
+	<p class="out"></p>
+	<p class="out"></p>
+	<p class="out"></p>	
 		
 </div>
 </body>
@@ -517,7 +426,7 @@ windows.onload = function()
 		{
 			alert("The file index "+ index +"is already allocated");
 			return 0;
-		}
+		}	
 		else
 		{
 			file_ind[index]  =1;
@@ -530,6 +439,7 @@ windows.onload = function()
 
 	function allocate(in_form)
 	{
+		var str = [];
 		var pos = 13* in_form;
 		var values = in_form * 10;
 		var file_size = document.getElementsByTagName("input")[pos+2].value;
@@ -566,60 +476,61 @@ windows.onload = function()
 				var att = document.createAttribute("class");
 				att.value = "s_show";
 				f.setAttributeNode(att);
+
+				var index_value = document.getElementsByTagName("input")[pos+1].value;
+				str = str + index_value + " ---> ";
+
 				if(no_of_blocks == (file_size / blk_size) )
 				{
 						for(var i=0;i<no_of_blocks;++i)
 						{
-							// here you choose the 'out' class paragraphs;
-							show_output += 1;
-							var k =document.getElementsByClassName("out")[show_output];
 							// im retriving the file number(block number) and put it in the chosen paragraphs
 							var x1 = document.getElementsByTagName("li")[values+i];
-							var x = x1.getElementsByTagName("input")[0].value;
-			
-							var index_value = document.getElementsByTagName("input")[pos+1].value;
-							k.innerHTML = index_value;
+							var x = x1.getElementsByTagName("input")[0].value;	
+							if(i== no_of_blocks-1)
+							{
+								str = str + x;	
+							}
+							else{
+								str = str + x+", ";
+							}
 
-							show_output += 1;
-							var k =document.getElementsByClassName("out")[show_output];
-							k.innerHTML = "->";
+							if(i == no_of_blocks-1){
+								var k = document.getElementsByClassName("out")[in_form];
+								k.innerHTML = str;
 
-							show_output += 1;
-							var k =document.getElementsByClassName("out")[show_output];
-							k.innerHTML = x;
-							/* for file 1 give red,2->blue*/
-							//here we style the output paragraph
-							if(in_form == 0){
-								k.style.backgroundColor = "#3CBC8D";
-								k.style.color = "black";
-							}
-							if(in_form == 1){
-								k.style.backgroundColor = "black";
-								k.style.color = "white";
-							}
-							if(in_form == 2){
-								k.style.backgroundColor = "#3CBC8D";
-								k.style.color = "black";
-							}
-							if(in_form == 3){
-								k.style.backgroundColor = "black";
-								k.style.color = "white";
-							}
-							if(in_form == 4){
-								k.style.backgroundColor = "#3CBC8D";
-								k.style.color = "black";
-							}
-							if(in_form == 5){
-								k.style.backgroundColor = "black";
-								k.style.color = "white";
-							}
-							if(in_form == 6){
-								k.style.backgroundColor = "#3CBC8D";
-								k.style.color = "black";
-							}
-							if(in_form == 7){
-								k.style.backgroundColor = "black";
-								k.style.color = "white";
+								if(in_form == 0){
+									k.style.backgroundColor = "#3CBC8D";
+									k.style.color = "black";
+								}
+								if(in_form == 1){
+									k.style.backgroundColor = "black";
+									k.style.color = "white";
+								}
+								if(in_form == 2){
+									k.style.backgroundColor = "#3CBC8D";
+									k.style.color = "black";
+								}
+								if(in_form == 3){
+									k.style.backgroundColor = "black";
+									k.style.color = "white";
+								}
+								if(in_form == 4){
+									k.style.backgroundColor = "#3CBC8D";
+									k.style.color = "black";
+								}
+								if(in_form == 5){
+									k.style.backgroundColor = "black";
+									k.style.color = "white";
+								}
+								if(in_form == 6){
+									k.style.backgroundColor = "#3CBC8D";
+									k.style.color = "black";
+								}
+								if(in_form == 7){
+									k.style.backgroundColor = "black";
+									k.style.color = "white";
+								}
 							}
 						}
 					}
@@ -628,56 +539,54 @@ windows.onload = function()
 
                           for(var i=0;i<no_of_blocks;++i)
 						{
-							// here you choose the 'out' class paragraphs;
-							show_output += 1;
-							var k =document.getElementsByClassName("out")[show_output];
-							// im retriving the file number(block number) and put it in the chosen paragraphs
 							var x1 = document.getElementsByTagName("li")[values+i];
-							var x = x1.getElementsByTagName("input")[0].value;
-			
-							var index_value = document.getElementsByTagName("input")[pos+1].value;
-							k.innerHTML = index_value;
-
-							show_output += 1;
-							var k =document.getElementsByClassName("out")[show_output];
-							k.innerHTML = " -> ";
-
-							show_output += 1;
-							var k =document.getElementsByClassName("out")[show_output];
-							k.innerHTML = x;
+							var x = x1.getElementsByTagName("input")[0].value;	
+							if(i== no_of_blocks-1)
+							{
+								str = str + x;	
+							}
+							else{
+								str = str + x+", ";
+							}
+							
 							/* for file 1 give red,2->blue*/
 							//here we style the output paragraph
-							if(in_form == 0){
-								k.style.backgroundColor = "#3CBC8D";
-								k.style.color = "black";
-							}
-							if(in_form == 1){
-								k.style.backgroundColor = "black";
-								k.style.color = "white";
-							}
-							if(in_form == 2){
-								k.style.backgroundColor = "#3CBC8D";
-								k.style.color = "black";
-							}
-							if(in_form == 3){
-								k.style.backgroundColor = "black";
-								k.style.color = "white";
-							}
-							if(in_form == 4){
-								k.style.backgroundColor = "#3CBC8D";
-								k.style.color = "black";
-							}
-							if(in_form == 5){
-								k.style.backgroundColor = "black";
-								k.style.color = "white";
-							}
-							if(in_form == 6){
-								k.style.backgroundColor = "#3CBC8D";
-								k.style.color = "black";
-							}
-							if(in_form == 7){
-								k.style.backgroundColor = "black";
-								k.style.color = "white";
+							if(i== no_of_blocks-1){
+								var k = document.getElementsByClassName("out")[in_form];
+								k.innerHTML = str;
+
+								if(in_form == 0){
+									k.style.backgroundColor = "#3CBC8D";
+									k.style.color = "black";
+								}
+								if(in_form == 1){
+									k.style.backgroundColor = "black";
+									k.style.color = "white";
+								}
+								if(in_form == 2){
+									k.style.backgroundColor = "#3CBC8D";
+									k.style.color = "black";
+								}
+								if(in_form == 3){
+									k.style.backgroundColor = "black";
+									k.style.color = "white";
+								}
+								if(in_form == 4){
+									k.style.backgroundColor = "#3CBC8D";
+									k.style.color = "black";
+								}
+								if(in_form == 5){
+									k.style.backgroundColor = "black";
+									k.style.color = "white";
+								}
+								if(in_form == 6){
+									k.style.backgroundColor = "#3CBC8D";
+									k.style.color = "black";
+								}
+								if(in_form == 7){
+									k.style.backgroundColor = "black";
+									k.style.color = "white";
+								}
 							}
 						}
                         }
@@ -687,7 +596,6 @@ windows.onload = function()
 
 	function del(in_form)
 	{
-		alert("entered delete function");
 		var out_start=0;
 		//find the starting index of the output
 		for(var i=0;i<8;++i)
@@ -701,27 +609,19 @@ windows.onload = function()
 
 			var no_of_blocks = Math.ceil (file_size / blk_size);
 
+			
+
 			if(i == in_form)
 			{
-				alert("entered inform condition");
-				var st = out_start * 3;
-				st = st-1;
+				file_ind[in_form] = 0;
+				var k =document.getElementsByClassName("out")[in_form];
+				k.innerHTML = "";
 				for(var j=0; j<no_of_blocks; ++j)
 				{
 					var x1 = document.getElementsByTagName("li")[values+j];	//this will give us the values+i th li element
 					var x = x1.getElementsByTagName("input")[0].value;
 
 					file_ind[x] = 0;
-					st++;
-					var k =document.getElementsByClassName("out")[st];
-							
-							k.innerHTML = "";
-							st++;
-							var k =document.getElementsByClassName("out")[st];
-							k.innerHTML = "";
-							st++;
-							var k =document.getElementsByClassName("out")[st];
-							k.innerHTML = "";
 				}
 			}
 

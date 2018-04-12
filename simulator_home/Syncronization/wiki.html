@@ -40,6 +40,8 @@
     position: absolute;
     bottom: 0px;
     left: 20px;
+        top:67%;
+
     font-size: 18px;
     color: black;
     padding: 2px;
@@ -54,13 +56,13 @@
     padding: 2px;
     position: absolute;
     left: 25px;
-    bottom: 25px;
+    top:50%;
     background: white;
     z-index: 3;            
 }
 .triangulo{
     position:absolute;
-    bottom:0px;
+    top:65%;
     left:0px;
     width: 0;
     height: 0;
@@ -74,7 +76,6 @@ display: -webkit-flex;
 display: -ms-flexbox;
 display: flex;
 }   
-
 @media (max-width: 426px) {
     .header{
             margin-left: -15px;
@@ -91,7 +92,7 @@ display: flex;
     .photo-author{
         max-height:80px;
         left:5px;
-        bottom:40px;
+        bottom:0px;
     }
     .name-author{
         font-size:9px;
@@ -100,7 +101,7 @@ display: flex;
     }
     .sub-title{
         right:0px;
-        bottom:18px;
+        bottom:0px;
         padding:5px;
         font-size:10px;
     }
@@ -128,39 +129,76 @@ display: flex;
     </ul>
   </div>
 </nav>
-<div class="container">
-	<div class="row">
-		 <!-- HEADER -->
-        <div class="header">
-            <img style="width:100%" src="/home/soham/Desktop/OS/CR71.jpeg" />
+<!-- <div class="container">
+ --><!--   <div class="row">
+ -->     <!-- HEADER -->
+<!--         <div class="header">
+ -->            <img style="width:100%;height: 70%" src="sync.jpeg" />
             <div class="triangulo"></div>
             <div class="profile">
                 <img class="photo-author img-circle" src="/home/soham/Desktop/OS/CR7.jpg" />
                 <span class="name-author">Soham Patil</span>
             </div>
-            <h5 class="sub-title">Process Syncronisation</h5>
-            <h2 class="title">HALA MADRID</h2>
-        </div>
-
+            <h5 class="sub-title">Semaphores</h5>
+            <h2 class="title">PROCESS SYNCRONISATION</h2>
+<!--         </div>
+ -->
 
      <div class="page-header" >
-    <h1 style="float:center">Barrier Semaphore</h1>      
+    <h1 style="float:center">Syncronisation</h1>      
   </div>
         <!-- INFO -->
-        <div class="row">
-            <div class="col-xs-12">
+<!--         <div class="row">
+ -->            <div class="col-xs-12">
                 <h4 style="line-height: 25px;"></h4>
-            </div>
-        </div>
-        <div class="row row-eq-height" style="padding-right:15px">
-            <div class="col-xs-12 text">
-                <p class="semi-title">Process Synchronization means sharing system resources by processes in a such a way that,</p>
+<!--             </div>
+ -->        </div>
+<!--         <div class="row row-eq-height" style="padding-right:15px">
+ --><!--             <div class="col-xs-12 text">
+ -->                <p class="semi-title">Process Synchronization means sharing system resources by processes in a such a way that,</p>
                 <p class="semi-title"> Concurrent access to shared data is handled thereby minimizing the chance of inconsistent data.</p>
                 <p class="semi-title"> Maintaining data consistency demands mechanisms to ensure synchronized execution of cooperating processes.</p>
+<p class="semi-title">Process Synchronization was introduced to handle problems that arose while multiple process executions.</p>
+                                            <p class="semi-title">Data Structures used for Synchronization:</p>
 
+                                            <ol>
+                                                  <h4 class="semi-title">1.Mutex Locks</h4>
+                                                  <p>In this approach, in the entry section of code, a LOCK is acquired over the critical resources modified and used inside critical section (block of code where the shared resources are being modified ), 
+                                                  </p>
+                                                  <p>and in the exit section that LOCK is released.As the resource is locked while a process executes its critical section hence no other process can access it.</p>
+                                                  
+                                                  <h4 class="semi-title">2.Semaphores</h4>
+                                                  <p>In 1965, Dijkstra proposed a new and very significant technique for managing concurrent processes by using the value of a</p>
+                                                  <p> simple integer variable to synchronize the progress of interacting processes. This integer variable is called semaphore. </p>
+                                                  <p>So it is basically a synchronizing tool and is accessed only through two low standard atomic operations, wait() and signal().</p>
+                                                  
+                                                    <h6 class="semi-title">Wait : decrement the value of its argument S as soon as it would become non-negative.</h6>
+                                                    <h6 class="semi-title">Signal :increment the value of its argument, S as an individual operation.</h6> 
+                                                </p>
+
+                                              </li>
+                                            </ol>
 <p class="semi-title"></p>
-                                            <p>Process Synchronization was introduced to handle problems that arose while multiple process executions.</p>
-                                            <p>Data Structures used for Synchronization:</p>
+<!-- <a href="#top">#back to top</a><hr> -->
+                               
+                                                               <h2 class="dark-text">Critical Section Problems</h2>
+             
+
+                                <h4 class="semi-title">Producer   Consumer Problem</h4>
+                                <p>It is also known as the bounded buffer problem. The problem consists of two processes, the producer and consumer, sharing a common buffer (fixed size). </p>
+                                                  <p>The producer's job is to generate data and store it in the common buffer, one at a time. The consumer keeps consuming data until the common buffer empties.
+                                </p>
+                                <p>The producer should't be able to produce more data items when the buffer is full, and the consumer shouldn't be able to consumer the data items when the buffer is empty.
+                                </p>
+
+
+                                <h4 class="semi-title">Reader Writer Problem</h4>
+                                <p>This is an example of common concurrency problem. Here many threads try to access the same shared resource simultaneously. Threads may read/write (or append).</p><p> Threads reading the shared resource can do it simultaneously, i.e. two or more readers are allowed to access the shared resource.</p> <p>If a thread is writing into the resource, no other thread can access the resource.
+                                </p>
+                         <!-- end col -->
+
+                        </div>
+
 <p class="semi-title">Dinning Philosopher</p>
                 <p>
 
@@ -170,13 +208,20 @@ The problem consists of five philosophers sitting around a circular table.</p>
 <p> When a philosopher starts thinking, he keeps the two forks on the table. </p>
 <p> So, philosopher requires the two forks(shared resource) to start eating.  </p>
 
-<p> Elaborate the code....</p>
-            </div>
-            <!-- Sidebar // advertising -->
-           
-             </div>
 
-<div style="top:65%;right: 0%;position: absolute;background: #e0e0e0;">
+  <h4 class="semi-title">Sleeping Barber Problem</h4>
+                                  <p>This is an example of synchronization problem. The objective is to keeping a barber working when there are customers, resting when there are none in an orderly manner.
+                                  </p>
+                                 <p>The barber has one barber chair and a waiting room with a number of chairs in it. When the barber finishes cutting a customer's hair, he dismisses the customer</p><p> and then goes to the waiting room to see if there are other customers waiting. If there are, he brings one of them back to the chair and cuts his hair. </p><p>If there are no other customers waiting, he returns to his chair and sleeps in it.
+                                 </p>
+                                 <p>Each customer, when he arrives, looks to see what the barber is doing. If the barber is sleeping, then the customer wakes him up </p><p>and sits in the chair. If the barber is cutting hair, then the customer goes to the waiting room. </p><p>If there is a free chair in the waiting room, the customer sits in it and waits his turn. If there is no free chair, then the customer leaves.
+                                 </p>
+<!--             </div>
+ -->            <!-- Sidebar // advertising -->
+           
+<!--              </div>
+ -->
+<!-- <div style="top:120%;right: 0%;position: absolute;background: #e0e0e0;">
       
 <h1>If needed add somethings here</h1>
 <p> or else delete this division</p>
@@ -192,10 +237,10 @@ The problem consists of five philosophers sitting around a circular table.</p>
                     <li class="list-group-item"><big><b>5.</b></big> Vestibulum at eros</li>
                 </ul>
                 </small>
-</div>
-         </div>
-
+</div> -->
+<!--          </div>
+ -->
      </div>
 
  </body>
- </html>
+</html>
