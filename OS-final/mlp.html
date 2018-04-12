@@ -59,6 +59,10 @@ function mlp(){
     $("#demo").append("<b><br><br>Page size is:</b>"+"  "+"<b>"+ps+"</b>");
     //Page size is:
     console.log(ps);
+	if(ps%2!=0)
+	{
+		alert("Invalid inputs exit");
+	}
 	var i=0;
 	while(ps!=1){
 		ps=ps/2;
@@ -104,7 +108,7 @@ function mlp(){
    console.log(size);
    var level=1;
     var size1 = (size/page_size) * pte;
-	if(size1>size)
+	if(size1>=size)
 	{
         //Display invalid inputs exit
         alert("Invalid inputs exit");
