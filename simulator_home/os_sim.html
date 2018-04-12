@@ -14,7 +14,6 @@ body, html {
     color: #777;
     line-height: 1.8;
 }
-
 /* Create a Parallax Effect */
 .bgimg-1, .bgimg-2, .bgimg-3 {
     background-attachment: fixed;
@@ -22,35 +21,29 @@ body, html {
     background-repeat: no-repeat;
     background-size: cover;
 }
-
 /* First image (Logo. Full height) */
 .bgimg-1 {
     background-image:url("https://safebytes.com/wp-content/uploads/2016/10/OperatingSystem-min.jpg");
     min-height: 100%;
 }
-
 /* Second image (Portfolio) */
 .bgimg-2 {
     background-image: url("http://www.youthincmag.com/wp-content/uploads/2017/04/best-books-book-youll-ever-read.jpg");
     min-height: 400px;
 }
-
 /* Third image (Contact) */
 .bgimg-3 {
     background-image: url("http://www.expresspros.co.za/wp-content/uploads/2015/09/7er_Team_Meditrainment.png");
     min-height: 400px;
 }
-
 .w3-wide {letter-spacing: 10px;}
 .w3-hover-opacity {cursor: pointer;}
-
 /* Turn off parallax scrolling for tablets and phones */
 @media only screen and (max-device-width: 1024px) {
     .bgimg-1, .bgimg-2, .bgimg-3 {
         background-attachment: scroll;
     }
 }
-
  .card {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   max-width: 300px;
@@ -58,12 +51,10 @@ body, html {
   text-align: center;
   font-family: arial;
 }
-
 .title {
   color: grey;
   font-size: 18px;
 }
-
 button {
   border: none;
   outline: 0;
@@ -76,22 +67,23 @@ button {
   width: 100%;
   font-size: 18px;
 }
-
 a {
   text-decoration: none;
   font-size: 22px;
   color: black;
 }
-
 button:hover, a:hover {
   opacity: 0.7;
 }
-
 #myNavbar a
 {
 	color:white;
 /*	background-color: black;
 */}
+
+.images img{
+  height: 150px;
+}
 </style>
 <body>
 
@@ -129,7 +121,7 @@ button:hover, a:hover {
   <h3 class="w3-center">ABOUT Topics</h3>
   <p class="w3-center"><em>Some of the topics are shown here with Short Description.</em></p>
 
-  <!--about !st topic-->
+  <!--about 1st topic-->
   <div class="w3-row">
     <div class="w3-col m6 w3-center w3-padding-large">
       <p><b><i class="fa fa-user w3-margin-right"></i><strong style="font-size: 25px">Disc Scheduling</strong></b></p><br>
@@ -144,7 +136,7 @@ button:hover, a:hover {
   <!--2nd topic-->
    <div class="w3-row">
      <div class="w3-col m6 w3-center w3-padding-large">
-      <p><b><i class="fa fa-user w3-margin-right"></i><strong style="font-size: 25px">file-allocation</strong></b></p><br>
+      <p><b><i class="fa fa-user w3-margin-right"></i><strong style="font-size: 25px">File Allocation</strong></b></p><br>
       <img src="https://cdn-images-1.medium.com/max/670/1*wPqqYFfNreXF4INrNhYkeQ.jpeg" alt="Photo of Me" width="500" height="333">
     </div>
 
@@ -162,7 +154,7 @@ button:hover, a:hover {
   <!--3rd topic-->
    <div class="w3-row">
      <div class="w3-col m6 w3-center w3-padding-large">
-      <p><b><i class="fa fa-user w3-margin-right"></i><strong style="font-size: 25px">Deadlocks</strong></b></p><br>
+      <p><b><i class="fa fa-user w3-margin-right"></i><strong style="font-size: 25px">Deadlock</strong></b></p><br>
       <img src="https://cs.nyu.edu/courses/spring03/V22.0202-002/figs/resource-alloc.png" align="left" alt="Photo of Me" width="500" height="333">
     </div>
 
@@ -206,7 +198,7 @@ button:hover, a:hover {
 
    <div class="w3-row">
      <div class="w3-col m6 w3-center w3-padding-large">
-      <p><b><i class="fa fa-user w3-margin-right"></i><strong style="font-size: 25px">page Allocation</strong></b></p><br>
+      <p><b><i class="fa fa-user w3-margin-right"></i><strong style="font-size: 25px">Page Allocation</strong></b></p><br>
       <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/be/Page_table_actions.svg/440px-Page_table_actions.svg.png" align="left" alt="page alloc" width="450" height="330">
     </div>
 
@@ -217,12 +209,21 @@ button:hover, a:hover {
 
   <div class="w3-row">
      <div class="w3-col m6 w3-center w3-padding-large">
-      <p><b><i class="fa fa-user w3-margin-right"></i><strong style="font-size: 25px">Mft-Mvt</strong></b></p><br>
+      <p><b><i class="fa fa-user w3-margin-right"></i><strong style="font-size: 25px">MFT and MVT</strong></b></p><br>
       <img src="http://www.cs.nott.ac.uk/~pszgxk/courses/g53ops/images/OS-MFT.jpg" align="left" alt="page alloc" width="450" height="330">
     </div>
 
     <div class="w3-col m6 w3-hide-small w3-padding-large">
-      <p>Explaination For the topic 3 given here........line num: 225</p>
+      <h4>Multiprogramming with Fixed Tasks (MFT)</h4>
+      <ul>
+      <li>Memory is divided into several fixed-size partitions</li>
+      <li>Each partition may contain exactly one process/task</li>
+      </ul>
+      <h4>Multiprogramming with Variable Tasks (MVT)</h4>
+      <ul>
+      <li>Partitions of variable length and number</li>
+      <li>When a process is brought into main memory, it is allocated exactly as much memory as it requires</li>
+      </ul>
     </div>
   </div>
 
@@ -261,6 +262,7 @@ button:hover, a:hover {
   <p class="w3-center"><em>Here are the essential topics<br> Click on the images to simulate the respective topic</em></p><br>
 
   <!-- Responsive Grid. Four columns on tablets, laptops and desktops. Will stack on mobile devices/small screens (100% width) -->
+  <div class="images">
   <div class="w3-row-padding w3-center">
     <div class="w3-col m3">
       		<p><strong>Process Scheduling</strong></p>
@@ -287,6 +289,11 @@ button:hover, a:hover {
       <a href="#"> <img src="https://www.handybackup.net/images/icons/synchronize-folders-200.png" style="width:100px " class="w3-hover-opacity" alt="file allocation"></a>
     </div>
 
+    <div class="w3-col m3">
+          <p><strong>MFT and MVT</strong></p>
+      <a href="memory/index.html"> <img src="http://arcbotics.com/wp-content/uploads/2016/09/21.Memory-management-250x250.png" style="width:150px " class="w3-hover-opacity" alt="Memory Management(MFT and MVT)"></a>
+    </div>
+
      <div class="w3-col m3">
           <p><strong>Page allocation</strong></p>
       <a href="#"> <img src="http://www.naisp.net/koconnor/htmlclass/images/12-1-frameset.gif" style="width:120px " class="w3-hover-opacity" alt="file allocation"></a>
@@ -297,14 +304,7 @@ button:hover, a:hover {
       <a href="file-allocation/Index page/index._page.html"> <img src="https://cdn-images-1.medium.com/max/670/1*wPqqYFfNreXF4INrNhYkeQ.jpeg" style="width:220px " class="w3-hover-opacity" alt="file allocation"></a>
     </div>
 
-   
-
-    <div class="w3-col m3">
-          <p><strong>Mtf-Mvt</strong></p>
-      <a href="#"> <img src="https://www.cs.rutgers.edu/~pxk/416/notes/images/09-vpart-holes.png" style="width:150px " class="w3-hover-opacity" alt="Mvt-Mft"></a>
-    </div>
-   
-
+  </div>
   </div>
 </div>
 
@@ -327,9 +327,7 @@ button:hover, a:hover {
 <div class="w3-content w3-container w3-padding-64" id="contact">
   <h3 class="w3-center">NITK, Surathkal</h3>
   <p class="w3-center"><em>I'd love your feedback!</em></p>
-
   <h2 style="text-align:center">User Profile Card</h2>
-
 	<div class="card">
 	  <img src="/w3images/team2.jpg" alt="samyak" style="width:100%">
 	  <h1>Samyak Jain</h1>
@@ -343,7 +341,6 @@ button:hover, a:hover {
 	 </div>
 	 <p><button>Contact</button></p>
 	 </div>
-
 	 
 </div>-->
 
@@ -404,7 +401,18 @@ button:hover, a:hover {
           <h3>Ritesh</h3>
           <p class="w3-opacity">16CO252<br>NITK</p>
           <p>Implemented: <strong>Server-client</strong> </p>
-          <p><form action="www.facebook.com">
+        <button class="w3-button w3-light-grey w3-block" type="submit"><i class="fa fa-envelope"></i> Contact</button> 
+         </form></p>
+        </div>
+      </div>
+    </div>
+    <div class="w3-col l3 m6 w3-margin-bottom">
+      <div class="w3-card">
+        <img src="https://www.w3schools.com/w3images/team5.jpg" alt="ShashankP" style="width:100%">
+        <div class="w3-container">
+          <h3>Shashank P</h3>
+          <p class="w3-opacity">16CO247<br>NITK</p>
+          <p>Implemented: <strong>MFT and MVT</strong> </p>
         <button class="w3-button w3-light-grey w3-block" type="submit"><i class="fa fa-envelope"></i> Contact</button> 
          </form></p>
         </div>
@@ -417,15 +425,7 @@ button:hover, a:hover {
 <!-- Footer -->
 <footer class="w3-center w3-black w3-padding-64 w3-opacity w3-hover-opacity-off">
   <a href="#home" class="w3-button w3-light-grey"><i class="fa fa-arrow-up w3-margin-right"></i>To the top</a>
-  <div class="w3-xlarge w3-section">
-    <i class="fa fa-facebook-official w3-hover-opacity"></i>
-    <i class="fa fa-instagram w3-hover-opacity"></i>
-    <i class="fa fa-snapchat w3-hover-opacity"></i>
-    <i class="fa fa-pinterest-p w3-hover-opacity"></i>
-    <i class="fa fa-twitter w3-hover-opacity"></i>
-    <i class="fa fa-linkedin w3-hover-opacity"></i>
-  </div>
-  <p>By <a href="https://www.w3schools.com/w3css/default.asp" title="CSE" target="_blank" class="w3-hover-text-green">CSE</a></p>
+  <p>By <a href="https://www.w3schools.com/w3css/default.asp" title="CSE" target="_blank" class="w3-hover-text-green">CSE 2018</a></p>
 </footer>
  
 <!-- Add Google Maps -->
@@ -439,13 +439,11 @@ function myMap()
     mapTypeId:google.maps.MapTypeId.ROADMAP
   };
   var map=new google.maps.Map(document.getElementById("googleMap"),mapOptions);
-
   var marker = new google.maps.Marker({
     position: myCenter,
   });
   marker.setMap(map);
 }
-
 // Modal Image Gallery
 function onClick(element) {
   document.getElementById("img01").src = element.src;
@@ -453,7 +451,6 @@ function onClick(element) {
   var captionText = document.getElementById("caption");
   captionText.innerHTML = element.alt;
 }
-
 // Change style of navbar on scroll
 window.onscroll = function() {myFunction()};
 function myFunction() {
@@ -464,7 +461,6 @@ function myFunction() {
         navbar.className = navbar.className.replace(" w3-card w3-animate-top w3-white", "");
     }
 }
-
 // Used to toggle the menu on small screens when clicking on the menu button
 function toggleFunction() {
     var x = document.getElementById("navDemo");

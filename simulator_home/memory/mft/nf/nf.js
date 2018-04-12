@@ -13,6 +13,7 @@ var part_occupied = [];
 var input_q_pro_id = [];
 var input_q_pro_size = [];
 var input_q_size = 0;
+var nf_index = 0;
 
 $(document).ready(function() {
     $("#num-parts-btn").click(function(){
@@ -94,31 +95,18 @@ function addProcess(pro_size, pro_id, fromQ) {
     var i;
     var found = 0;
     for(i = 0; i < num_parts; i++) {
-        if(part_occupied[i] == 0 && found == 0) {
-            if(pro_size <= part_size[i]) {
-                part_occupied[i] = 1;
-                part_pro_id[i] = pro_id;
-                found = 1;
-
-                drawPart(pro_size, pro_id, i);
-
-                // var ctx=document.getElementById("myCanvas").getContext("2d");
-                
-                // ctx.beginPath();
-                // ctx.rect(myCanvas_x_start, part_myCanvas_start[i], myCanvas_width, part_size[i]*(500/total_mem_size));
-                // ctx.fillStyle = "red";
-                // ctx.fill();
-             
-                // ctx.beginPath();
-                // ctx.rect(myCanvas_x_start, part_myCanvas_start[i], myCanvas_width, pro_size*(500/total_mem_size));
-                // ctx.fillStyle = "green";
-                // ctx.fill();
-
-                // ctx.font = "14px Arial bold";
-                // ctx.fillStyle = "black";
-                // ctx.fillText("P-"+ String(pro_id), myCanvas_width/2, part_myCanvas_start[i] + pro_size*(500/total_mem_size)/2);
+        if(found == 0)
+        {
+            if(part_occupied[nf_index] == 0) {
+                if(pro_size <= part_size[nf_index]) {
+                    part_occupied[nf_index] = 1;
+                    part_pro_id[nf_index] = pro_id;
+                    found = 1;
+                    drawPart(pro_size, pro_id, nf_index);
+                }
             }
-        }
+            nf_index = (nf_index + 1) % num_parts;
+        } 
     }
     if(found == 0 && fromQ == 0) {
         alert('New process could not be added. Process added to Input Queue');
