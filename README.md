@@ -13,7 +13,7 @@
 * Samyak Jain- Page replacement algorithms and memory management extra
 * Shiva -System Calls and anything left and front end part.
 * Shashank kumar - Banker's Algorithm and Deadlock detection in single instance resource type 
-* Shashank P - Multi fixed partitioning, multivariable partitioning, best fit, worst fit, first fit, next fit, quick fit.
+* Shashank P - Multi fixed partitioning, multivariable partitioning, best fit, worst fit, first fit, next fit(only MFT).
 
 # Common Navigation for all
 <br/>
