@@ -68,11 +68,13 @@ function pagesize()
 
 	console.log(ops);
 
-	document.getElementById("answer").innerHTML="<b style='color:'>"+"The Output is:"+"</b>"+ops;
-	$("#answer").css("background-color","lightblue");
+	document.getElementById("answer").innerHTML="<b style='color:limegreen;font-size:80px'>"+"The Output is:"+ops+"</b>";
+	$("#answer").css("background-color","white");
 	$("#answer").css("max-width","100vw");
 	$("#answer").css("text-align","center");
+	//$("#answer").css("height","80px");
 	$("#answer").css("text-weight","bold");
+	$('input[type="button"]').attr('disabled','disabled');
 }
 
 </script>
