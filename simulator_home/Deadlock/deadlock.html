@@ -20,11 +20,11 @@
   <nav class="navbar navbar-inverse navbar-fixed-top">
   <div class="container-fluid">
  <div class="navbar-header">
-  <a class="navbar-brand" href="#">OS simulator</a>
+  <a class="navbar-brand" href="../os_sim.html">OS simulator</a>
    </div>
   <ul class="nav navbar-nav">
       <li class="active"><a href="index.html">Home</a></li>
-     <li class="active"><a href="#">Wiki</a></li>
+     <li class="active"><a href="../wiki-sample/wiki.html">Wiki</a></li>
    </ul>
   </div>
 </nav>
@@ -33,13 +33,15 @@
    <h1 style="float:center">Single-Instance Resource Deadlock Detection</h1>      
 </div>
 
-    <div style = "width: 800px;;margin-left:10px;text-align:left;">
+    <div style = "width: 100%;;margin-left:10px;text-align:left;">
+	   <button class="btn btn-primary btn-success" style ="float:right;margin-right:20px;" onclick="clear_data()"  >Clear Data</button>
       <div style="float:left; margin-right:20px;">Number of Resources:</div>
       <input style = "width: 50px;float:left;margin-right:30px;" id = "totalres" type="text">
 	  </input>
 	  <div style="float:left; margin-right:20px;">Number of Processes:</div>
       <input style = "width: 50px;float:left;margin-right:30px;" id = "totalpros" onkeyup="addInitials()" type="text"></input>
-    </div>
+ 
+	</div>
 	<br>
 	<br>
 	<br>

@@ -250,6 +250,34 @@ function createGraph()
 		
 }
 
+function clear_data()
+{
+	var a=3;
+	console.log(a);
+	alloc= [];
+	max=[];
+	need=[];
+	p=[];
+	r=[];
+	q=[];
+	visited =[];
+	recStack = [];
+	//index =0;
+	//num =0;
+	var clr1=document.getElementById("output");
+	var clr2=document.getElementById("output1");
+	clr1.innerHTML="";
+	clr2.innerHTML="";
+	var clr3=document.getElementById("allocated");
+	var clr4=document.getElementById("need");
+	clr3.innerHTML="";
+	clr4.innerHTML="";
+	var clr5=document.getElementById("totalres");
+	var clr6=document.getElementById("totalpros");
+	clr5.value="";
+	clr6.value="";
+}
+
 function cleardata()
 {
 	alloc= [];
