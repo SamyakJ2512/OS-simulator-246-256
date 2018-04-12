@@ -1,0 +1,318 @@
+<html>
+<head>
+	<title>Sequential Allocation</title>
+	<style>
+	.s_hide{
+		display: none;
+	}
+	.s_show{
+		display: block;
+	}
+	.some{
+		background-color: #3CBC8D;
+		color:black;
+	}
+     
+     
+	input{
+		 width: 10%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border: none;
+    background-color: #3CBC8D;
+    color: white;
+	}
+	.s_done,.s_cal{
+		 background-color: black; /* Green */
+    border: none;
+    color: white;
+    padding: 12px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 8px 0;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+    cursor: pointer;
+	}
+
+	.s_cal:hover{
+		 background-color: #3CBC8D;
+    color: white;
+	}
+	.s_done:hover{
+		 background-color: #3CBC8D;
+    color: white;
+	}
+	</style>
+</head>
+
+<body>
+	
+	
+	<div class="s_choices s_hide">
+		<label class="container">SEQUENTIAL
+			<input type="checkbox" id="s_seq">
+			<span class="checkmark"></span>
+		</label><br>
+
+		<label class="container">INDEXED
+			<input type="checkbox" id="s_ind">
+			<span class="checkmark"></span>
+		</label><br>
+
+		<label class="container">LINKED
+			<input type="checkbox" id="s_lin">
+			<span class="checkmark"></span>
+		</label><br>
+	</div>
+
+
+<marquee class="some" behavior="alternate" scrollamount=10><h1>Sequential Allocation<h1></marquee>
+<div id="sequ">
+	<a class="s_done" style="margin-left: 40%" href="Index page/index._page.html">Go Back</a>
+	<p> Enter the number of files</p>
+	<div>
+		<input id="nof" type="number">
+	</div>
+
+	<button class="s_done" onclick="show_fields()">Done</button>
+	<br><br><br>
+
+	<div class="s_form">
+		<form class="s_hide">
+			<p> Your First File </p>
+		File no:	<input  id="file_no" type="number">
+		File size(in KB):	<input  id="file_size" type="number">
+		Starting block:	<input  id="starting_block" type="number">
+		Block size(in bytes):	<input  id="block_size" type="number">
+		</form>
+
+		<form class="s_hide">
+			<p> Your Second File </p>
+			File no:   <input  id="file_no" type="number">
+			File size(in KB):	<input  id="file_size" type="number">
+			Starting block:	<input  id="starting_block" type="number">
+		    Block size(in bytes):		<input  id="block_size" type="number">
+		</form>
+		
+		<form class="s_hide">
+
+			<p> Your Third File </p>
+			File no:		<input  id="file_no" type="number">
+			File size(in KB):		<input  id="file_size" type="number">
+			Starting block:	<input  id="starting_block" type="number">
+			Block size(in bytes):		<input  id="block_size" type="number">
+		</form>
+
+		<form class="s_hide">
+			<p> Your Four File </p>
+			File no:     <input  id="file_no" type="number">
+			File size(in KB):	<input  id="file_size" type="number">
+			Starting block:	<input  id="starting_block" type="number">
+			Block size(in bytes):	<input  id="block_size" type="number">
+		</form>
+
+		<form class="s_hide">
+			<p> Your Fifth File </p>
+				File no:   <input  id="file_no" type="number">
+				File size(in KB): <input  id="file_size" type="number">
+				Starting block:<input  id="starting_block" type="number">
+				Block size(in bytes):<input  id="block_size" type="number">
+		</form>
+
+		<form class="s_hide">
+			<p> Your Six File </p>
+			File no:    <input  id="file_no" type="number">
+			File size(in KB):	<input  id="file_size" type="number">
+			Starting block:	<input  id="starting_block" type="number">
+			Block size(in bytes):	<input  id="block_size" type="number">
+		</form>
+
+		<form class="s_hide">
+			<p> Your Seventh File </p>
+			File no:    <input  id="file_no" type="number">
+			File size(in KB):	<input  id="file_size" type="number">
+			Starting block:	<input  id="starting_block" type="number">
+			Block size(in bytes):	<input  id="block_size" type="number">
+		</form>
+</div>
+
+<p> Enter the number of the file you want to view </p>
+	<input type="number">
+
+	<button type="button" class="s_cal" onclick="cal_seq()"> OUTPUT</button>
+	<input type="number" class="delete_file">
+	<button type="button" class="s_cal" onclick="delete_form()">DELETE</button>
+
+		<p class="s_out_sect" style="background-color:black;color:white"></p>
+		<p class="s_out_sect" style="background-color:black;color:white"></p>
+		<p class="s_out_sect" style="background-color:black;color:white"></p>
+		<p class="s_out_sect" style="background-color:black;color:white"></p>
+		<p class="s_out_sect" style="background-color:black;color:white"></p>
+		<p class="s_out_sect" style="background-color:black;color:white"></p>
+		<p class="s_out_sect" style="background-color:black;color:white"></p>
+</div>
+
+</body>
+
+<script>
+	var form_no=-1;
+	var files = [];
+
+	windows.onload = function()
+	{
+		for(var i=0;i<2000;++i)
+		{
+			files[i] = -1;
+		}
+		show_options();
+	}
+
+	function show_options()
+	{
+		alert("show options called");
+			var f = document.getElementById("sequ");
+			var att = document.createAttribute("class");
+			att.value ="s_show";
+
+			f.setAttributeNode(att);
+		
+	}
+
+	var form_no = -1;
+	function show_fields()
+	{
+		var no_of_files = document.getElementById("nof").value;
+		var i;
+		for(i=0;i<no_of_files;++i)	
+			s_add_in();
+	}
+
+	function s_add_in()
+	{
+		form_no = form_no +1;
+		var f = document.getElementsByTagName("form")[form_no];
+
+		var att = document.createAttribute("class");
+		att.value ="s_show";
+
+		f.setAttributeNode(att);
+	}
+
+	function cal_seq()
+	{
+		var out_file = document.getElementsByTagName("input")[32].value;
+
+		var i,j,k;
+		var found =0;
+		for(i=4; i<31; i=i+4)
+		{
+			var x= document.getElementsByTagName("input")[i].value;
+			if(out_file == x){
+				found =1;
+				break;
+			}
+
+			if(i == 28)
+			{
+				found = 0;
+				alert('file not found');
+			}
+		}
+
+		//now i gives the place of the file in the input fields
+		if(found){
+			var si,ei;
+			si = i;
+			ei = i+3;
+
+			var tot_size,block_size,block_start;
+
+			tot_size = document.getElementsByTagName("input")[si+1].value;
+			block_start = document.getElementsByTagName("input")[si+2].value;
+			block_size = document.getElementsByTagName("input")[si+3].value;
+
+			var no_of_blocks = (tot_size * 1024) / block_size;
+
+			var output=[];
+			var pos = block_start - 1;
+			for(j=0;j<no_of_blocks;++j)
+			{
+				pos++;
+				if(files[pos] == 1)
+				{
+					alert("block nummber "+pos+" is allocated");
+					break;
+				}
+
+				pos = block_start -1;
+				if(j == no_of_blocks-1){
+					for(j=0;j<no_of_blocks;++j)
+					{
+						pos++;
+						files[pos] =1;
+						output.push(pos);
+					}			
+				}
+			}
+			var q = i / 4;
+			document.getElementsByClassName("s_out_sect")[q-1].innerHTML=output.join();
+		}
+
+	}
+	
+	function delete_form(){
+		var to_be_deleted = document.getElementsByTagName("input")[33].value;
+		var i,j,k;
+		var found =0;
+		for(i=4; i<31; i=i+4)
+		{
+			var x= document.getElementsByTagName("input")[i].value;
+			if(to_be_deleted == x){
+				found =1;
+				break;
+			}
+
+			if(i == 28)
+			{
+				found = 0;
+				alert('file not found');
+			}
+		}
+
+		if(found){
+			var si,ei;
+			si = i;
+			ei = i+3;
+
+			var tot_size,block_size,block_start;
+
+			tot_size = document.getElementsByTagName("input")[si+1].value;
+			block_start = document.getElementsByTagName("input")[si+2].value;
+			block_size = document.getElementsByTagName("input")[si+3].value;
+
+			var no_of_blocks = (tot_size * 1024) / block_size;
+
+			var pos = block_start - 1;
+			for(j=0;j<no_of_blocks;++j)
+			{
+				pos++;
+				files[pos] =-1;
+				if(j == no_of_blocks-1)
+				{
+					alert("files deleted");
+				}		
+			}
+		}
+		var q = i / 4;
+		document.getElementsByClassName("s_out_sect")[q-1].innerHTML="";
+		//end of function
+	}
+
+
+</script>
+
+</html>

@@ -1,0 +1,165 @@
+<html>
+<head>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<style> 
+.flex-container {
+    display: -webkit-flex;
+    display: flex;  
+    -webkit-flex-flow: row wrap;
+    flex-flow: row wrap;
+    text-align: center;
+}
+
+.flex-container > * {
+    padding: 15px;
+    -webkit-flex: 1 100%;
+    flex: 1 100%;
+}
+
+.article {
+    text-align: left;
+}
+
+header {background: black;color:white;}
+footer {background: #aaa;color:white;}
+.nav {background:#eee;}
+
+.nav ul {
+    list-style-type: none;
+    padding: 0;
+}
+.nav ul a {
+    text-decoration: none;
+}
+
+@media all and (min-width: 768px) {
+    .nav {text-align:left;-webkit-flex: 1 auto;flex:1 auto;-webkit-order:1;order:1;}
+    .article {-webkit-flex:5 0px;flex:5 0px;-webkit-order:2;order:2;}
+    footer {-webkit-order:3;order:3;}
+}
+
+</style>
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+<script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
+
+
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top">
+        <a class="navbar-brand" href="../os_sim.html">OS simulator</a>
+        <ul class="navbar-nav">
+            <li class="nav-item">
+            <a class="nav-link" href="./index.html">Home</a>
+            </li>
+            <li class="nav-item">
+            <a class="nav-link" href="#">Wiki</a>
+            </li>
+        </ul>
+    </nav>
+    <br><br><br>
+
+<div class="flex-container">
+<header>
+  <h1>Memory Management</h1>
+</header>
+
+<!-- <nav class="nav">
+<ul>
+  <li><a href="#">Introduction</a></li>
+  <li><a href="#">MFT</a></li>
+  <li><a href="#"></a></li>
+</ul>
+</nav> -->
+
+<div class="container">
+    <article class="article">
+        <div>
+            <h1> Introduction</h1>
+            <p> Main Memory refers to a physical memory that is the internal memory to the computer. The word main is used to distinguish it from external mass storage devices such as disk drives. Main memory is also known as RAM. The computer is able to change only data that is in main memory. Therefore, every program we execute and every file we access must be copied from a storage device into main memory.</p>
+        </div>
+        
+        <div>
+            <h1>Contiguous Memory Allocation</h1>   
+            <p>In contiguous memory allocation each process is contained in a single contiguous block of memory. Memory is divided into several fixed size partitions. Each partition contains exactly one process. When a partition is free, a process is selected from the input queue and loaded into it. The free blocks of memory are known as holes. The set of holes is searched to determine which hole is best to allocate.</p> 
+        </div>
+        
+        <div>
+            <h1>Swapping</h1>
+            <p>A process needs to be in memory for execution. But sometimes there is not enough main memory to hold all the currently active processes in a timesharing system. So, excess process are kept on disk and brought in to run dynamically. Swapping is the process of bringing in each process in main memory, running it for a while and then putting it back to the disk.</p>
+        </div>
+
+        <div>
+            <h1>Fragmentation</h1>
+            <p>As processes are loaded and removed from memory, the free memory space is broken into little pieces. It happens after sometimes that processes cannot be allocated to memory blocks considering their small size and memory blocks remains unused. This problem is known as Fragmentation.</p>  
+            <p>Fragmentation is of two types:  </p>
+            <ul>
+                    <li>
+                        <h3>External fragmentation</h3>
+                        <p>Total memory space is enough to satisfy a request or to reside a process in it, but it is not contiguous, so it cannot be used.</p>
+                    </li>
+                    <li>
+                        <h3>Internal fragmentation</h3>
+                        <p>Memory block assigned to process is bigger. Some portion of memory is left unused, as it cannot be used by another process.</p>
+                    </li>
+            </ul>
+        </div>
+
+        <div>
+            <h1>Multiprogramming with Fixed Tasks (MFT)</h1>
+            <img src="./pics/mft.png" alt="MFT">
+            <ul>
+                <li>Memory is divided into several fixed-size partitions</li>
+                <li>Each partition may contain exactly one process/task</li>
+                <li>The degree of multiprogramming is bound by the number of partitions</li>    
+                <li>Memory wastage is caused due to internal fragmentation</li>
+            </ul>
+            
+        </div>
+
+        <div>
+            <h1>Multiprogramming with Variable Tasks (MVT)</h1>
+            <img src="./pics/mvt.png" alt="MVT">
+            <ul>
+                <li>Developed to address the drawbacks of fixed partitioning</li>
+                <li>Partitions of variable length and number</li>
+                <li>When a process is brought into main memory, it is allocated exactly as much memory as it requires</li>    
+                <li>No internal fragmentation</li>
+            </ul>  
+        </div>
+
+        <div>
+            <h1>Memory Allocation</h1>
+            <p>Memory allocation is a process by which computer programs are assigned memory or space</p>
+            <ul>
+                <li>
+                    <h3>First Fit</h3>
+                    <p>The first hole that is big enough is allocated to program</p>
+                </li>
+                <li>
+                    <h3>Best Fit</h3>
+                    <p>The smallest hole that is big enough is allocated to program</p>
+                </li>
+                <li>
+                    <h3>Worst Fit</h3>
+                    <p>The largest hole that is big enough is allocated to program</p>
+                </li>
+                <li>
+                    <h3>Next Fit</h3>
+                    <p>Scans the memory from the location of last placement and chooses next available block that is large enough</p>
+                </li>    
+            </ul>  
+        </div>     
+        </article>
+    </div>
+</div>
+
+</body>
+</html>

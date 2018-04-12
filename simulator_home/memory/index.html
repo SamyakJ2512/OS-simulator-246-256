@@ -1,0 +1,129 @@
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+.button {
+  border-radius: 8px;
+  background-color: #258ff1;
+  border: none;
+  color: #FFFFFF;
+  text-align: center;
+  font-size: 28px;
+  padding: 20px;
+  width: 200px;
+  transition: all 0.5s;
+  cursor: pointer;
+  margin: 5px;
+}
+
+.button span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+.button span:after {
+  content: '\00bb';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+}
+
+.button:hover span {
+  padding-right: 25px;
+}
+
+.button:hover span:after {
+  opacity: 1;
+  right: 0;
+}
+
+.btn-row {
+    margin-top: 50px;
+    animation-name: FadeOut;
+    animation-duration: 5s;
+}
+
+@keyframes FadeOut {
+  0% {
+    /* position: absolute; */
+    opacity: 0;
+  }
+
+  75% {
+    /* position: absolute; */
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+.heading {
+  font-size: 60px;
+  text-align: center;
+  margin-top: 50px;
+  opacity: 1;
+  animation-name: FadeOut;
+  animation-duration: 5s;
+  color: rgb(226, 27, 27);
+}
+
+.choose {
+  font-size: 30px;
+  text-align: center;
+  margin-top: 90px;
+  opacity: 1;
+  animation-name: FadeOut;
+  animation-duration: 5s;
+  color: rgb(133, 133, 133);
+}
+
+</style>
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+<script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
+
+ <title>Memory Management</title>
+
+</head>
+
+<body>
+
+    <nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top">
+        <a class="navbar-brand" href="../os_sim.html">OS simulator</a>
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link" href="#">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="./mm_wiki.html">Wiki</a>
+          </li>
+        </ul>
+      </nav>
+      <br><br><br>
+
+<p class="heading">Memory Management</p>
+
+<p class="choose">Choose any one</p>
+
+<div class="container btn-row">
+    <div class="row">
+        <div class="offset-md-2 col-md-3">
+          <button class="button" onclick="window.location.href='./mft.html'"><span>MFT</span></button>
+        </div>
+        <div class="col-md-3"></div>
+            <button class="button" onclick="window.location.href='./mvt.html'"><span>MVT</span></button>
+        </div>
+    </div>    
+</div>
+</body>
+</html>

@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+	<head>
+
+ 
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+       <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+ 
+
+
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
+		<meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+		<title>OS Simulator</title>
+		<meta name="description" content="Nifty Modal Window Effects with CSS Transitions and Animations" />
+		<meta name="keywords" content="modal, window, overlay, modern, box, css transition, css animation, effect, 3d, perspective" />
+		<meta name="author" content="Codrops" />
+		<link rel="shortcut icon" href="../favicon.ico"> 
+		<link rel="stylesheet" type="text/css" href="css/default.css" />
+		<link rel="stylesheet" type="text/css" href="css/component.css" />
+		<script src="js/modernizr.custom.js"></script>
+	</head>
+	<body>
+
+		 <nav class="navbar navbar-inverse navbar-fixed-top">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">OS simulator</a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li class="active"><a href="../os_sim.html">Home</a></li>
+      <li class="active"><a href="#">Wiki</a></li>
+    </ul>
+  </div>
+</nav>
+		<!-- All modals added here for the demo. You would of course just have one, dynamically created -->
+		
+		<div class="md-modal md-effect-18" id="modal-18">
+			<div class="md-content">
+				<h3>Select Your allocation-type</h3>
+				<div>
+                    <p><strong>1. SEQUENTIAL:</strong><br> In this scheme, each file occupies a contiguous set of blocks on the disk. For example, if a file requires n blocks and is given a block b as the starting location, then the blocks assigned to the file will be: b, b+1, b+2,……b+n-1. This means that given the starting block address and the length of the file (in terms of blocks required), we can determine the blocks occupied by the file</p>
+
+                    <img src="https://cdncontribute.geeksforgeeks.org/wp-content/uploads/Contiguous-Allocation.jpg" height=200px width=500px>
+
+                             <button class="md-close" >Close me!</button>
+				</div>
+			</div>
+		</div>
+
+		<div class="md-modal md-effect-18" id="modal-19">
+			<div class="md-content">
+				<h3>Select Your allocation-type</h3>
+				<div>
+
+					<p><strong>2. INDEXED:</strong><br>In this scheme, a special block known as the Index block contains the pointers to all the blocks occupied by a file. Each file has its own index block. The ith entry in the index block contains the disk address of the ith file block.</p> 
+					 
+                    <img src="https://cdncontribute.geeksforgeeks.org/wp-content/uploads/linkedListAllocation.jpg" height=200px width=500px> 
+
+					 <button class="md-close" >Close me!</button>
+
+
+				</div>
+			</div>
+		</div>
+
+<div class="md-modal md-effect-18" id="modal-20">
+			<div class="md-content">
+				<h3>Select Your allocation-type</h3>
+				<div>
+
+					<p><strong>3. LINKED:</strong><br>In this scheme, each file is a linked list of disk blocks which need not be contiguous. The disk blocks can be scattered anywhere on the disk. The directory entry contains a pointer to the starting and the ending file block. Each block contains a pointer to the next block occupied by the file.</p>
+					 
+                    <img src="https://cdncontribute.geeksforgeeks.org/wp-content/uploads/indexedAllocation.jpg" height=200px width=500px>
+
+					 <button class="md-close" >Close me!</button>
+
+
+				</div>
+			</div>
+		</div>
+
+
+
+		<div class="container">
+			<!-- Top Navigation -->
+			
+			
+			<header>
+				<h1>File allocation<span>Different types of strategies followed to store a file on disc</span></h1>
+			</header>
+			<div class="main clearfix">
+				
+				<div>
+					  	<p><em>There are 3 types of file allocations discussed in this section.</em></p>
+				<div>
+					<p> In sequential allocation, a file is allocated in contagious blocks  ......   <button class="md-trigger md-setperspective" data-modal="modal-18" align="center">Explore more</button></p>
+
+					  <a href="#" class="w3-button w3-black">SIMULATE sequential</a>
+					  
+					  	<p> In indexed allocation, Each file has its own index block which stores the addresses of disk space occupied by the file .....  <button class="md-trigger md-setperspective" data-modal="modal-19" align="center">Explore more</button></p>
+                       <a href="#" class="w3-button w3-black">SIMULATE Indexed</a>
+
+                       	<p> In linked allocation, each file is a linked list of disk blocks .....  <button class="md-trigger md-setperspective" data-modal="modal-20" align="center">Explore more</button></p>
+					   <a href="#" class="w3-button w3-black">SIMULATE Linked</a><br><br>
+
+
+				</div>
+			</div>
+
+			
+				</div>
+			</div>
+		</div><!-- /container -->
+		<div class="md-overlay"></div><!-- the overlay element -->
+
+		<!-- classie.js by @desandro: https://github.com/desandro/classie -->
+		<script src="js/classie.js"></script>
+		<script src="js/modalEffects.js"></script>
+
+		<!-- for the blur effect -->
+		<!-- by @derSchepp https://github.com/Schepp/CSS-Filters-Polyfill -->
+		<script>
+			// this is important for IEs
+			var polyfilter_scriptpath = '/js/';
+		</script>
+		<script src="js/cssParser.js"></script>
+		<script src="js/css-filters-polyfill.js"></script>
+	</body>
+</html>
