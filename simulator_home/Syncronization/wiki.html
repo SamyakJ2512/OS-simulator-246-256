@@ -1,0 +1,201 @@
+<html>
+
+
+<head>
+
+<style type="text/css">
+.header{position:relative;overflow:hidden;max-height:350px;display:flex;align-items:center;justify-content:center}
+.text{
+    /*-webkit-column-count: 2; 
+    -moz-column-count: 2; 
+    column-count: 2; */  
+    margin-top:15px;        
+}
+.statistics > p{margin-bottom:2px;right:10%;position: absolute;top:70% ;}
+.statistics > p > span.label{ right:10%;position: absolute;top:70% ; background-color:white;color:gray;}
+.side{background:#fafafa;padding-top:15px}
+.side > img { margin-bottom:15px;}
+.semi-title{font-weight: bold;margin-top:30px;}
+.title{    
+    position: absolute;
+    bottom: 45px;
+    padding: 7px;
+    right: 25px;
+    padding-left: 25px;
+    padding-right: 30px;
+    color: white;
+    background: rgba(0,0,0,0.5);
+}
+.sub-title{    
+    position: absolute;
+    bottom: 94px;
+    padding: 7px;
+    right: 25px;
+    padding-left: 12px;
+    padding-right: 12px;
+    color: orange;
+    background: rgba(0,0,0,0.7);
+}        
+.name-author{
+    position: absolute;
+    bottom: 0px;
+    left: 20px;
+    font-size: 18px;
+    color: black;
+    padding: 2px;
+    padding-right: 10px;
+    padding-left: 22px;
+    margin-left: -21px;
+    z-index: 1;
+    font-weight: 500;            
+}
+.photo-author{
+    max-height: 150px;
+    padding: 2px;
+    position: absolute;
+    left: 25px;
+    bottom: 25px;
+    background: white;
+    z-index: 3;            
+}
+.triangulo{
+    position:absolute;
+    bottom:0px;
+    left:0px;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 60px 0 0 1200px;
+    border-color: transparent transparent transparent #ffffff;
+}
+.row-eq-height {
+display: -webkit-box;
+display: -webkit-flex;
+display: -ms-flexbox;
+display: flex;
+}   
+
+@media (max-width: 426px) {
+    .header{
+            margin-left: -15px;
+            margin-top: -15px;
+            margin-right: -15px;
+    }
+    .title{
+        font-size:15px;
+        bottom:-12px;
+        right:0px;
+        padding-left:10px;
+        padding-right:10px;
+    }
+    .photo-author{
+        max-height:80px;
+        left:5px;
+        bottom:40px;
+    }
+    .name-author{
+        font-size:9px;
+        margin-left:-63px;
+        bottom:44px;
+    }
+    .sub-title{
+        right:0px;
+        bottom:18px;
+        padding:5px;
+        font-size:10px;
+    }
+}
+</style>
+  <title>Wiki</title>
+
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+
+</head>
+<body>
+<nav class="navbar navbar-inverse navbar-fixed-top">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">OS simulator</a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li class="active"><a href="index.html">Home</a></li>
+    </ul>
+  </div>
+</nav>
+<div class="container">
+	<div class="row">
+		 <!-- HEADER -->
+        <div class="header">
+            <img style="width:100%" src="/home/soham/Desktop/OS/CR71.jpeg" />
+            <div class="triangulo"></div>
+            <div class="profile">
+                <img class="photo-author img-circle" src="/home/soham/Desktop/OS/CR7.jpg" />
+                <span class="name-author">Soham Patil</span>
+            </div>
+            <h5 class="sub-title">Process Syncronisation</h5>
+            <h2 class="title">HALA MADRID</h2>
+        </div>
+
+
+     <div class="page-header" >
+    <h1 style="float:center">Barrier Semaphore</h1>      
+  </div>
+        <!-- INFO -->
+        <div class="row">
+            <div class="col-xs-12">
+                <h4 style="line-height: 25px;"></h4>
+            </div>
+        </div>
+        <div class="row row-eq-height" style="padding-right:15px">
+            <div class="col-xs-12 text">
+                <p class="semi-title">Process Synchronization means sharing system resources by processes in a such a way that,</p>
+                <p class="semi-title"> Concurrent access to shared data is handled thereby minimizing the chance of inconsistent data.</p>
+                <p class="semi-title"> Maintaining data consistency demands mechanisms to ensure synchronized execution of cooperating processes.</p>
+
+<p class="semi-title"></p>
+                                            <p>Process Synchronization was introduced to handle problems that arose while multiple process executions.</p>
+                                            <p>Data Structures used for Synchronization:</p>
+<p class="semi-title">Dinning Philosopher</p>
+                <p>
+
+The problem consists of five philosophers sitting around a circular table.</p>
+<p> The table has five forks. At any instance, a philosopher is eating or thinking.</p>
+<p> When a philosopher wants to eat, he has to use two forks, one from his left and one from his right.</p>
+<p> When a philosopher starts thinking, he keeps the two forks on the table. </p>
+<p> So, philosopher requires the two forks(shared resource) to start eating.  </p>
+
+<p> Elaborate the code....</p>
+            </div>
+            <!-- Sidebar // advertising -->
+           
+             </div>
+
+<div style="top:65%;right: 0%;position: absolute;background: #e0e0e0;">
+      
+<h1>If needed add somethings here</h1>
+<p> or else delete this division</p>
+       
+        <small>
+               
+                <p style="margin-bottom:0px;margin-top:25px;"><b>Noticias importantes</b></p>
+                <ul class="list-group">
+                    <li class="list-group-item"><big><b>1.</b></big> Cras justo odio</li>
+                    <li class="list-group-item"><big><b>2.</b></big> Dapibus ac facilisis in</li>
+                    <li class="list-group-item"><big><b>3.</b></big> Morbi leo risus</li>
+                    <li class="list-group-item"><big><b>4.</b></big> Porta ac consectetur ac</li>
+                    <li class="list-group-item"><big><b>5.</b></big> Vestibulum at eros</li>
+                </ul>
+                </small>
+</div>
+         </div>
+
+     </div>
+
+ </body>
+ </html>
