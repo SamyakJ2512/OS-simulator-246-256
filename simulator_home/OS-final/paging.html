@@ -59,11 +59,30 @@
       $("#answer").css("max-width","50vw");
       $("#answer").css("margin-left","25vw");
       $("#answer").css("color","black");
-      $("#answer").css('background-image','url:https://www.planwallpaper.com/static/images/2ba7dbaa96e79e4c81dd7808706d2bb7_large.jpeg');
-
+      
       
 
         console.log(ps);
+	    var psc = ps;
+console.log(psc);
+var flag=1;
+console.log(flag);
+ while (psc!=1)
+ {
+   if(psc%2!=0)
+     {
+     flag = 0;
+     break;
+     }
+   psc=psc/2;
+ }
+ console.log(flag);
+if(flag==0)
+{
+  alert("invalid inputs exit");
+  location.reload();
+	return;
+}
     
         var i=0;
     
@@ -96,6 +115,13 @@
 
        var page_size=Math.pow (2,i+j);
        console.log(page_size);
+	    
+	    if(page_size > vas)
+       {
+        alert("Invalid inputs exit");
+        location.reload();
+        return;
+       }
     
        var no_pages = vas / page_size;
        //No of pages is:
@@ -120,6 +146,12 @@
        
     
       var la = document.getElementById("LA").value;
+	    if(la >= Math.power(2,va) || la<0)
+      {
+        alert("Invalid inputs exit");
+        location.reload();
+        return;
+      }
     
       var converted = [];
       for(i=0;i<va;i++)
@@ -204,7 +236,7 @@
              $('#answer').css('display', 'none');
              $('#div1').css('display','none');
              alert("illegal logical address exit");
-              location.reload();
+            location.reload();
       }
     else{
     var frame_no = PT[p];
