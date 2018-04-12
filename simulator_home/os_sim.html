@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html>
+<title>OS Simulator</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<style>
+body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif;}
+body, html {
+    height: 100%;
+    color: #777;
+    line-height: 1.8;
+}
+
+/* Create a Parallax Effect */
+.bgimg-1, .bgimg-2, .bgimg-3 {
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+/* First image (Logo. Full height) */
+.bgimg-1 {
+    background-image:url("https://safebytes.com/wp-content/uploads/2016/10/OperatingSystem-min.jpg");
+    min-height: 100%;
+}
+
+/* Second image (Portfolio) */
+.bgimg-2 {
+    background-image: url("http://www.youthincmag.com/wp-content/uploads/2017/04/best-books-book-youll-ever-read.jpg");
+    min-height: 400px;
+}
+
+/* Third image (Contact) */
+.bgimg-3 {
+    background-image: url("http://www.expresspros.co.za/wp-content/uploads/2015/09/7er_Team_Meditrainment.png");
+    min-height: 400px;
+}
+
+.w3-wide {letter-spacing: 10px;}
+.w3-hover-opacity {cursor: pointer;}
+
+/* Turn off parallax scrolling for tablets and phones */
+@media only screen and (max-device-width: 1024px) {
+    .bgimg-1, .bgimg-2, .bgimg-3 {
+        background-attachment: scroll;
+    }
+}
+
+ .card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  max-width: 300px;
+  margin: auto;
+  text-align: center;
+  font-family: arial;
+}
+
+.title {
+  color: grey;
+  font-size: 18px;
+}
+
+button {
+  border: none;
+  outline: 0;
+  display: inline-block;
+  padding: 8px;
+  color: white;
+  background-color: #000;
+  text-align: center;
+  cursor: pointer;
+  width: 100%;
+  font-size: 18px;
+}
+
+a {
+  text-decoration: none;
+  font-size: 22px;
+  color: black;
+}
+
+button:hover, a:hover {
+  opacity: 0.7;
+}
+
+#myNavbar a
+{
+	color:white;
+/*	background-color: black;
+*/}
+</style>
+<body>
+
+<!-- Navbar (sit on top) -->
+<div class="w3-top">
+  <div class="w3-bar" id="myNavbar">
+    <a class="w3-bar-item w3-button w3-hover-black w3-hide-medium w3-hide-large w3-right" href="javascript:void(0);" onclick="toggleFunction()" title="Toggle Navigation Menu">
+      <i class="fa fa-bars"></i>
+    </a>
+    <a href="#home" class="w3-bar-item w3-button">HOME</a>
+    <a href="#about" class="w3-bar-item w3-button w3-hide-small"><i class="fa fa-user"></i> Details About Topics</a>
+    <a href="#portfolio" class="w3-bar-item w3-button w3-hide-small"><i class="fa fa-th"></i> Topics</a>
+    <a href="#contact" class="w3-bar-item w3-button w3-hide-small"><i class="fa fa-envelope"></i> Team members</a>
+    
+  </div>
+
+  <!-- Navbar on small screens -->
+  <div id="navDemo" class="w3-bar-block w3-white w3-hide w3-hide-large w3-hide-medium">
+    <a href="#about" class="w3-bar-item w3-button" onclick="toggleFunction()">ABOUT Topics</a>
+    <a href="#portfolio" class="w3-bar-item w3-button" onclick="toggleFunction()">Topics</a>
+    <a href="#contact" class="w3-bar-item w3-button" onclick="toggleFunction()">Team members</a>
+  
+  </div>
+</div>
+
+<!-- First Parallax Image with Logo Text -->
+<div class="bgimg-1 w3-display-container w3-opacity-min" id="home">
+  <div class="w3-display-middle" style="white-space:nowrap;">
+    <span class="w3-center w3-padding-large w3-black w3-xlarge w3-wide w3-animate-opacity"><span class="w3-hide-small">OS</span> SIMULATOR 2K18</span>
+  </div>
+</div>
+
+<!-- Container (About Section) -->
+<div class="w3-content w3-container w3-padding-64" id="about">
+  <h3 class="w3-center">ABOUT Topics</h3>
+  <p class="w3-center"><em>Some of the topics are shown here with Short Description.</em></p>
+
+  <!--about !st topic-->
+  <div class="w3-row">
+    <div class="w3-col m6 w3-center w3-padding-large">
+      <p><b><i class="fa fa-user w3-margin-right"></i><strong style="font-size: 25px">Disc Scheduling</strong></b></p><br>
+      <img src="http://www.cs.iit.edu/~cs561/cs450/disksched/fcfs.bmp" alt="Photo of Me" width="500" height="333">
+    </div>
+    <!-- Hide this text on small devices -->
+    <div class="w3-col m6 w3-hide-small w3-padding-large">
+      <p>Explaination For the  topic 1 given here........line num: 134</p>
+    </div>
+  </div>
+
+  <!--2nd topic-->
+   <div class="w3-row">
+     <div class="w3-col m6 w3-center w3-padding-large">
+      <p><b><i class="fa fa-user w3-margin-right"></i><strong style="font-size: 25px">file-allocation</strong></b></p><br>
+      <img src="https://cdn-images-1.medium.com/max/670/1*wPqqYFfNreXF4INrNhYkeQ.jpeg" alt="Photo of Me" width="500" height="333">
+    </div>
+
+    <div class="w3-col m6 w3-hide-small w3-padding-large" align="w3-right">
+      <p>In this the different File aloocation strategies are examined.It contains 3 strategies namely: </p>
+      	<li>
+      		<strong style="font-family: inherit;">Sequential Allocation</strong><br>  </li>
+       <li>      		<strong style="font-family: inherit;">Indexed Allocation</strong><br> </li>
+      	<li>	<strong style="font-family: inherit;">Linked Allocation</strong><br>
+      	</li>
+      
+    </div>
+  </div>
+
+  <!--3rd topic-->
+   <div class="w3-row">
+     <div class="w3-col m6 w3-center w3-padding-large">
+      <p><b><i class="fa fa-user w3-margin-right"></i><strong style="font-size: 25px">Deadlocks</strong></b></p><br>
+      <img src="https://cs.nyu.edu/courses/spring03/V22.0202-002/figs/resource-alloc.png" align="left" alt="Photo of Me" width="500" height="333">
+    </div>
+
+    <div class="w3-col m6 w3-hide-small w3-padding-large">
+      <p>Explaination For the topic 3 given here........line num: 158</p>
+    </div>
+  </div>
+  <!--4th topic-->
+   <div class="w3-row">
+     <div class="w3-col m6 w3-center w3-padding-large">
+      <p><b><i class="fa fa-user w3-margin-right"></i><strong style="font-size: 25px">Process Scheduling</strong></b></p><br>
+      <img src="https://www.tutorialspoint.com/operating_system/images/queuing_diagram.jpg" align="left" alt="Photo of Me" width="500" height="333">
+    </div>
+
+    <div class="w3-col m6 w3-hide-small w3-padding-large">
+      <p>Explaination For the topic 4 given here........line num: 169</p>
+    </div>
+  </div>
+
+  <div class="w3-row">
+     <div class="w3-col m6 w3-center w3-padding-large">
+      <p><b><i class="fa fa-user w3-margin-right"></i><strong style="font-size: 25px">Server-Client</strong></b></p><br>
+      <img src="https://cdn.tutsplus.com/gamedev/uploads/2013/08/img1_server_client.png" align="left" alt="Photo of Me" width="500" height="333">
+    </div>
+
+    <div class="w3-col m6 w3-hide-small w3-padding-large">
+      <p>Explaination For the topic 5 given here........line num: 180</p>
+    </div>
+  </div>
+
+
+
+  
+</div>
+
+<!-- <div class="w3-row w3-center w3-dark-grey w3-padding-16">
+  <div class="w3-quarter w3-section">
+    <span class="w3-xlarge">14+</span><br>
+    Server-Client
+  </div>
+  <div class="w3-quarter w3-section">
+    <span class="w3-xlarge">55+</span><br>
+    Deadlocks
+  </div>
+  <div class="w3-quarter w3-section">
+    <span class="w3-xlarge">89+</span><br>
+   File allocation
+  </div>
+  <div class="w3-quarter w3-section">
+    <span class="w3-xlarge">150+</span><br>
+    Disk Scheduling
+  </div>
+</div> -->
+
+<!-- Second Parallax Image with Portfolio Text -->
+<div class="bgimg-2 w3-display-container w3-opacity-min">
+  <div class="w3-display-middle">
+    <span class="w3-xxlarge w3-text-white w3-wide">TOPICS</span>
+  </div>
+</div>
+
+<!-- Container (Portfolio Section) -->
+<div class="w3-content w3-container w3-padding-64" id="portfolio">
+  <h3 class="w3-center">Below are the topics to SIMULATE</h3>
+  <p class="w3-center"><em>Here are the essential topics<br> Click on the images to simulate the respective topic</em></p><br>
+
+  <!-- Responsive Grid. Four columns on tablets, laptops and desktops. Will stack on mobile devices/small screens (100% width) -->
+  <div class="w3-row-padding w3-center">
+    <div class="w3-col m3">
+      		<p><strong>Process Scheduling</strong></p>
+      <a href="file:///C:/Users/kushal yadav/Desktop/shiva/example2.html"> <img src="https://www.colourbox.com/preview/2225350-people-standing-one-after-another-before-the-closed-door.jpg" style="width:100% " class="w3-hover-opacity" alt="Process Scheduling"></a>
+    </div>
+
+     <div class="w3-col m3">
+      		<p><strong>Deadlocks</strong></p>
+      <a href="file:///C:/Users/kushal yadav/Desktop/shiva/example2.html"> <img src="http://108.61.119.12/wp-content/uploads/2014/05/Gridlock.svg_.png" style="width:80% " class="w3-hover-opacity" alt="Deadlocks"></a>
+    </div>
+
+    <div class="w3-col m3">
+      		<p><strong>Disc Scheduling</strong></p>
+      <a href="file:///C:/Users/kushal yadav/Desktop/shiva/example2.html"> <img src="http://www.programering.com/images/remote/ZnJvbT1jbmJsb2dzJnVybD1uQm5hdWdUWWpKak56UTJNd0lHTTJVR1oySTJNakZHTmtWR016WVdaNE16WTNJVFl0RURNd0V6TnhVVE12Y0RNekVETXk4eU4xa3pOMTh5WnZ4bVl2MDJiajV5WnZ4bVkwbG1iajV5Y2xkV1l0bDJMdm9EYzBSSGE.jpg" style="width:110% " class="w3-hover-opacity" alt="disc Scheduling"></a>
+    </div>
+
+    <div class="w3-col m3">
+      		<p><strong>Server-Client</strong></p>
+      <a href="file:///C:/Users/kushal yadav/Desktop/shiva/example2.html"> <img src="http://www.datasciencesgroupinc.com/assets/Client-Server52370.jpg" style="width:100% " class="w3-hover-opacity" alt="Server-client"></a>
+    </div>
+
+    <div class="w3-col m3">
+      		<p><strong>File allocation</strong></p>
+      <a href="file:///C:/Users/kushal yadav/Desktop/shiva/example2.html"> <img src="https://cdn-images-1.medium.com/max/670/1*wPqqYFfNreXF4INrNhYkeQ.jpeg" style="width:120% " class="w3-hover-opacity" alt="file allocation"></a>
+    </div>
+
+   <!-- <div class="w3-col m3">
+      <img src="/w3images/p2.jpg" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity" alt="Coffee beans">
+    </div>
+
+    <div class="w3-col m3">
+      <img src="/w3images/p3.jpg" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity" alt="Bear closeup">
+    </div>
+
+    <div class="w3-col m3">
+      <img src="/w3images/p4.jpg" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity" alt="Quiet ocean">
+    </div>
+  </div>
+
+  <div class="w3-row-padding w3-center w3-section">
+    <div class="w3-col m3">
+      <img src="/w3images/p5.jpg" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity" alt="The mist">
+    </div>
+
+    <div class="w3-col m3">
+      <img src="/w3images/p6.jpg" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity" alt="My beloved typewriter">
+    </div>
+
+    <div class="w3-col m3">
+      <img src="/w3images/p7.jpg" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity" alt="Empty ghost train">
+    </div>
+
+    <div class="w3-col m3">
+      <img src="/w3images/p8.jpg" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity" alt="Sailing"> -->
+ 
+   <!-- <button class="w3-button w3-padding-large w3-light-grey" style="margin-top:64px">LOAD MORE</button>-->
+  </div>
+</div>
+
+<!-- Modal for full size images on click-->
+<div id="modal01" class="w3-modal w3-black" onclick="this.style.display='none'">
+  <span class="w3-button w3-large w3-black w3-display-topright" title="Close Modal Image"><i class="fa fa-remove"></i></span>
+  <div class="w3-modal-content w3-animate-zoom w3-center w3-transparent w3-padding-64">
+    <img id="img01" class="w3-image">
+    <p id="caption" class="w3-opacity w3-large"></p>
+  </div>
+</div>
+
+<!-- Third Parallax Image with Portfolio Text -->
+<div class="bgimg-3 w3-display-container w3-opacity-min">
+  <div class="w3-display-middle">
+     <span class="w3-xxlarge w3-text-black w3-wide">TEAM MEMBERS</span>
+  </div>
+</div>
+<!--
+<div class="w3-content w3-container w3-padding-64" id="contact">
+  <h3 class="w3-center">NITK, Surathkal</h3>
+  <p class="w3-center"><em>I'd love your feedback!</em></p>
+
+  <h2 style="text-align:center">User Profile Card</h2>
+
+	<div class="card">
+	  <img src="/w3images/team2.jpg" alt="samyak" style="width:100%">
+	  <h1>Samyak Jain</h1>
+	  <p class="title">16CO254,CSE</p>
+	  <p>NITK</p>
+	  <div style="margin: 24px 0;">
+	    <a href="#"><i class="fa fa-dribbble"></i></a> 
+	    <a href="#"><i class="fa fa-twitter"></i></a>  
+	    <a href="#"><i class="fa fa-linkedin"></i></a>  
+	    <a href="#"><i class="fa fa-facebook"></i></a> 
+	 </div>
+	 <p><button>Contact</button></p>
+	 </div>
+
+	 
+</div>-->
+
+
+
+<div class="w3-container" style="padding:128px 16px" id="contact">
+  <h3 class="w3-center">THE TEAM</h3>
+  <p class="w3-center w3-large">OS simulator developed by:</p>
+  <div class="w3-row-padding w3-grayscale" style="margin-top:64px">
+    <div class="w3-col l3 m6 w3-margin-bottom">
+      <div class="w3-card">
+        <img src="/w3images/team2.jpg" alt="samyak " style="width:100%">
+        <div class="w3-container">
+          <h3>Samyak jain</h3>
+          <p class="w3-opacity">16CO254<br>NITK</p>
+          <p>The portion of simulator implemented are :  </p>
+          <p><button class="w3-button w3-light-grey w3-block"><i class="fa fa-envelope"></i> Contact</button></p>
+        </div>
+      </div>
+    </div>
+    <div class="w3-col l3 m6 w3-margin-bottom">
+      <div class="w3-card">
+        <img src="/w3images/team1.jpg" alt="Soham" style="width:100%">
+        <div class="w3-container">
+          <h3>Soham patil</h3>
+          <p class="w3-opacity">16CO249<br>NITK</p>
+          <p>The portion of simulator implemented are :  </p>
+          <p><button class="w3-button w3-light-grey w3-block"><i class="fa fa-envelope"></i> Contact</button></p>
+        </div>
+      </div>
+    </div>
+    <div class="w3-col l3 m6 w3-margin-bottom">
+      <div class="w3-card">
+        <img src="C:\Users\kushal yadav\Pictures\IMG_20171110_184718-01-04 (2).jpeg" alt="Tushar" style="width:100%">
+        <div class="w3-container">
+          <h3>Tushar T.D.M</h3>
+          <p class="w3-opacity">16CO251<br>NITK</p>
+          <p>The portion of simulator implemented are :  </p>
+          <p><button class="w3-button w3-light-grey w3-block"><i class="fa fa-envelope"></i> Contact</button></p>
+        </div>
+      </div>
+    </div>
+     <div class="w3-col l3 m6 w3-margin-bottom">
+      <div class="w3-card">
+        <img src="C:\Users\kushal yadav\Pictures\IMG_20171110_184718-01-04 (2).jpeg" alt="Shiva" style="width:100%">
+        <div class="w3-container">
+          <h3>Shiva</h3>
+          <p class="w3-opacity">16CO252<br>NITK</p>
+          <p>The portion of simulator implemented are :  </p>
+          <p><button class="w3-button w3-light-grey w3-block"><i class="fa fa-envelope"></i> Contact</button></p>
+        </div>
+      </div>
+    </div>
+    <div class="w3-col l3 m6 w3-margin-bottom">
+      <div class="w3-card">
+        <img src="https://www.w3schools.com/w3images/team5.jpg" alt="Ritesh" style="width:100%">
+        <div class="w3-container">
+          <h3>Ritesh</h3>
+          <p class="w3-opacity">16CO252<br>NITK</p>
+          <p>Implemented: <strong>Server-client</strong> </p>
+          <p><form action="www.facebook.com">
+        <button class="w3-button w3-light-grey w3-block" type="submit"><i class="fa fa-envelope"></i> Contact</button> 
+         </form></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+
+<!-- Footer -->
+<footer class="w3-center w3-black w3-padding-64 w3-opacity w3-hover-opacity-off">
+  <a href="#home" class="w3-button w3-light-grey"><i class="fa fa-arrow-up w3-margin-right"></i>To the top</a>
+  <div class="w3-xlarge w3-section">
+    <i class="fa fa-facebook-official w3-hover-opacity"></i>
+    <i class="fa fa-instagram w3-hover-opacity"></i>
+    <i class="fa fa-snapchat w3-hover-opacity"></i>
+    <i class="fa fa-pinterest-p w3-hover-opacity"></i>
+    <i class="fa fa-twitter w3-hover-opacity"></i>
+    <i class="fa fa-linkedin w3-hover-opacity"></i>
+  </div>
+  <p>By <a href="https://www.w3schools.com/w3css/default.asp" title="CSE" target="_blank" class="w3-hover-text-green">CSE</a></p>
+</footer>
+ 
+<!-- Add Google Maps -->
+<script>
+function myMap()
+{
+  myCenter=new google.maps.LatLng(41.878114, -87.629798);
+  var mapOptions= {
+    center:myCenter,
+    zoom:12, scrollwheel: false, draggable: false,
+    mapTypeId:google.maps.MapTypeId.ROADMAP
+  };
+  var map=new google.maps.Map(document.getElementById("googleMap"),mapOptions);
+
+  var marker = new google.maps.Marker({
+    position: myCenter,
+  });
+  marker.setMap(map);
+}
+
+// Modal Image Gallery
+function onClick(element) {
+  document.getElementById("img01").src = element.src;
+  document.getElementById("modal01").style.display = "block";
+  var captionText = document.getElementById("caption");
+  captionText.innerHTML = element.alt;
+}
+
+// Change style of navbar on scroll
+window.onscroll = function() {myFunction()};
+function myFunction() {
+    var navbar = document.getElementById("myNavbar");
+    if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
+        navbar.className = "w3-bar" + " w3-card" + " w3-animate-top" + " w3-black";
+    } else {
+        navbar.className = navbar.className.replace(" w3-card w3-animate-top w3-white", "");
+    }
+}
+
+// Used to toggle the menu on small screens when clicking on the menu button
+function toggleFunction() {
+    var x = document.getElementById("navDemo");
+    if (x.className.indexOf("w3-show") == -1) {
+        x.className += " w3-show";
+    } else {
+        x.className = x.className.replace(" w3-show", "");
+    }
+}
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBu-916DdpKAjTmJNIgngS6HL_kDIKU0aU&callback=myMap"></script>
+<!--
+To use this code on your website, get a free API key from Google.
+Read more at: https://www.w3schools.com/graphics/google_maps_basic.asp
+-->
+
+</body>
+</html>
