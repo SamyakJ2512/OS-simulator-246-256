@@ -92,14 +92,14 @@
        console.log(j);
        var page_offset_bits = i+j;
        var fn = pa - page_offset_bits;
-       $("#answer").append("<br><br>Page offset bits is:"+"  "+"<b>"+page_offset_bits+"</b>");
+       $("#answer").append("<br><br>Page offset is:"+"  "+"<b>"+page_offset_bits+"</b>");
 
        var page_size=Math.pow (2,i+j);
        console.log(page_size);
     
        var no_pages = vas / page_size;
        //No of pages is:
-       //$("#answer").append("<br><br>No of pages is:"+"  "+"<b>"+no_pages+"</b>");
+       $("#answer").append("<br><br>No of pages is:"+"  "+"<b>"+no_pages+"</b>");
        console.log(no_pages);
        i=0;
        while(no_pages!=1)
@@ -120,15 +120,6 @@
        
     
       var la = document.getElementById("LA").value;
-      var la1 = la;
-      var check=0;
-      while(la1!=1)
-      {
-      	la1 = Math.floor(la1/2);
-      	check++;
-
-      }
-      check++;
     
       var converted = [];
       for(i=0;i<va;i++)
@@ -206,9 +197,7 @@
     }
     
     console.log(p);
-    console.log(check);
-    console.log(va);
-	    if(check != va)
+	    if(p >= Math.pow(2,page_no_bits))
 	    {
              //Display illegal logical address exit
              

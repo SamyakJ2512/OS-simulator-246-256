@@ -1,8 +1,6 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
 			<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
 			<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
@@ -67,14 +65,6 @@
 
 <script>
 		
-		$(document).ready(function(){
-			$('input').focusin(function(){
-				$(this).css('background-color','lawnGreen');
-			});
-			$('input').focusout(function(){
-				$(this).css('background-color','white');
-			});
-		});
 		function comaprison()
 {
 var count=0;
@@ -498,6 +488,7 @@ var least;
 			 }
 			 console.log(m);
 txt = txt + "\n";
+$('input[type="button"]').attr('disabled','disabled');
 console.log(txt);
 var chart = new CanvasJS.Chart("chartContainer", {
 	title:{

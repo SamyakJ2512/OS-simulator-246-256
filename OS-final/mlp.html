@@ -91,11 +91,10 @@ function mlp(){
    console.log(size);
    var level=1;
     var size1 = (size/page_size) * pte;
-	if(size1>=size)
+	if(size1>size)
 	{
         //Display invalid inputs exit
         alert("Invalid inputs exit");
-        location.reload();
     }    
     while( size > page_size){
    	size = (size / page_size) * pte ;
