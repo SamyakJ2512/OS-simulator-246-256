@@ -379,11 +379,10 @@ color: white;
 	<nav class="navbar navbar-inverse navbar-fixed-top">
   <div class="container-fluid">
  <div class="navbar-header">
-  <a class="navbar-brand" href="#">OS simulator</a>
+  <a class="navbar-brand" href="../os_sim.html">OS simulator</a>
    </div>
   <ul class="nav navbar-nav">
-      <li class="active"><a href="../os_sim.html">Home</a></li>
-     <li class="active"><a href="#">Wiki</a></li>
+      <li class="active"><a href="#">Home</a></li>
    </ul>
   </div>
 </nav>
@@ -461,6 +460,8 @@ color: white;
 	<button onclick="cscanModal()" class=" w3-button trigger-btn graph4" data-toggle="modal" style="text-decoration:none;">CSCAN</button>
 	<button onclick="lookModal()" class=" w3-button trigger-btn graph5" data-toggle="modal" style="text-decoration:none;">LOOK</button>
 	<button onclick="clookModal()" class=" w3-button trigger-btn graph6" data-toggle="modal" style="text-decoration:none;">CLOOK</button>
+	<h4 style="font-weight: bold;margin-top:7%;margin-left: 40%;"> X-axis: Request Track Number</h4>
+	<h4 style="font-weight: bold;margin-top:10px;margin-left: 40%;">Y-axis: Request Number</h4>
 </div>
 
 <div id="chartContainer_fcfs" style="height: 400px; width: 60%;margin-left: 20%;border: solid 2px white;margin-top: 15%"></div>
@@ -1305,11 +1306,21 @@ function calculate_sstf()
         data:{
             "type":"line",
             "title":{
-                "text":"FCFS Disk Scheduling"
+                "text":"FCFS Header Movement"
             },
             "series":[
                 data_fcfs
             ]
+        },
+
+        "scale-x":{
+        	"title":{
+        		"text":"Request Track Number"
+        	}
+        },
+
+        "scale-y":{
+        		"title":"Request Number"
         }
     	});
 		
@@ -1327,7 +1338,7 @@ function calculate_sstf()
         data:{
             "type":"line",
             "title":{
-                "text":"SSTF Disk Scheduling"
+                "text":"SSTF Header Movement"
             },
             "series":[
                 data_sstf
@@ -1347,7 +1358,7 @@ function calculate_sstf()
         data:{
             "type":"line",
             "title":{
-                "text":"SCAN Disk Scheduling"
+                "text":"SCAN Header Movement"
             },
             "series":[
                 data_scan
@@ -1367,7 +1378,7 @@ function calculate_sstf()
         data:{
             "type":"line",
             "title":{
-                "text":"CSCAN Disk Scheduling"
+                "text":"CSCAN Header Movement"
             },
             "series":[
                 data_cscan
@@ -1387,7 +1398,7 @@ function calculate_sstf()
         data:{
             "type":"line",
             "title":{
-                "text":"LOOK Disk Scheduling"
+                "text":"LOOK Header Movement"
             },
             "series":[
                 data_look
@@ -1407,7 +1418,7 @@ function calculate_sstf()
         data:{
             "type":"line",
             "title":{
-                "text":"CLOOK Disk Scheduling"
+                "text":"CLOOK Header Movement"
             },
             "series":[
                 data_clook
