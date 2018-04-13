@@ -10,6 +10,19 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script> 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
 </head>
+<nav class="navbar navbar-inverse navbar-fixed-top">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">OS simulator</a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li class="active"><a href="index.html">Back</a></li>
+      <li class="active"><a href="#">Home</a></li>
+      <li class="active"><a href="wiki.html">Wiki</a></li>
+    </ul>
+  </div>
+</nav>
+<br><br><br>
 
 <script>
   /*FCFS SCHEDULING*/
@@ -36,6 +49,11 @@ $(document).ready(function(){
   $('#add').click(function(){
     AddtoList();
   })
+  function DisplayList(){
+    var table = document.getElementById("ept");
+    console.log(stuff[stuff.length-1].no);
+    $('#ept').append("<tr><td>"+stuff[stuff.length-1].no+"</td><td>"+stuff[stuff.length-1].at+"</td><td>"+stuff[stuff.length-1].bt1+"</td><td>"+stuff[stuff.length-1].io+"</td><td>"+stuff[stuff.length-1].bt2+"</td><td>"+stuff[stuff.length-1].p+"</td></tr>");
+  }
   function AddtoList(){
     var arrivalTime=parseInt(document.getElementById("at1").value);
     var burstTime=parseInt(document.getElementById("bt1").value);
@@ -60,7 +78,8 @@ $(document).ready(function(){
       "rt":rtj,
       "point" : parseInt("0"),
       "p" : priority,
-      "wt": parseInt("0")
+      "wt": parseInt("0"),
+      "tat":parseInt("0")
 
     });
     index=index+1;
@@ -70,6 +89,7 @@ $(document).ready(function(){
     document.getElementById("io").value="";
     document.getElementById("bt2").value="";
     document.getElementById("priority").value="";
+    DisplayList();
   };
   $('#start').click(function(){
     tq=parseInt(document.getElementById("timeq").value);
@@ -151,7 +171,7 @@ $(document).ready(function(){
       stuff[i].point=0;
 
     }
-    rr();
+    //rr();
     console.log(stuff);
     drawChart();
     
@@ -161,12 +181,12 @@ $(document).ready(function(){
   var myChart=new Chart(document.getElementById("bar-chart"), {
     type: 'bar',
     data: {
-      labels: ["FCFS", "SJF","SRTF","Priority Preemptive","Priority Nonpreemptive","Longest Job First","Largest Remaining Time First","Round-Robin"],
+      labels: ["FCFS", "SJF","SRTF","Priority Preemptive","Priority Nonpreemptive","Longest Job First","Largest Remaining Time First"],
       datasets: [
         {
           label: "Average Waiting Time",
-          backgroundColor: ["#3e95cd", "#8e5ea2","#3cba9f","#e8c3b9","#c45850","#ff6666","#ffc34d","#d24dff"],
-          data: [average_wt_fcfs,average_wt_sjf,average_wt_srtf,average_wt_priority,average_wt_prnonpre,average_wt_ljf,average_wt_lrtf,average_wt_rr]
+          backgroundColor: ["#3e95cd", "#8e5ea2","#3cba9f","#e8c3b9","#c45850","#ff6666","#ffc34d"],
+          data: [average_wt_fcfs,average_wt_sjf,average_wt_srtf,average_wt_priority,average_wt_prnonpre,average_wt_ljf,average_wt_lrtf]
         }
       ]
     },
@@ -200,6 +220,9 @@ options: {
           temp=stuff[i];
           stuff[i]=stuff[j];
           stuff[j]=temp;
+          temp=proc[i];
+          proc[i]=proc[j];
+          proc[j]=temp;
         }
       }
     }
@@ -237,6 +260,7 @@ options: {
           {
             complete++;
             stuff[index].finish=1;
+            stuff[index].tat=time-stuff[index].at;
             stuff[index].wt=time-stuff[index].at-stuff[index].bt1;
           }
           for(j=0;j<n;j++){
@@ -261,7 +285,8 @@ options: {
           stuff[index].finish=1;
           sequence.push({start:time,n:proc[index]});
           time+=stuff[index].rt[2];
-          stuff[index].wt=time-stuff[index].bt1-stuff[index].io-stuff[index].bt2-stuff[index].at;
+          stuff[index].tat=time-stuff[index].at;
+          stuff[index].wt=time-stuff[index].bt1-stuff[index].bt2-stuff[index].at;
           for(j=0;j<n;j++){
             if(stuff[j].at<=time && stuff[j].finish==0 && stuff[j].check==0 && Q.indexOf(j)==-1)
               Enqueue(j);
@@ -307,16 +332,10 @@ options: {
       console.log(complete);
 
     }
-    sequence.push({start:time,n:-1});
-    console.log(sequence);
-    console.log(stuff);
-    total = sequence.length-1;
-    console.log(total);
     var sum_at=0;
     for(i=0;i<n;i++)
       sum_at+=stuff[i].wt;
     average_wt_fcfs=sum_at/n;
-    var pixel = 0;
   }
   function Enqueue(i){
     Q.push(i);
@@ -338,6 +357,9 @@ options: {
           temp=stuff[i];
           stuff[i]=stuff[j];
           stuff[j]=temp;
+          temp=proc[i];
+          proc[i]=proc[j];
+          proc[j]=temp;
         }
       }
     }
@@ -390,13 +412,15 @@ options: {
             {
               stuff[minindex].finish=1;
               complete++;
-              stuff[minindex].wt=time-stuff[minindex].bt1-stuff[minindex].at;
+              stuff[minindex].tat=time-stuff[minindex].at;
+              stuff[minindex].wt=stuff[minindex].tat-stuff[minindex].bt1-stuff[minindex].bt2;
             }
           }
           if(stuff[minindex].point==2){
             console.log(minindex);
             complete=complete+1;
-            stuff[minindex].wt=time-stuff[minindex].bt1-stuff[minindex].io-stuff[minindex].bt2-stuff[minindex].at;
+            stuff[minindex].tat=time-stuff[minindex].at;
+            stuff[minindex].wt=stuff[minindex].tat-stuff[minindex].bt1-stuff[minindex].bt2;
             stuff[minindex].finish=1;
             console.log(stuff);
           }
@@ -426,10 +450,6 @@ options: {
         console.log(time);
       }
     }
-    sequence.push({start:time,n:-1});
-    console.log(sequence);
-    total = sequence.length-1;
-    console.log(total);
     var sum_at=0;
     for(i=0;i<n;i++)
       sum_at+=stuff[i].wt;
@@ -450,6 +470,9 @@ options: {
           temp=stuff[i];
           stuff[i]=stuff[j];
           stuff[j]=temp;
+          temp=proc[i];
+          proc[i]=proc[j];
+          proc[j]=temp;
         }
       }
     }
@@ -497,7 +520,8 @@ options: {
             {
               complete++;
               stuff[minindex].finish=1;
-              stuff[minindex].wt=time-stuff[minindex].bt1-stuff[minindex].at;
+              stuff[minindex].tat=time-stuff[minindex].at;
+              stuff[minindex].wt=stuff[minindex].tat-stuff[minindex].bt1-stuff[minindex].bt2;
             }
             stuff[minindex].check=1;
             stuff[minindex].point=1;
@@ -505,7 +529,8 @@ options: {
           if(stuff[minindex].point==2){
             console.log(minindex);
             complete=complete+1;
-            stuff[minindex].wt=time-stuff[minindex].bt1-stuff[minindex].io-stuff[minindex].bt2-stuff[minindex].at;
+            stuff[minindex].tat=time-stuff[minindex].at;
+            stuff[minindex].wt=stuff[minindex].tat-stuff[minindex].bt1-stuff[minindex].bt2;
             stuff[minindex].finish=1;
             console.log(stuff);
           }
@@ -535,10 +560,6 @@ options: {
         console.log(time);
       }
     }
-    sequence.push({start:time,n:-1});
-    console.log(sequence);
-    total = sequence.length-1;
-    console.log(total);
     var sum_at=0;
     for(i=0;i<n;i++)
       sum_at+=stuff[i].wt;
@@ -546,7 +567,7 @@ options: {
     var pixel = 0;
   }
     function ljf(){
-    var proc=[];
+var proc=[];
     for(i=0;i<stuff.length;i++){
       proc.push(i+1);
     }
@@ -559,6 +580,9 @@ options: {
           temp=stuff[i];
           stuff[i]=stuff[j];
           stuff[j]=temp;
+          temp=proc[i];
+          proc[i]=proc[j];
+          proc[j]=temp;
         }
       }
     }
@@ -609,7 +633,8 @@ options: {
             {
               complete++;
               stuff[minindex].finish=1;
-              stuff[minindex].wt=time-stuff[minindex].bt1-stuff[minindex].at;
+              stuff[minindex].tat=time-stuff[minindex].at;
+              stuff[minindex].wt=stuff[minindex].tat-stuff[minindex].bt1-stuff[minindex].bt2;
             }
             stuff[minindex].check=1;
             stuff[minindex].point=1;
@@ -617,7 +642,8 @@ options: {
           if(stuff[minindex].point==2){
             console.log(minindex);
             complete=complete+1;
-            stuff[minindex].wt=time-stuff[minindex].bt1-stuff[minindex].io-stuff[minindex].bt2-stuff[minindex].at;
+            stuff[minindex].tat=time-stuff[minindex].at;
+            stuff[minindex].wt=stuff[minindex].tat-stuff[minindex].bt1-stuff[minindex].bt2;
             stuff[minindex].finish=1;
             console.log(stuff);
           }
@@ -647,10 +673,6 @@ options: {
         console.log(time);
       }
     }
-    sequence.push({start:time,n:-1});
-    console.log(sequence);
-    total = sequence.length-1;
-    console.log(total);
     var sum_at=0;
     for(i=0;i<n;i++)
       sum_at+=stuff[i].wt;
@@ -671,6 +693,9 @@ options: {
           temp=stuff[i];
           stuff[i]=stuff[j];
           stuff[j]=temp;
+          temp=proc[i];
+          proc[i]=proc[j];
+          proc[j]=temp;
         }
       }
     }
@@ -718,7 +743,8 @@ options: {
             {
               complete++;
               stuff[minindex].finish=1;
-              stuff[minindex].wt=time-stuff[minindex].bt1-stuff[minindex].at;
+              stuff[minindex].tat=time-stuff[minindex].at;
+              stuff[minindex].wt=stuff[minindex].tat-stuff[minindex].bt1-stuff[minindex].bt2;
             }
             stuff[minindex].check=1;
             stuff[minindex].point=1;
@@ -726,7 +752,8 @@ options: {
           if(stuff[minindex].point==2){
             console.log(minindex);
             complete=complete+1;
-            stuff[minindex].wt=time-stuff[minindex].bt1-stuff[minindex].io-stuff[minindex].bt2-stuff[minindex].at;
+            stuff[minindex].tat=time-stuff[minindex].at;
+            stuff[minindex].wt=stuff[minindex].tat-stuff[minindex].bt1-stuff[minindex].bt2;
             stuff[minindex].finish=1;
             console.log(stuff);
           }
@@ -756,10 +783,6 @@ options: {
         console.log(time);
       }
     }
-    sequence.push({start:time,n:-1});
-    console.log(sequence);
-    total = sequence.length-1;
-    console.log(total);
     var sum_at=0;
     for(i=0;i<n;i++)
       sum_at+=stuff[i].wt;
@@ -780,6 +803,9 @@ options: {
           temp=stuff[i];
           stuff[i]=stuff[j];
           stuff[j]=temp;
+          temp=proc[i];
+          proc[i]=proc[j];
+          proc[j]=temp;
         }
       }
     }
@@ -828,7 +854,8 @@ options: {
             {
               complete++;
               stuff[minindex].finish=1;
-              stuff[minindex].wt=time-stuff[minindex].bt1-stuff[minindex].at;
+              stuff[minindex].tat=time-stuff[minindex].at;
+              stuff[minindex].wt=stuff[minindex].tat-stuff[minindex].bt1-stuff[minindex].bt2;
             }
             stuff[minindex].check=1;
             stuff[minindex].point=1;
@@ -836,7 +863,8 @@ options: {
           if(stuff[minindex].point==2){
             console.log(minindex);
             complete=complete+1;
-            stuff[minindex].wt=time-stuff[minindex].bt1-stuff[minindex].io-stuff[minindex].bt2-stuff[minindex].at;
+            stuff[minindex].tat=time-stuff[minindex].at;
+            stuff[minindex].wt=stuff[minindex].tat-stuff[minindex].bt1-stuff[minindex].bt2;
             stuff[minindex].finish=1;
             console.log(stuff);
           }
@@ -866,10 +894,6 @@ options: {
         console.log(time);
       }
     }
-    sequence.push({start:time,n:-1});
-    console.log(sequence);
-    total = sequence.length-1;
-    console.log(total);
     var sum_at=0;
     for(i=0;i<n;i++)
       sum_at+=stuff[i].wt;
@@ -891,6 +915,9 @@ options: {
           temp=stuff[i];
           stuff[i]=stuff[j];
           stuff[j]=temp;
+          temp=proc[i];
+          proc[i]=proc[j];
+          proc[j]=temp;
         }
       }
     }
@@ -941,7 +968,8 @@ options: {
             {
               complete++;
               stuff[minindex].finish=1;
-              stuff[minindex].wt=time-stuff[minindex].bt1-stuff[minindex].at;
+              stuff[minindex].tat=time-stuff[minindex].at;
+              stuff[minindex].wt=stuff[minindex].tat-stuff[minindex].bt1-stuff[minindex].bt2;
             }
             stuff[minindex].check=1;
             stuff[minindex].point=1;
@@ -949,7 +977,8 @@ options: {
           if(stuff[minindex].point==2){
             console.log(minindex);
             complete=complete+1;
-            stuff[minindex].wt=time-stuff[minindex].bt1-stuff[minindex].io-stuff[minindex].bt2-stuff[minindex].at;
+            stuff[minindex].tat=time-stuff[minindex].at;
+            stuff[minindex].wt=stuff[minindex].tat-stuff[minindex].bt1-stuff[minindex].bt2;
             stuff[minindex].finish=1;
             console.log(stuff);
           }
@@ -979,10 +1008,6 @@ options: {
         console.log(time);
       }
     }
-    sequence.push({start:time,n:-1});
-    console.log(sequence);
-    total = sequence.length-1;
-    console.log(total);
     var sum_at=0;
     for(i=0;i<n;i++)
       sum_at+=stuff[i].wt;
@@ -1007,6 +1032,9 @@ options: {
           temp=stuff[i];
           stuff[i]=stuff[j];
           stuff[j]=temp;
+          temp=proc[i];
+          proc[i]=proc[j];
+          proc[j]=temp;
         }
       }
     }
@@ -1030,7 +1058,7 @@ options: {
       console.log(Q);
         if(Q.length>0)
           var index=Dequeue();
-        else 
+        else if(Q.length==0)
         {
           index=null;
           if(temp!=index)
@@ -1053,8 +1081,8 @@ options: {
             }
            
           }
+          temp=null;
         }
-        console.log(index);
         if(index!=null && stuff[index].rt[stuff[index].point]<=tq && stuff[index].finish==0 && stuff[index].check!=1)
         {
           if(stuff[index].point==0)
@@ -1070,7 +1098,24 @@ options: {
             {
               complete++;
               stuff[index].finish=1;
-              stuff[index].wt=time-stuff[index].bt1-stuff[index].at;
+              stuff[index].tat=time-stuff[index].at;
+              stuff[index].wt=stuff[index].tat-stuff[index].bt1-stuff[index].bt2;
+            }
+            for(j=0;j<n;j++)
+            {
+              if( stuff[j].at<=time && stuff[j].check==1)
+              { 
+                stuff[j].rt[1]-=r;
+                if(stuff[j].rt[1]<=0)
+                {
+                  stuff[j].check=0;
+                  stuff[j].point++;
+                }
+              }
+              if(stuff[j].at<=time && stuff[j].finish==0 && stuff[j].check==0 && Q.indexOf(j)==-1){
+                Enqueue(j);
+              }
+            
             }
           }
           else if(stuff[index].point==2)
@@ -1079,14 +1124,13 @@ options: {
             stuff[index].finish=1;
             sequence.push({start:time, n: proc[index]});
             time+=stuff[index].rt[stuff[index].point];
-            stuff[index].wt=time-stuff[index].bt1-stuff[index].io-stuff[index].bt2-stuff[index].at;
-          }
-          temp=index;
-          for(j=0;j<n;j++)
+            stuff[index].tat=time-stuff[index].at;
+            stuff[index].wt=stuff[index].tat-stuff[index].bt1-stuff[index].bt2;
+            for(j=0;j<n;j++)
           {
             if( stuff[j].at<=time && stuff[j].check==1)
             {
-              stuff[j].rt[1]-=r;
+              stuff[j].rt[1]-=stuff[index].rt[stuff[index].point];
               if(stuff[j].rt[1]<=0)
               {
                stuff[j].check=0;
@@ -1098,6 +1142,8 @@ options: {
             }
             
           }
+          }
+          temp=index;
         }
         else if(index!=null && stuff[index].rt[stuff[index].point]>tq && stuff[index].finish==0 && stuff[index].check!=1)
         {
@@ -1130,16 +1176,21 @@ options: {
             
           }
       }
-    sequence.push({start:time,n:-1});
-    console.log(sequence);
-    total = sequence.length-1;
-    console.log(total);
     var sum_wt=0;
+    var sum_null=0;
     for(i=0;i<n;i++)
       sum_wt+=stuff[i].wt;
     average_wt_rr=sum_wt/n;
     var pixel = 0;
-  
+    throughput=n/time;
+    for(i=0;i<sequence.length;i++)
+    {
+      if(sequence[i].n==null)
+      {
+        sum_null+=sequence[i+1].start-sequence[i].start;
+      }
+    }
+    cpu_efficiency=((time-sum_null)/time)*100;  
 }
 
   function displayBlock(i){
@@ -1212,6 +1263,9 @@ p{
   text-align: right;
   margin-bottom: 1;
 }
+#ep{
+  margin-left: 30%;
+}
 </style>
 <body>
   <a href='index.html'>Back</a>
@@ -1222,6 +1276,22 @@ p{
     Gantt Chart
   </h2>
   <br>
+  <div>
+      <h3>Entered Processes:</h3>
+    <table id="ep" class="table table-bordered" style="width:500px">
+      <thead>
+      <th>PNO.</th>
+      <th>Arrival Time </th>
+      <th>Burst Time 1 </th>
+      <th>IO </th>
+      <th>Burst Time 2 </th>
+      <th>Priority</th>
+    </tr>
+    <tbody id="ept">
+    </tbody>
+  </thead>
+</table>
+  </div>
   <input type='number' id='at1' placeholder="arrival time"></input>
   <input type='number' id='bt1' placeholder="burst time 1"></input>
   <input type='number' id='io' placeholder="io time"></input>

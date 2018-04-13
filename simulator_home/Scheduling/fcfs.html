@@ -12,6 +12,19 @@
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script> 
 </head>
+<nav class="navbar navbar-inverse navbar-fixed-top">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">OS simulator</a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li class="active"><a href="index.html">Back</a></li>
+      <li class="active"><a href="#">Home</a></li>
+      <li class="active"><a href="wiki.html">Wiki</a></li>
+    </ul>
+  </div>
+</nav>
+<br><br><br>
 
 <script>
   /*FCFS SCHEDULING*/
@@ -24,20 +37,20 @@ var total;
 var proc;
 var n;
 var average_wt=0;
+var average_tat=0;
 var stuff=[];
 var index=1;
 var throughput;
+var index=1;
 var cpu_efficiency;
 $(document).ready(function(){
   $('#add').click(function(){
     AddtoList();
   })
   function DisplayList(){
-    var x=document.getElementById("inner-div");
-    for(i=0;i<stuff.length;i++)
-    {
-      x.append("No: "+stuff[i].no+" Arrival Time: "+stuff[i].at+"</td><td>"+stuff[i].bt1+"</td><td>"+stuff[i].io+"</td><td>"+stuff[i].bt2+"</td><td>");
-    }
+    var table = document.getElementById("ept");
+    console.log(stuff[stuff.length-1].no);
+    $('#ept').append("<tr><td>"+stuff[stuff.length-1].no+"</td><td>"+stuff[stuff.length-1].at+"</td><td>"+stuff[stuff.length-1].bt1+"</td><td>"+stuff[stuff.length-1].io+"</td><td>"+stuff[stuff.length-1].bt2+"</td></tr>");
   }
   function AddtoList(){
     var arrivalTime=parseInt(document.getElementById("at1").value);
@@ -61,7 +74,8 @@ $(document).ready(function(){
       "no":index,
       "rt":rtj,
       "point" : parseInt("0"),
-      "wt":parseInt("0")
+      "wt":parseInt("0"),
+      "tat":parseInt("0")
     });
     index=index+1;
     document.getElementById("at1").value="";
@@ -69,7 +83,7 @@ $(document).ready(function(){
     document.getElementById("io").value="";
     document.getElementById("bt2").value="";
     console.log(stuff);
-    //DisplayList();
+    DisplayList();
   };
   $('#start').click(function(){
     fcfs();
@@ -99,6 +113,9 @@ $(document).ready(function(){
           temp=stuff[i];
           stuff[i]=stuff[j];
           stuff[j]=temp;
+          temp=proc[i];
+          proc[i]=proc[j];
+          proc[j]=temp;
         }
       }
     }
@@ -136,6 +153,7 @@ $(document).ready(function(){
           {
             complete++;
             stuff[index].finish=1;
+            stuff[index].tat=time-stuff[index].at;
             stuff[index].wt=time-stuff[index].at-stuff[index].bt1;
           }
           for(j=0;j<n;j++){
@@ -160,7 +178,8 @@ $(document).ready(function(){
           stuff[index].finish=1;
           sequence.push({start:time,n:proc[index]});
           time+=stuff[index].rt[2];
-          stuff[index].wt=time-stuff[index].bt1-stuff[index].io-stuff[index].bt2-stuff[index].at;
+          stuff[index].tat=time-stuff[index].at;
+          stuff[index].wt=time-stuff[index].bt1-stuff[index].bt2-stuff[index].at;
           for(j=0;j<n;j++){
             if(stuff[j].at<=time && stuff[j].finish==0 && stuff[j].check==0 && Q.indexOf(j)==-1)
               Enqueue(j);
@@ -215,6 +234,10 @@ $(document).ready(function(){
     for(i=0;i<n;i++)
       sum_at+=stuff[i].wt;
     average_wt=sum_at/n;
+    var sum_tat=0;
+    for(i=0;i<n;i++)
+      sum_tat+=stuff[i].tat;
+    average_tat=sum_tat/n;
     var pixel = 0;
     var sum_null=0;
     throughput=n/time;
@@ -238,12 +261,13 @@ $(document).ready(function(){
     if(i<stuff.length){
     var table = document.getElementById("ptable");
     console.log(stuff[i].wt);
-    $("#ptable").append("<tr><td>"+stuff[i].no+"</td><td>"+stuff[i].at+"</td><td>"+stuff[i].bt1+"</td><td>"+stuff[i].io+"</td><td>"+stuff[i].bt2+"</td><td>"+stuff[i].wt+"</td></tr>");
+    $("#ptable").append("<tr><td>"+stuff[i].no+"</td><td>"+stuff[i].at+"</td><td>"+stuff[i].bt1+"</td><td>"+stuff[i].io+"</td><td>"+stuff[i].bt2+"</td><td>"+stuff[i].wt+"</td><td>"+stuff[i].tat+"</td></tr>");
     drawTable(i+1);
   }
   else
   {
     $("#Average").append("<b>The average waiting time of the given processes is "+average_wt+"</b><br>");
+    $("#Average").append("<b>The average turn around time of the given processes is "+average_tat+"</b><br>");
     $("#Average").append("<b>The throughput of the given processes is "+throughput+"</b><br>");
     $("#Average").append("<b>The CPU efficiency is "+cpu_efficiency+"%</b><br>");
   }
@@ -319,7 +343,7 @@ p{
 }
 #ptab{
   display: none;
-  margin-left: 30%;
+  margin-left: 28%;
 }
 
 .bottom{
@@ -329,17 +353,33 @@ p{
   text-align: right;
   margin-bottom: 1;
 }
+#ep{
+  margin-left:30%;
+}
 </style>
 <body>
-  <a id="b" href='index.html'>Back</a>
   <h1>
-    FCFS Scheduling
+    First Come First Serve Scheduling
   </h1>
   <h2>
     Gantt Chart
   </h2>
-  <div id="inner-div">
+    <div>
+      <h3>Entered Processes:</h3>
+    <table id="ep" class="table table-bordered" style="width:500px">
+      <thead>
+      <th>PNO.</th>
+      <th>Arrival Time </th>
+      <th>Burst Time 1 </th>
+      <th>IO </th>
+      <th>Burst Time 2 </th>
+    </tr>
+    <tbody id="ept">
+    </tbody>
+  </thead>
+</table>
   </div>
+
   <br>
   <input type='number' id='at1' placeholder="arrival time"></input>
   <input type='number' id='bt1' placeholder="burst time 1"></input>
@@ -353,8 +393,9 @@ p{
   <div id="outer-div">
   </div>
   <br><br><br>
+
   <div class="panel-content">
-  <table id="ptab" class="table table-bordered" style="width :500px">
+  <table id="ptab" class="table table-bordered" style="width :600px">
   <thead>
   <tr id="thead">
   <th>PNO.</th>
@@ -363,6 +404,7 @@ p{
   <th>I/O time</th>
   <th>Burst time2</th>
   <th>Waiting time</th>
+  <th>Turn Around Time</th>
   </tr>
   <tbody id="ptable">
 
