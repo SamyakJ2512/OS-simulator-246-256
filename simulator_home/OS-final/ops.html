@@ -48,7 +48,6 @@
 </html>
 
 <script>
-
 function pagesize()
 {
 	var vas,pte,ops;
@@ -57,18 +56,14 @@ function pagesize()
 	{
 		Alert("Invalid inputs");
 	}
-
 	pte = document.getElementById("pte").value;
 	if(pte<0)
 	{
 		Alert("Invalid inputs");
 	}
-
 	ops = Math.sqrt(2*vas*pte);
-
 	console.log(ops);
-
-	document.getElementById("answer").innerHTML="<b style='color:limegreen;font-size:80px'>"+"The Output is:"+ops+"</b>";
+	document.getElementById("answer").innerHTML="<b style='color:limegreen;font-size:80px'>"+"The Output is:"+ops+" "+"Bytes"+"</b>";
 	$("#answer").css("background-color","white");
 	$("#answer").css("max-width","100vw");
 	$("#answer").css("text-align","center");
@@ -76,5 +71,4 @@ function pagesize()
 	$("#answer").css("text-weight","bold");
 	$('input[type="button"]').attr('disabled','disabled');
 }
-
 </script>

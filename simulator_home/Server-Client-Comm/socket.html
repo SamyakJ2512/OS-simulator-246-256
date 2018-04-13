@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+  <head>
+        <meta charset="utf-8"/>	<!-- dont remove this  -->
+  	<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <style>
+      .dropbtn {
+          background-color: #4CAF50;
+          color: white;
+          padding: 16px;
+          font-size: 16px;
+          border: none;
+          cursor: pointer;
+      }
+
+      .dropdown {
+          position: relative;
+          display: inline-block;
+      }
+
+      .dropdown-content {
+          display: none;
+          position: absolute;
+          background-color: #f9f9f9;
+          min-width: 160px;
+          box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+          z-index: 1;
+      }
+
+      .dropdown-content a {
+          color: black;
+          padding: 12px 16px;
+          text-decoration: none;
+          display: block;
+      }
+
+      .dropdown-content a:hover {background-color: #f1f1f1}
+
+      .dropdown:hover .dropdown-content {
+          display: block;
+      }
+
+      .dropdown:hover .dropbtn {
+          background-color: #3e8e41;
+      }
+
+      .description{
+        margin: 100px 150px;
+        padding: 15px 25px;
+        background-color: #990033;
+        color: #FFFFFF;
+      }
+
+      .description em{
+        color: #E6E600;
+      }
+    </style>
+  </head>
+
+  <body style="background-color: #80BFFF">
+    
+      	<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container-fluid">
+   <div class="navbar-header">
+    <a class="navbar-brand" href="../os_sim.html">OS simulator</a>
+     </div>
+    <ul class="nav navbar-nav">
+        <li class="active"><a href="../os_sim.html">Home</a></li>
+     </ul>
+    </div>
+  </nav>
+
+    
+    <h1 style="margin: 50px 150px; color: #660066; text-align: center; font-family: Times New Roman">
+      SOCKET COMMUNICATION
+    </h1>
+
+  <div style="margin: 5px 450px">
+    <div class="dropdown">
+      <button class="dropbtn">Socket</button>
+      <div class="dropdown-content">
+        <a href="socket.html">Socket</a>
+        <a href="rpc.html">RPC</a>
+      </div>
+    </div>
+
+    ->
+
+    <div class="dropdown">
+      <button class="dropbtn">Select the Communication type</button>
+      <div class="dropdown-content">
+        <a href="tcp.html">TCP</a>
+        <a href="udp.html">UDP</a>
+      </div>
+    </div>
+  </div>
+
+    <p class="description">
+      Sockets allow communication between two different processes on the same or different machines.
+      It's a way to talk to other computers using standard Unix file descriptors. <br> <br>
+      To a programmer, a socket looks and behaves much like a low-level file descriptor.
+      This is because commands such as read() and write() work with sockets in the same way
+      they do with files and pipes. <br> <br>A Unix Socket is used in a client-server application
+      framework. A server is a process that performs some functions on request from a client. Most of the
+      application-level protocols like FTP, SMTP, and POP3 make use of sockets to establish connection
+       between client and server and then for exchanging data. <br><br>
+
+       The two main types of sockets are:  <br><br>
+
+       a. <b><u>Stream Sockets</u></b>: Delivery in a networked environment is guaranteed. If you send through
+          the stream socket three items "A, B, C", they will arrive in the same order:  "A, B, C".
+          These sockets use TCP (Transmission Control Protocol) for data transmission. If delivery
+          is impossible, the sender receives an error indicator. Data records do not have any boundaries. <br><br>
+
+       b. <b><u>Datagram Sockets</u></b>: Delivery in a networked environment is not guaranteed. They're connectionless
+        because you don't need to have an open connection as in Stream Sockets - you build a packet with the destination
+        information and send it out. They use UDP (User Datagram Protocol). <br><br><br>
+
+        We have added two animations to demonstrate the working of eavh of the sockets. Please hover over
+        <em>"Select the Communication type"</em> dropdown to select: <br><br>
+        <em>TCP</em> for Stream Sockets. <br><br>
+        <em>UDP</em> for Datagram Sockets.
+    </p>
+  </body>
+</html>

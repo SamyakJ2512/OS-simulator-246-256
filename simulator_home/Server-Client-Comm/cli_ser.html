@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8"/>	<!-- dont remove this  -->
+  	<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <style>
+      .dropbtn
+      {
+          background-color: #4CAF50;
+          color: white;
+          padding: 16px;
+          font-size: 16px;
+          border: none;
+          cursor: pointer;
+      }
+
+      .dropdown
+      {
+          position: relative;
+          display: inline-block;
+      }
+
+      .dropdown-content
+      {
+          display: none;
+          position: absolute;
+          background-color: #f9f9f9;
+          min-width: 160px;
+          box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+          z-index: 1;
+      }
+
+      .dropdown-content a
+      {
+          color: black;
+          padding: 12px 16px;
+          text-decoration: none;
+          display: block;
+      }
+
+      .dropdown-content a:hover {background-color: #f1f1f1}
+
+      .dropdown:hover .dropdown-content
+      {
+          display: block;
+      }
+
+      .dropdown:hover .dropbtn
+      {
+          background-color: #3e8e41;
+      }
+
+      .description{
+        margin: 100px 150px;
+        padding: 15px 25px;
+        background-color: #990033;
+        color: #FFFFFF;
+      }
+
+      .description em{
+        color: #E6E600;
+      }
+    </style>
+  </head>
+<body style="background-color: #80BFFF">
+
+
+  	<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container-fluid">
+   <div class="navbar-header">
+    <a class="navbar-brand" href="../os_sim.html">OS simulator</a>
+     </div>
+    <ul class="nav navbar-nav">
+        <li class="active"><a href="../os_sim.html">Home</a></li>
+     </ul>
+    </div>
+  </nav>
+
+  <br>
+  <h1 style="margin: 50px 150px; color: #660066; text-align: center; font-family: Times New Roman">
+    CLIENT-SERVER COMMUNICATION
+  </h1>
+
+  <div style="margin: 50px 500px">
+    <div class="dropdown">
+      <button id = "cscmode" class="dropbtn">Select the Communication Mode</button>
+      <div class="dropdown-content">
+        <a href="socket.html">Sockets</a>
+        <a href="rpc.html">RPC</a>
+      </div>
+    </div>
+  </div>
+
+  <p class="description">
+    The client-server model is a distributed application structure that partitions
+    tasks or workloads between the providers of a resource or service, called servers,
+    and service requesters, called clients. Often clients and servers communicate
+    over a computer network on separate hardware, but both client and server may reside
+    in the same system. <br><br>
+
+    A server host runs one or more server programs which share their resources with clients.
+    A client does not share any of its resources, but requests a server's content or service
+    function. Clients therefore initiate communication sessions with servers which await
+    incoming requests. <br><br>
+
+    Examples of computer applications that use the client-server model are Email, network
+    printing, and the World Wide Web. <br><br><br>
+
+    Two processes in client-server model can interact in various ways:<br><br>
+
+    a. <b><u>Sockets</b></u>: In this paradigm, the process acting as Server opens a socket using a well-known
+    (or known by client) port and waits until some client request comes. The second
+    process acting as a Client also opens a socket but instead of waiting for an
+    incoming request, the client processes ‘requests first’. <br><br>
+
+    b. <b><u>RPC</b></u>: This is a mechanism where one process interacts with another
+    by means of procedure calls. One process (client) calls the procedure lying on remote
+    host. The process on remote host is said to be Server. Both processes are allocated
+    stubs to aid this process. <br><br>
+
+    More information on Sockets can be obtained on selecting <em>Sockets</em> in the
+    <em>Select the Communication Mode</em> dropdown. As for the RPCs, we have an animation
+    to demonstrate the working. Select on the <em>RPC</em> options.
+  </p>
+
+</body>
+</html>

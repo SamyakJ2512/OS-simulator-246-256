@@ -12,6 +12,19 @@
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script> 
 </head>
+<nav class="navbar navbar-inverse navbar-fixed-top">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">OS simulator</a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li class="active"><a href="index.html">Back</a></li>
+      <li class="active"><a href="#">Home</a></li>
+      <li class="active"><a href="wiki.html">Wiki</a></li>
+    </ul>
+  </div>
+</nav>
+<br><br><br>
 
 <script>
   /*FCFS SCHEDULING*/
@@ -28,12 +41,18 @@ var bt=[];
 var stuff=[];
 var index=1;
 var average_wt;
+var average_tat;
 var throughput;
 var cpu_efficiency;
 $(document).ready(function(){
   $('#add').click(function(){
     AddtoList();
   })
+  function DisplayList(){
+    var table = document.getElementById("ept");
+    console.log(stuff[stuff.length-1].no);
+    $('#ept').append("<tr><td>"+stuff[stuff.length-1].no+"</td><td>"+stuff[stuff.length-1].at+"</td><td>"+stuff[stuff.length-1].bt1+"</td><td>"+stuff[stuff.length-1].io+"</td><td>"+stuff[stuff.length-1].bt2+"</td><td>"+stuff[stuff.length-1].p+"</td></tr>");
+  }
   function AddtoList(){
     var arrivalTime=parseInt(document.getElementById("at1").value);
     var burstTime=parseInt(document.getElementById("bt1").value);
@@ -58,7 +77,8 @@ $(document).ready(function(){
       "rt":rtj,
       "point" : parseInt("0"),
       "p" : priority,
-      "wt": parseInt("0")
+      "wt": parseInt("0"),
+      "tat" : parseInt("0")
 
     });
     index=index+1;
@@ -68,6 +88,7 @@ $(document).ready(function(){
     document.getElementById("io").value="";
     document.getElementById("bt2").value="";
     document.getElementById("priority").value="";
+    DisplayList();
   };
   $('#start').click(function(){
     prior();
@@ -96,6 +117,9 @@ $(document).ready(function(){
           temp=stuff[i];
           stuff[i]=stuff[j];
           stuff[j]=temp;
+          temp=proc[i];
+          proc[i]=proc[j];
+          proc[j]=temp;
         }
       }
     }
@@ -144,7 +168,8 @@ $(document).ready(function(){
             {
               complete++;
               stuff[minindex].finish=1;
-              stuff[minindex].wt=time-stuff[minindex].bt1-stuff[minindex].at;
+              stuff[minindex].tat=time-stuff[minindex].at;
+              stuff[minindex].wt=stuff[minindex].tat-stuff[minindex].bt1-stuff[minindex].bt2;
             }
             stuff[minindex].check=1;
             stuff[minindex].point=1;
@@ -152,7 +177,8 @@ $(document).ready(function(){
           if(stuff[minindex].point==2){
             console.log(minindex);
             complete=complete+1;
-            stuff[minindex].wt=time-stuff[minindex].bt1-stuff[minindex].io-stuff[minindex].bt2-stuff[minindex].at;
+            stuff[minindex].tat=time-stuff[minindex].at;
+            stuff[minindex].wt=stuff[minindex].tat-stuff[minindex].bt1-stuff[minindex].bt2;
             stuff[minindex].finish=1;
             console.log(stuff);
           }
@@ -191,7 +217,10 @@ $(document).ready(function(){
     for(i=0;i<n;i++)
       sum_at+=stuff[i].wt;
     average_wt=sum_at/n;
-
+    var sum_tat=0;
+    for(i=0;i<n;i++)
+      sum_tat+=stuff[i].tat;
+    average_tat=sum_tat/n;
     var pixel = 0;
     throughput=n/time;
     for(i=0;i<sequence.length;i++)
@@ -208,12 +237,13 @@ $(document).ready(function(){
     if(i<stuff.length){
     var table = document.getElementById("ptable");
     console.log(stuff[i].wt);
-    $("#ptable").append("<tr><td>"+stuff[i].no+"</td><td>"+stuff[i].at+"</td><td>"+stuff[i].bt1+"</td><td>"+stuff[i].io+"</td><td>"+stuff[i].bt2+"</td><td>"+stuff[i].p+"</td><td>"+stuff[i].wt+"</td></tr>");
+    $("#ptable").append("<tr><td>"+stuff[i].no+"</td><td>"+stuff[i].at+"</td><td>"+stuff[i].bt1+"</td><td>"+stuff[i].io+"</td><td>"+stuff[i].bt2+"</td><td>"+stuff[i].p+"</td><td>"+stuff[i].wt+"</td><td>"+stuff[i].tat+"</td></tr>");
     drawTable(i+1);
   }
   else
   {
     $("#Average").append("<b>The average waiting time of the given processes is "+average_wt+"</b><br>");
+    $("#Average").append("<b>The average turn around time of the given processes is "+average_tat+"</b><br>");
     $("#Average").append("<b>The throughput of the given processes is "+throughput+"</b><br>");
     $("#Average").append("<b>The CPU efficiency is "+cpu_efficiency+"%</b><br>");
   }
@@ -273,7 +303,7 @@ p{
 }
 #ptab{
   display:none;
-  margin-left: 30%;
+  margin-left: 27%;
 }
 
 #outer-div{
@@ -301,9 +331,11 @@ p{
   text-align: right;
   margin-bottom: 1;
 }
+#ep{
+  margin-left: 30%;
+}
 </style>
 <body>
-  <a href='index.html'>Back</a>
   <br>
   <h1>
     Priority Preemptive Scheduling
@@ -312,6 +344,22 @@ p{
     Gantt Chart
   </h2>
   <br>
+  <div>
+      <h3>Entered Processes:</h3>
+    <table id="ep" class="table table-bordered" style="width:500px">
+      <thead>
+      <th>PNO.</th>
+      <th>Arrival Time </th>
+      <th>BT1</th>
+      <th>IO </th>
+      <th>BT2</th>
+      <th>Priority</th>
+    </tr>
+    <tbody id="ept">
+    </tbody>
+  </thead>
+</table>
+  </div>
   <input type='number' id='at1' placeholder="arrival time"></input>
   <input type='number' id='bt1' placeholder="burst time 1"></input>
   <input type='number' id='io' placeholder="io time"></input>
@@ -326,7 +374,7 @@ p{
   </div>
   <br><br><br>
   <div class="panel-content">
-  <table id="ptab" class="table table-bordered" style="width:500px">
+  <table id="ptab" class="table table-bordered" style="width:600px">
   <thead>
   <tr id="thead">
   <th>PNO.</th>
@@ -336,6 +384,7 @@ p{
   <th>Burst time2</th>
   <th>Priority</th>
   <th>Waiting time</th>
+  <th>Turn Around Time</th>
   </tr>
   <tbody id="ptable">
 
