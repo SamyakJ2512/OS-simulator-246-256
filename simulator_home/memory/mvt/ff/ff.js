@@ -102,6 +102,7 @@ function addProcess(pro_size, pro_id, fromQ) {
 
     if(found == 0 && fromQ == 0) {
         alert('New process could not be added. Process added to Input Queue');
+        calcExtFrag(pro_size);
         addToQ(pro_size, pro_id);
     }
     if(found == 1 && fromQ == 1) {
@@ -311,5 +312,24 @@ function Compact() {
     drawPart();
     for(i = 0; i < input_q_size; i++) {
         addProcess(input_q_pro_size[i], input_q_pro_id[i], 1);
+    }
+}
+
+function calcExtFrag(pro_size) {
+    var tot_hole_size = 0;
+    var i;
+    for(i = 0; i < num_parts; i++) {
+        if(i ==0)
+        {
+            tot_hole_size += part_start[i];
+        }
+        else
+        {
+            tot_hole_size += part_start[i] - part_end[i-1];
+        }
+    }
+    tot_hole_size += total_mem_size - part_end[num_parts-1];
+    if(tot_hole_size > pro_size) {
+        alert("External Fragmentation is " + tot_hole_size);
     }
 }

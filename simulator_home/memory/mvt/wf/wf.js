@@ -113,6 +113,7 @@ function addProcess(pro_size, pro_id, fromQ) {
 
     if(found == 0 && fromQ == 0) {
         alert('New process could not be added. Process added to Input Queue');
+        calcExtFrag(pro_size);
         addToQ(pro_size, pro_id);
     }
     if(found == 1 && fromQ == 1) {

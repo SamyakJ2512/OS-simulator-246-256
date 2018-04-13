@@ -137,7 +137,16 @@ function drawPart(pro_size, pro_id, index) {
 
     ctx.font = "14px Arial bold";
     ctx.fillStyle = "black";
-    ctx.fillText("P-"+ String(pro_id), myCanvas_width/2, part_myCanvas_start[index] + pro_size*(500/total_mem_size)/2);   
+    ctx.fillText("P-"+ String(pro_id) + ", size="+pro_size, myCanvas_width/2, part_myCanvas_start[index] + pro_size*(500/total_mem_size)/2);   
+
+    // var new_start = part_myCanvas_start[index] + pro_size*(500/total_mem_size);
+    // var int_frag = part_size[index]-pro_size;
+    // ctx.beginPath();
+    // ctx.rect(myCanvas_x_start, new_start, myCanvas_width, part_size[index]*(500/total_mem_size));
+
+    // ctx.font = "14px Arial bold";
+    // ctx.fillStyle = "black";
+    // ctx.fillText("size="+int_frag, myCanvas_width/2, part_myCanvas_start[index] + pro_size*(500/total_mem_size)/2); 
 }
 
 function remProcessId() {
